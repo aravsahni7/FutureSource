@@ -1,0 +1,228 @@
+import React from 'react';
+import { Link, useParams, Navigate } from 'react-router-dom';
+import { ArrowRight, ArrowLeft, Target, Search, TrendingUp, Check } from 'lucide-react';
+import { useLanguage } from '@/i18n/LanguageContext';
+import { Button } from '@/components/ui/button';
+import { getServiceBySlug, getCaseStudiesByService, services } from '@/data/content';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { cn } from '@/lib/utils';
+
+const iconMap: Record<string, React.ElementType> = {
+  target: Target,
+  search: Search,
+  'trending-up': TrendingUp,
+};
+
+export default function ServiceDetail() {
+  const { slug } = useParams<{ slug: string }>();
+  const { language, t } = useLanguage();
+  
+  const service = slug ? getServiceBySlug(slug) : undefined;
+  
+  if (!service) {
+    return <Navigate to="/services" replace />;
+  }
+
+  const relatedCases = getCaseStudiesByService(service.id).slice(0, 2);
+  const Icon = iconMap[service.icon] || Target;
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-32 pb-16 bg-gradient-hero grain-overlay relative">
+        <div className="container mx-auto px-6">
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            {t('common.back')} {t('nav.services')}
+          </Link>
+
+          <div className="flex items-start gap-6 mb-8">
+            <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+              <Icon className="h-10 w-10 text-primary" />
+            </div>
+            <div>
+              <p className="text-caption text-muted-foreground uppercase tracking-wider mb-2">
+                {service.tagline[language]}
+              </p>
+              <h1 className="font-editorial text-display-lg animate-fade-in">
+                {service.title[language]}
+              </h1>
+            </div>
+          </div>
+
+          <p className="text-body-lg text-muted-foreground max-w-3xl animate-fade-in delay-100">
+            {service.description[language]}
+          </p>
+        </div>
+      </section>
+
+      {/* Outcomes */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-6">
+          <h2 className="font-editorial text-display-sm mb-8">
+            {language === 'en' ? 'Expected Outcomes' : 'Résultats attendus'}
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {service.outcomes[language].map((outcome, i) => (
+              <div
+                key={i}
+                className="p-6 rounded-2xl bg-gradient-card border border-border card-editorial"
+              >
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <Check className="h-5 w-5 text-primary" />
+                </div>
+                <p className="text-body-lg font-medium">{outcome}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Deliverables */}
+      <section className="py-16 bg-gradient-warm">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <h2 className="font-editorial text-display-sm mb-4">
+                {language === 'en' ? 'What\'s Included' : 'Ce qui est inclus'}
+              </h2>
+              <p className="text-body-lg text-muted-foreground mb-8">
+                {language === 'en'
+                  ? 'Everything you need to succeed with our comprehensive deliverables.'
+                  : 'Tout ce dont vous avez besoin pour réussir avec nos livrables complets.'
+                }
+              </p>
+              <Button asChild className="group">
+                <Link to="/book-a-call">
+                  {t('nav.bookCall')}
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+            </div>
+            <div className="space-y-4">
+              {service.deliverables[language].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <span className="text-body-sm font-medium text-primary">{i + 1}</span>
+                  </div>
+                  <p className="text-body-md pt-1">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ideal For / Not For */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="p-8 rounded-2xl bg-primary/5 border border-primary/20">
+              <h3 className="font-editorial text-heading-xl mb-4 flex items-center gap-3">
+                <Check className="h-6 w-6 text-primary" />
+                {language === 'en' ? 'Ideal For' : 'Idéal pour'}
+              </h3>
+              <p className="text-body-lg text-muted-foreground">
+                {service.idealFor[language]}
+              </p>
+            </div>
+            <div className="p-8 rounded-2xl bg-destructive/5 border border-destructive/20">
+              <h3 className="font-editorial text-heading-xl mb-4 flex items-center gap-3">
+                <span className="text-destructive">✕</span>
+                {language === 'en' ? 'Not For' : 'Pas pour'}
+              </h3>
+              <p className="text-body-lg text-muted-foreground">
+                {service.notFor[language]}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      {service.faqs.length > 0 && (
+        <section className="py-16 bg-gradient-warm">
+          <div className="container mx-auto px-6">
+            <h2 className="font-editorial text-display-sm mb-8 text-center">
+              {language === 'en' ? 'Frequently Asked Questions' : 'Questions fréquentes'}
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <Accordion type="single" collapsible className="space-y-4">
+                {service.faqs.map((faq, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`faq-${i}`}
+                    className="bg-card border border-border rounded-xl px-6"
+                  >
+                    <AccordionTrigger className="text-heading-md font-medium text-left py-6">
+                      {faq.question[language]}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-body-md text-muted-foreground pb-6">
+                      {faq.answer[language]}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Related Case Studies */}
+      {relatedCases.length > 0 && (
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-6">
+            <h2 className="font-editorial text-display-sm mb-8">
+              {language === 'en' ? 'Related Case Studies' : 'Études de cas associées'}
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {relatedCases.map((caseStudy) => (
+                <Link
+                  key={caseStudy.id}
+                  to={`/work/${caseStudy.slug}`}
+                  className="group block"
+                >
+                  <article className="rounded-2xl border border-border bg-card overflow-hidden card-editorial">
+                    <div className="aspect-video bg-gradient-editorial relative">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="font-editorial text-heading-lg text-muted-foreground/30">
+                          {caseStudy.client}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <p className="text-caption text-primary mb-2">{caseStudy.industry[language]}</p>
+                      <h3 className="font-editorial text-heading-lg group-hover:text-primary transition-colors">
+                        {caseStudy.title[language]}
+                      </h3>
+                    </div>
+                  </article>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CTA */}
+      <section className="py-24 bg-gradient-gold text-primary-foreground relative overflow-hidden">
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="font-editorial text-display-md mb-6">{t('cta.primary.title')}</h2>
+          <p className="text-body-lg opacity-90 max-w-xl mx-auto mb-8">{t('cta.primary.text')}</p>
+          <Button asChild size="lg" variant="secondary" className="group">
+            <Link to="/book-a-call">
+              {t('cta.primary.button')}
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+    </>
+  );
+}
