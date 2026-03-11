@@ -175,7 +175,7 @@ export default function ServiceDetail() {
       )}
 
       {/* Related Case Studies */}
-      {relatedCases.length > 0 && (
+      {false && relatedCases.length > 0 && (
         <section className="py-16 bg-background">
           <div className="container mx-auto px-6">
             <h2 className="font-editorial text-display-sm mb-8">

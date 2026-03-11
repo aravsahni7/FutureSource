@@ -6,7 +6,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { blogPosts, getFeaturedBlogPosts } from '@/data/content';
 import { cn } from '@/lib/utils';
-import fbArticleImg from '@/data/facebook article.PNG';
+import fbArticleImg from '@/data/facebook-article.png';
+import seoArticleImg from '@/data/seo.png';
+import croArticleImg from '@/data/cro.png';
+import googleAdsImg from '@/data/google-ads.png';
+import cookieImg from '@/data/cookie.png';
+import tiktokImg from '@/data/tiktok.png';
+import cro2Img from '@/data/cro2.png';
+import trendsImg from '@/data/what.png';
+import creativeImg from '@/data/even.png';
 
 const categories = ['all', 'strategy', 'abm', 'paidMedia', 'seo', 'salesPipeline', 'cro', 'trends'] as const;
 
@@ -82,6 +90,30 @@ export default function Insights() {
                     {post.slug === 'meta-ads-2025-playbook' && (
                       <img src={fbArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
                     )}
+                    {post.slug === 'seo-content-strategy-guide' && (
+                      <img src={seoArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'conversion-rate-psychology' && (
+                      <img src={croArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'google-ads-performance-max' && (
+                      <img src={googleAdsImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'attribution-modeling-guide' && (
+                      <img src={cookieImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'tiktok-ads-for-ecommerce' && (
+                      <img src={tiktokImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'ab-testing-mistakes' && (
+                      <img src={cro2Img} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'marketing-trends-2025' && (
+                      <img src={trendsImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'creative-testing-framework' && (
+                      <img src={creativeImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="font-editorial text-heading-lg text-muted-foreground/20">
                         {categoryLabels[post.category][language]}
@@ -151,6 +183,30 @@ export default function Insights() {
                   <div className="aspect-video bg-gradient-editorial relative overflow-hidden">
                     {post.slug === 'meta-ads-2025-playbook' && (
                       <img src={fbArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'seo-content-strategy-guide' && (
+                      <img src={seoArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'conversion-rate-psychology' && (
+                      <img src={croArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'google-ads-performance-max' && (
+                      <img src={googleAdsImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'attribution-modeling-guide' && (
+                      <img src={cookieImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'tiktok-ads-for-ecommerce' && (
+                      <img src={tiktokImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'ab-testing-mistakes' && (
+                      <img src={cro2Img} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'marketing-trends-2025' && (
+                      <img src={trendsImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
+                    {post.slug === 'creative-testing-framework' && (
+                      <img src={creativeImg} alt={post.title[language]} className="w-full h-full object-cover" />
                     )}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="font-editorial text-heading-md text-muted-foreground/20">

@@ -109,8 +109,8 @@ export const translations = {
         fr: 'Achat média payant stratégique sur toutes les plateformes. De la stratégie créative à l\'optimisation des campagnes, nous amplifions ce qui convertit.',
       },
       idealFor: {
-        en: 'Brands ready to scale with $10K+ monthly ad budgets',
-        fr: 'Marques prêtes à croître avec des budgets pub mensuels de 10K$+',
+        en: 'Brands seeking a tailored approach to scale, regardless of budget size',
+        fr: 'Marques recherchant une approche sur mesure pour croître, peu importe la taille du budget',
       },
       notFor: {
         en: 'Pre-revenue startups or brands without product-market fit',

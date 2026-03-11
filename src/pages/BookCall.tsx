@@ -79,7 +79,7 @@ export default function BookCall() {
                   </h3>
                   <ul className="space-y-3">
                     {[
-                      { en: 'Brands with $10K+ monthly marketing budget', fr: 'Marques avec un budget marketing mensuel de 10K$+' },
+                      { en: 'Brands across all marketing budget levels', fr: 'Marques avec tous types de budgets marketing' },
                       { en: 'Clear product-market fit', fr: 'Adéquation produit-marché claire' },
                       { en: 'Ready to scale within 3-6 months', fr: 'Prêt à croître dans 3-6 mois' },
                     ].map((item, i) => (
