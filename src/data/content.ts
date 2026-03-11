@@ -21,6 +21,56 @@ export interface Service {
 
 export const services: Service[] = [
   {
+    id: 'web-design',
+    slug: 'high-performance-web-design',
+    icon: 'sparkles',
+    title: { en: 'High-Performance Web Design', fr: 'Conception Web Haute Performance' },
+    tagline: { en: 'Business Websites • E-commerce • Landing Pages', fr: 'Sites d\'entreprise • E-commerce • Pages d\'atterrissage' },
+    description: {
+      en: 'Professional online presences that turn visitors into leads. We don\'t just build "pretty" sites; we build conversion-focused digital assets optimized for speed, mobile, and growth.',
+      fr: 'Présences en ligne professionnelles qui transforment les visiteurs en leads. Nous ne créons pas seulement des sites "jolis"; nous construisons des actifs numériques axés sur la conversion, optimisés pour la vitesse, le mobile et la croissance.',
+    },
+    idealFor: {
+      en: 'Local businesses and growing service providers needing a professional, high-converting HQ.',
+      fr: 'Entreprises locales et prestataires de services en croissance ayant besoin d\'un siège en ligne professionnel et à forte conversion.',
+    },
+    notFor: {
+      en: 'Hobbyists or those looking for the cheapest DIY template with no strategy.',
+      fr: 'Passionnés ou personnes cherchant le modèle DIY le moins cher sans stratégie.',
+    },
+    deliverables: {
+      en: [
+        'Custom mobile-first design',
+        'High-speed performance tuning',
+        'Conversion-optimized layouts',
+        'CMS setup (WordPress/Shopify)',
+        'Built-in SEO foundations',
+        '30-day post-launch support',
+      ],
+      fr: [
+        'Conception mobile-first sur mesure',
+        'Optimisation des performances rapides',
+        'Dispositions optimisées pour la conversion',
+        'Configuration CMS (WordPress/Shopify)',
+        'Fondations SEO intégrées',
+        'Support post-lancement 30 jours',
+      ],
+    },
+    outcomes: {
+      en: [
+        'Fast-loading, mobile-first websites',
+        'Higher lead conversion from web traffic',
+        'Easily-managed CMS for non-technical teams',
+      ],
+      fr: [
+        'Sites rapides et mobile-first',
+        'Taux de conversion supérieurs à partir du trafic web',
+        'CMS facile à gérer pour les équipes non techniques',
+      ],
+    },
+    faqs: [],
+  },
+  {
     id: 'paid-ads',
     slug: 'paid-ads',
     icon: 'target',
@@ -268,56 +318,6 @@ export const services: Service[] = [
         },
       },
     ],
-  },
-  {
-    id: 'web-design',
-    slug: 'high-performance-web-design',
-    icon: 'sparkles',
-    title: { en: 'High-Performance Web Design', fr: 'Conception Web Haute Performance' },
-    tagline: { en: 'Business Websites • E-commerce • Landing Pages', fr: 'Sites d\'entreprise • E-commerce • Pages d\'atterrissage' },
-    description: {
-      en: 'Professional online presences that turn visitors into leads. We don\'t just build "pretty" sites; we build conversion-focused digital assets optimized for speed, mobile, and growth.',
-      fr: 'Présences en ligne professionnelles qui transforment les visiteurs en leads. Nous ne créons pas seulement des sites "jolis"; nous construisons des actifs numériques axés sur la conversion, optimisés pour la vitesse, le mobile et la croissance.',
-    },
-    idealFor: {
-      en: 'Local businesses and growing service providers needing a professional, high-converting HQ.',
-      fr: 'Entreprises locales et prestataires de services en croissance ayant besoin d\'un siège en ligne professionnel et à forte conversion.',
-    },
-    notFor: {
-      en: 'Hobbyists or those looking for the cheapest DIY template with no strategy.',
-      fr: 'Passionnés ou personnes cherchant le modèle DIY le moins cher sans stratégie.',
-    },
-    deliverables: {
-      en: [
-        'Custom mobile-first design',
-        'High-speed performance tuning',
-        'Conversion-optimized layouts',
-        'CMS setup (WordPress/Shopify)',
-        'Built-in SEO foundations',
-        '30-day post-launch support',
-      ],
-      fr: [
-        'Conception mobile-first sur mesure',
-        'Optimisation des performances rapides',
-        'Dispositions optimisées pour la conversion',
-        'Configuration CMS (WordPress/Shopify)',
-        'Fondations SEO intégrées',
-        'Support post-lancement 30 jours',
-      ],
-    },
-    outcomes: {
-      en: [
-        'Fast-loading, mobile-first websites',
-        'Higher lead conversion from web traffic',
-        'Easily-managed CMS for non-technical teams',
-      ],
-      fr: [
-        'Sites rapides et mobile-first',
-        'Taux de conversion supérieurs à partir du trafic web',
-        'CMS facile à gérer pour les équipes non techniques',
-      ],
-    },
-    faqs: [],
   },
 ];
 

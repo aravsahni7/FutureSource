@@ -70,17 +70,17 @@ export const translations = {
     },
   },
 
-  // Results Section
+  // Advantage Section (formerly Results)
   results: {
-    title: { en: 'Live Results Snapshot', fr: 'Aperçu des résultats en direct' },
+    title: { en: 'The FutureSource Advantage', fr: 'L\'Avantage FutureSource' },
     subtitle: {
-      en: 'Aggregate performance across our client portfolio',
-      fr: 'Performance agrégée à travers notre portefeuille clients',
+      en: 'Built for predictable, scalable, and transparent growth',
+      fr: 'Conçu pour une croissance prévisible, évolutive et transparente',
     },
-    adSpend: { en: 'Ad Spend Managed', fr: 'Budget pub géré' },
-    roas: { en: 'Average ROAS', fr: 'ROAS moyen' },
-    revenue: { en: 'Revenue Generated', fr: 'Revenus générés' },
-    clients: { en: 'Brands Scaled', fr: 'Marques développées' },
+    attribution: { en: '100% Attribution Accuracy', fr: 'Précision d\'attribution à 100%' },
+    roi: { en: 'ROI-Focused Roadmaps', fr: 'Feuilles de route axées sur le ROI' },
+    crm: { en: 'Full CRM Integration', fr: 'Intégration CRM complète' },
+    strategy: { en: 'Bespoke Multi-Channel Strategy', fr: 'Stratégie multicanal sur mesure' },
   },
 
   // Selected Work

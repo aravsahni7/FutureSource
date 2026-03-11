@@ -136,17 +136,16 @@ export default function Home() {
           
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { key: 'adSpend', value: '$12M+', icon: DollarSign },
-              { key: 'roas', value: '4.2x', icon: TrendingUp },
-              { key: 'revenue', value: '$48M+', icon: TrendingUp },
-              { key: 'clients', value: '40+', icon: Users },
+              { key: 'attribution', icon: Target },
+              { key: 'roi', icon: TrendingUp },
+              { key: 'crm', icon: Users },
+              { key: 'strategy', icon: Sparkles },
             ].map((stat) => (
-              <div key={stat.key} className="text-center p-8 rounded-2xl bg-card border border-border card-editorial">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <div key={stat.key} className="text-center p-8 rounded-2xl bg-card border border-border card-editorial flex flex-col items-center justify-center">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
                   <stat.icon className="h-6 w-6 text-primary" />
                 </div>
-                <p className="font-editorial text-display-sm text-gradient-gold mb-2">{stat.value}</p>
-                <p className="text-body-sm text-muted-foreground">{t(`results.${stat.key}`)}</p>
+                <h3 className="font-editorial text-heading-sm md:text-heading-md text-gradient-gold leading-tight">{t(`results.${stat.key}`)}</h3>
               </div>
             ))}
           </div>
