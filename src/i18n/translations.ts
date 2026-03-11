@@ -157,6 +157,14 @@ export const translations = {
         fr: 'Élevez votre positionnement de marque et direction créative. Option premium pour les marques prêtes à évoluer.',
       },
     },
+    abm: {
+      title: { en: 'Account Based Marketing (ABM)', fr: 'Marketing basé sur les comptes (ABM)' },
+      tagline: { en: 'Targeted B2B Growth', fr: 'Croissance B2B ciblée' },
+      description: {
+        en: 'Tailored programs that engage target accounts with personalized campaigns, content, and sales alignment to accelerate pipeline.',
+        fr: 'Programmes sur mesure qui mobilisent les comptes cibles avec des campagnes personnalisées, du contenu et un alignement ventes pour accélérer le pipeline.',
+      },
+    },
     packages: {
       title: { en: 'Engagement Tiers', fr: 'Niveaux d\'engagement' },
       starter: {
@@ -341,6 +349,8 @@ export const translations = {
       seo: { en: 'SEO', fr: 'SEO' },
       cro: { en: 'CRO', fr: 'CRO' },
       trends: { en: 'Trends', fr: 'Tendances' },
+      abm: { en: 'ABM', fr: 'ABM' },
+      salesPipeline: { en: 'Sales Pipeline', fr: 'Pipeline de ventes' },
     },
   },
 

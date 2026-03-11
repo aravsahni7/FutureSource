@@ -153,54 +153,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Selected Work Preview */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap items-end justify-between gap-4 mb-16">
-            <div>
-              <h2 className="font-editorial text-display-md mb-4">{t('selectedWork.title')}</h2>
-              <p className="text-body-lg text-muted-foreground">{t('selectedWork.subtitle')}</p>
-            </div>
-            <Button asChild variant="outline">
-              <Link to="/work">
-                {t('selectedWork.viewAll')}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredCases.map((caseStudy, index) => (
-              <Link
-                key={caseStudy.id}
-                to={`/work/${caseStudy.slug}`}
-                className="group block"
-              >
-                <article className="rounded-2xl border border-border bg-card overflow-hidden card-editorial">
-                  <div className="aspect-video bg-gradient-editorial relative">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-editorial text-heading-lg text-muted-foreground/30">{caseStudy.client}</span>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-caption text-primary mb-2">{caseStudy.industry[language]}</p>
-                    <h3 className="font-editorial text-heading-lg mb-3 group-hover:text-primary transition-colors">
-                      {caseStudy.title[language]}
-                    </h3>
-                    <div className="flex gap-4">
-                      {caseStudy.results.slice(0, 2).map((result, i) => (
-                        <span key={i} className="text-body-sm text-muted-foreground">
-                          <span className="font-semibold text-foreground">{result.value}</span> {result.metric[language]}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Selected Work Preview (hidden) */}
+      {/* The Selected Work section has been temporarily hidden from the site. */}
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-gold text-primary-foreground relative overflow-hidden">

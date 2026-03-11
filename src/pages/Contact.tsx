@@ -9,13 +9,10 @@ import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 
 const serviceOptions = [
-  'New Website',
-  'Website Redesign / Updates',
+  'Digital Marketing Ads (PPC)',
+  'Account Based Marketing (ABM)',
   'SEO Optimization',
-  'Paid Ads (Google / Meta)',
-  'Branding & Design',
-  'Marketing Strategy',
-  'Other',
+  'Website',
 ];
 
 export default function Contact() {
@@ -232,11 +229,7 @@ export default function Contact() {
 
                 <div className="space-y-6">
                   <InfoItem icon={Mail} title="Email" text="hello@futuresource.ca" />
-                  <InfoItem
-                    icon={MapPin}
-                    title={language === 'en' ? 'Location' : 'Emplacement'}
-                    text="Montreal, QC, Canada"
-                  />
+                  <InfoItem icon={Mail} title={language === 'en' ? 'Phone' : 'Téléphone'} text="438 923 5809" />
                   <InfoItem
                     icon={Clock}
                     title={language === 'en' ? 'Response Time' : 'Temps de réponse'}

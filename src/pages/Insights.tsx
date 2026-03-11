@@ -7,13 +7,15 @@ import { Input } from '@/components/ui/input';
 import { blogPosts, getFeaturedBlogPosts } from '@/data/content';
 import { cn } from '@/lib/utils';
 
-const categories = ['all', 'strategy', 'paidMedia', 'seo', 'cro', 'trends'] as const;
+const categories = ['all', 'strategy', 'abm', 'paidMedia', 'seo', 'salesPipeline', 'cro', 'trends'] as const;
 
 const categoryLabels: Record<string, { en: string; fr: string }> = {
   all: { en: 'All', fr: 'Tout' },
   strategy: { en: 'Strategy', fr: 'Stratégie' },
+  abm: { en: 'ABM', fr: 'ABM' },
   paidMedia: { en: 'Paid Media', fr: 'Médias payants' },
   seo: { en: 'SEO', fr: 'SEO' },
+  salesPipeline: { en: 'Sales Pipeline', fr: 'Pipeline de ventes' },
   cro: { en: 'CRO', fr: 'CRO' },
   trends: { en: 'Trends', fr: 'Tendances' },
 };

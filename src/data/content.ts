@@ -162,6 +162,54 @@ export const services: Service[] = [
     ],
   },
   {
+    id: 'abm',
+    slug: 'account-based-marketing',
+    icon: 'target',
+    title: { en: 'Account Based Marketing (ABM)', fr: 'Marketing basé sur les comptes (ABM)' },
+    tagline: { en: 'Targeted B2B Growth', fr: 'Croissance B2B ciblée' },
+    description: {
+      en: 'Tailored, account-focused programs that engage high-value prospects with personalized campaigns, content, and outreach. We align sales and marketing to accelerate pipeline and close enterprise deals.',
+      fr: 'Programmes sur mesure axés sur les comptes qui mobilisent des prospects à forte valeur avec des campagnes, du contenu et des actions personnalisés. Nous alignons les ventes et le marketing pour accélérer le pipeline et conclure des contrats d\'entreprise.',
+    },
+    idealFor: {
+      en: 'B2B companies targeting specific high-value accounts and enterprise deals',
+      fr: 'Entreprises B2B ciblant des comptes à forte valeur et des contrats d\'entreprise',
+    },
+    notFor: {
+      en: 'Small one-off consumer sales where account-level targeting is not relevant',
+      fr: 'Ventes consommateurs ponctuelles où le ciblage par compte n\'est pas pertinent',
+    },
+    deliverables: {
+      en: [
+        'Account selection & ICP mapping',
+        'Personalized campaign strategy & playbooks',
+        'Multi-channel outreach (email, ads, LinkedIn)',
+        'Sales enablement materials & sequences',
+        'Pipeline reporting and attribution',
+      ],
+      fr: [
+        'Sélection de comptes et cartographie ICP',
+        'Stratégie de campagne personnalisée et playbooks',
+        'Prospection multicanal (email, publicités, LinkedIn)',
+        'Matériel et séquences d\'activation des ventes',
+        'Reporting du pipeline et attribution',
+      ],
+    },
+    outcomes: {
+      en: [
+        'Shorter sales cycles for target accounts',
+        'Higher win rates on enterprise opportunities',
+        'Clearer pipeline attribution to marketing efforts',
+      ],
+      fr: [
+        'Cycles de vente plus courts pour les comptes ciblés',
+        'Taux de réussite plus élevé sur les opportunités enterprise',
+        'Attribution du pipeline plus claire aux efforts marketing',
+      ],
+    },
+    faqs: [],
+  },
+  {
     id: 'cro-landing-pages',
     slug: 'cro-landing-pages',
     icon: 'trending-up',
@@ -220,6 +268,56 @@ export const services: Service[] = [
         },
       },
     ],
+  },
+  {
+    id: 'web-design',
+    slug: 'high-performance-web-design',
+    icon: 'sparkles',
+    title: { en: 'High-Performance Web Design', fr: 'Conception Web Haute Performance' },
+    tagline: { en: 'Business Websites • E-commerce • Landing Pages', fr: 'Sites d\'entreprise • E-commerce • Pages d\'atterrissage' },
+    description: {
+      en: 'Professional online presences that turn visitors into leads. We don\'t just build "pretty" sites; we build conversion-focused digital assets optimized for speed, mobile, and growth.',
+      fr: 'Présences en ligne professionnelles qui transforment les visiteurs en leads. Nous ne créons pas seulement des sites "jolis"; nous construisons des actifs numériques axés sur la conversion, optimisés pour la vitesse, le mobile et la croissance.',
+    },
+    idealFor: {
+      en: 'Local businesses and growing service providers needing a professional, high-converting HQ.',
+      fr: 'Entreprises locales et prestataires de services en croissance ayant besoin d\'un siège en ligne professionnel et à forte conversion.',
+    },
+    notFor: {
+      en: 'Hobbyists or those looking for the cheapest DIY template with no strategy.',
+      fr: 'Passionnés ou personnes cherchant le modèle DIY le moins cher sans stratégie.',
+    },
+    deliverables: {
+      en: [
+        'Custom mobile-first design',
+        'High-speed performance tuning',
+        'Conversion-optimized layouts',
+        'CMS setup (WordPress/Shopify)',
+        'Built-in SEO foundations',
+        '30-day post-launch support',
+      ],
+      fr: [
+        'Conception mobile-first sur mesure',
+        'Optimisation des performances rapides',
+        'Dispositions optimisées pour la conversion',
+        'Configuration CMS (WordPress/Shopify)',
+        'Fondations SEO intégrées',
+        'Support post-lancement 30 jours',
+      ],
+    },
+    outcomes: {
+      en: [
+        'Fast-loading, mobile-first websites',
+        'Higher lead conversion from web traffic',
+        'Easily-managed CMS for non-technical teams',
+      ],
+      fr: [
+        'Sites rapides et mobile-first',
+        'Taux de conversion supérieurs à partir du trafic web',
+        'CMS facile à gérer pour les équipes non techniques',
+      ],
+    },
+    faqs: [],
   },
 ];
 

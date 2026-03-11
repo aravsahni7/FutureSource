@@ -34,6 +34,9 @@ export function Header() {
     { href: '/contact', label: t('nav.contact') },
   ];
 
+  // Hide the Work link from the top navigation for now
+  const visibleNavLinks = navLinks.filter(link => link.href !== '/work');
+
   const isActive = (href: string) => {
     if (href === '/') return location.pathname === '/';
     return location.pathname.startsWith(href);
@@ -58,7 +61,7 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
-              {navLinks.map((link) => (
+              {visibleNavLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
@@ -150,7 +153,7 @@ export function Header() {
           <div className="flex flex-col h-full pt-24 pb-8 px-8">
             {/* Navigation Links */}
             <nav className="flex-1 space-y-1">
-              {navLinks.map((link, index) => (
+              {visibleNavLinks.map((link, index) => (
                 <Link
                   key={link.href}
                   to={link.href}

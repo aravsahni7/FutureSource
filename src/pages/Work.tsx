@@ -20,6 +20,11 @@ export default function Work() {
   const { language, t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
+  // Temporarily hide the 'Our Work' page from site visitors.
+  // Toggle `hideWork` to `false` to restore the page.
+  const hideWork = true;
+  if (hideWork) return null;
+
   const filteredCases = activeFilter === 'all'
     ? caseStudies
     : caseStudies.filter(c => c.services.includes(activeFilter));

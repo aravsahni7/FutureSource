@@ -10,6 +10,7 @@ const iconMap: Record<string, React.ElementType> = {
   target: Target,
   search: Search,
   'trending-up': TrendingUp,
+  sparkles: Sparkles,
 };
 
 export default function Services() {
