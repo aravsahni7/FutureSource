@@ -30,6 +30,8 @@ export function Footer() {
     { href: '/services/paid-ads', label: t('services.paidAds.title') },
     { href: '/services/seo-content', label: t('services.seo.title') },
     { href: '/services/cro-landing-pages', label: t('services.cro.title') },
+    { href: '/services/account-based-marketing', label: t('Account Based Marketing (ABM)') },
+    { href: '/services/high-performance-web-design', label: t('High-Performance Web Design') }
   ];
 
   const legalLinks = [
@@ -49,12 +51,12 @@ export function Footer() {
           <p className="text-body-lg text-muted-foreground mb-8">
             {t('insights.newsletter.description')}
           </p>
-          
+
           {subscribed ? (
             <div className="bg-primary/10 border border-primary/20 rounded-xl p-6 animate-fade-in">
               <p className="text-body-md text-foreground">
-                {t('language') === 'fr' 
-                  ? '✓ Merci de votre inscription!' 
+                {t('language') === 'fr'
+                  ? '✓ Merci de votre inscription!'
                   : '✓ Thank you for subscribing!'}
               </p>
             </div>
@@ -160,8 +162,8 @@ export function Footer() {
               {t('footer.contact')}
             </h4>
             <ul className="space-y-3 text-body-md text-muted-foreground">
-              <li>hello@futuresource.agency</li>
-              <li>+1 (514) 555-0123</li>
+              <li>hello@futuresource.ca</li>
+              <li>+1 (438) 923-5809</li>
               <li>
                 Montréal, QC<br />
                 Canada
