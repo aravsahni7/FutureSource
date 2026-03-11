@@ -5,6 +5,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { getBlogPostBySlug, blogPosts } from '@/data/content';
 import { cn } from '@/lib/utils';
+import fbArticleImg from '@/data/facebook article.PNG';
 
 const categoryLabels: Record<string, { en: string; fr: string }> = {
   strategy: { en: 'Strategy', fr: 'Stratégie' },
@@ -84,48 +85,107 @@ export default function InsightDetail() {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             {/* Placeholder article content */}
-            <div className="prose prose-lg max-w-none">
-              <div className="aspect-video rounded-2xl bg-gradient-editorial mb-12" />
-
-              <p className="text-body-lg text-muted-foreground leading-relaxed mb-6">
-                {post.excerpt[language]}
-              </p>
-
-              <h2 className="font-editorial text-heading-xl mt-12 mb-4">
-                {language === 'en' ? 'Key Takeaways' : 'Points clés'}
-              </h2>
-              <ul className="space-y-3 mb-8">
-                {[1, 2, 3].map((i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
-                    <span className="text-body-md text-muted-foreground">
-                      {language === 'en' 
-                        ? `Key insight #${i} from this article that provides actionable value.`
-                        : `Point clé #${i} de cet article qui apporte une valeur actionnable.`
-                      }
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="p-8 rounded-2xl bg-gradient-card border border-border my-12">
-                <p className="font-editorial text-heading-lg text-center italic">
-                  "{language === 'en' 
-                    ? 'A compelling quote or statistic that highlights the main point of this article.'
-                    : 'Une citation ou statistique convaincante qui met en évidence le point principal de cet article.'
-                  }"
-                </p>
+              <div className="prose prose-lg max-w-none">
+              <div className="aspect-video rounded-2xl bg-gradient-editorial mb-12 overflow-hidden">
+                <a
+                  href="https://www.jonloomer.com/meta-advertising-changes-2025/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full h-full"
+                >
+                  <img
+                    src={fbArticleImg}
+                    alt={post.title[language]}
+                    className="w-full h-full object-cover"
+                  />
+                </a>
               </div>
 
-              <h2 className="font-editorial text-heading-xl mt-12 mb-4">
-                {language === 'en' ? 'Conclusion' : 'Conclusion'}
-              </h2>
-              <p className="text-body-lg text-muted-foreground leading-relaxed">
-                {language === 'en'
-                  ? 'The conclusion summarizes the key points and provides a clear next step for readers who want to implement these strategies.'
-                  : 'La conclusion résume les points clés et fournit une prochaine étape claire pour les lecteurs qui souhaitent implémenter ces stratégies.'
-                }
-              </p>
+              {post.slug === 'meta-ads-2025-playbook' ? (
+                <>
+                  <p className="text-body-lg text-muted-foreground leading-relaxed mb-4">Source: Jon Loomer Digital</p>
+
+                  <h2 className="font-editorial text-heading-xl mt-6 mb-4">Recap</h2>
+                  <p className="text-body-lg text-muted-foreground leading-relaxed mb-6">
+                    After managing millions in spend across the Meta ecosystem, this guide breaks down how the platform has shifted from manual granular targeting to an AI-driven "Advantage+" model. It focuses on how to work with the algorithm rather than trying to outsmart it.
+                  </p>
+
+                  <h2 className="font-editorial text-heading-xl mt-8 mb-4">Key Takeaways:</h2>
+                  <ul className="space-y-3 mb-8">
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
+                      <span className="text-body-md text-muted-foreground">
+                        <strong>The "Power of Broad":</strong> In 2025, niche interest targeting is largely obsolete; the algorithm performs best when given broad parameters and high-quality creative signals.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
+                      <span className="text-body-md text-muted-foreground">
+                        <strong>Creative as Targeting:</strong> With manual targeting restricted, the "hook" and messaging in your ad creative are now the primary ways the algorithm identifies your ideal audience.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
+                      <span className="text-body-md text-muted-foreground">
+                        <strong>Conversion API (CAPI) Necessity:</strong> Server-side tracking is no longer optional; it is the only way to feed the AI enough data to maintain stable ROAS.
+                      </span>
+                    </li>
+                  </ul>
+
+                  <div className="p-8 rounded-2xl bg-gradient-card border border-border my-12">
+                    <p className="font-editorial text-heading-lg text-center italic">
+                      "AI doesn't see your brand the old way—it looks for trust, clarity, and signal. In 2025, your creative is your targeting."
+                    </p>
+                  </div>
+
+                  <h2 className="font-editorial text-heading-xl mt-12 mb-4">Conclusion</h2>
+                  <p className="text-body-lg text-muted-foreground leading-relaxed">
+                    To succeed, marketers must stop micromanaging audiences and start over-indexing on creative variety. Next step: Audit your current campaigns and consolidate small ad sets into one broad Advantage+ Shopping Campaign.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="text-body-lg text-muted-foreground leading-relaxed mb-6">
+                    {post.excerpt[language]}
+                  </p>
+
+                  <h2 className="font-editorial text-heading-xl mt-12 mb-4">
+                    {language === 'en' ? 'Key Takeaways' : 'Points clés'}
+                  </h2>
+                  <ul className="space-y-3 mb-8">
+                    {[1, 2, 3].map((i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2.5 shrink-0" />
+                        <span className="text-body-md text-muted-foreground">
+                          {language === 'en' 
+                            ? `Key insight #${i} from this article that provides actionable value.`
+                            : `Point clé #${i} de cet article qui apporte une valeur actionnable.`
+                          }
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="p-8 rounded-2xl bg-gradient-card border border-border my-12">
+                    <p className="font-editorial text-heading-lg text-center italic">
+                      "{language === 'en' 
+                        ? 'A compelling quote or statistic that highlights the main point of this article.'
+                        : 'Une citation ou statistique convaincante qui met en évidence le point principal de cet article.'
+                      }"
+                    </p>
+                  </div>
+
+                  <h2 className="font-editorial text-heading-xl mt-12 mb-4">
+                    {language === 'en' ? 'Conclusion' : 'Conclusion'}
+                  </h2>
+                  <p className="text-body-lg text-muted-foreground leading-relaxed">
+                    {language === 'en'
+                      ? 'The conclusion summarizes the key points and provides a clear next step for readers who want to implement these strategies.'
+                      : 'La conclusion résume les points clés et fournit une prochaine étape claire pour les lecteurs qui souhaitent implémenter ces stratégies.'
+                    }
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Share & CTA */}

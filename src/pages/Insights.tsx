@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { blogPosts, getFeaturedBlogPosts } from '@/data/content';
 import { cn } from '@/lib/utils';
+import fbArticleImg from '@/data/facebook article.PNG';
 
 const categories = ['all', 'strategy', 'abm', 'paidMedia', 'seo', 'salesPipeline', 'cro', 'trends'] as const;
 
@@ -75,9 +76,12 @@ export default function Insights() {
                   "h-full rounded-2xl border border-border bg-card overflow-hidden card-editorial flex flex-col"
                 )}>
                   <div className={cn(
-                    "bg-gradient-editorial relative",
+                    "bg-gradient-editorial relative overflow-hidden",
                     index === 0 ? "aspect-[16/9]" : "aspect-video"
                   )}>
+                    {post.slug === 'meta-ads-2025-playbook' && (
+                      <img src={fbArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="font-editorial text-heading-lg text-muted-foreground/20">
                         {categoryLabels[post.category][language]}
@@ -144,7 +148,10 @@ export default function Insights() {
                 className="group block"
               >
                 <article className="h-full rounded-2xl border border-border bg-card overflow-hidden card-editorial flex flex-col">
-                  <div className="aspect-video bg-gradient-editorial relative">
+                  <div className="aspect-video bg-gradient-editorial relative overflow-hidden">
+                    {post.slug === 'meta-ads-2025-playbook' && (
+                      <img src={fbArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
+                    )}
                     <div className="absolute inset-0 flex items-center justify-center">
                       <span className="font-editorial text-heading-md text-muted-foreground/20">
                         {categoryLabels[post.category][language]}
