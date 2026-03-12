@@ -33,16 +33,36 @@ export default function Insights() {
   const { language, t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const featuredPosts = getFeaturedBlogPosts();
   const filteredPosts = activeCategory === 'all'
     ? blogPosts
     : blogPosts.filter(p => p.category === activeCategory);
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle newsletter signup
-    setEmail('');
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setIsSubscribed(true);
+        setEmail('');
+      } else {
+        const errorData = await response.json();
+        console.error('Subscription failed:', errorData.error);
+        // You could add a toast here for error feedback
+      }
+    } catch (error) {
+      console.error('Error connecting to backend:', error);
+    }
   };
 
   return (
@@ -248,20 +268,33 @@ export default function Insights() {
             <p className="text-body-lg text-muted-foreground mb-8">
               {t('insights.newsletter.description')}
             </p>
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={t('insights.newsletter.placeholder')}
-                className="flex-1"
-                required
-              />
-              <Button type="submit">
-                {t('insights.newsletter.cta')}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </form>
+            {isSubscribed ? (
+              <div className="bg-primary/5 border border-primary/20 rounded-2xl p-8 animate-fade-in">
+                <h3 className="font-editorial text-heading-lg mb-2 text-primary">
+                  {language === 'en' ? 'Welcome to the inner circle!' : 'Bienvenue dans le cercle restreint !'}
+                </h3>
+                <p className="text-body-md text-muted-foreground">
+                  {language === 'en' 
+                    ? 'Thanks for subscribing. Your first growth insight is heading to your inbox shortly.'
+                    : 'Merci de vous être abonné. Votre premier insight de croissance arrive bientôt dans votre boîte de réception.'}
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <Input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={t('insights.newsletter.placeholder')}
+                  className="flex-1"
+                  required
+                />
+                <Button type="submit">
+                  {t('insights.newsletter.cta')}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </form>
+            )}
           </div>
         </div>
       </section>

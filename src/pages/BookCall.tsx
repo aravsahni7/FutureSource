@@ -95,37 +95,28 @@ export default function BookCall() {
 
             {/* Right Column - Calendar Embed */}
             <div className="lg:col-span-7">
-              <div className="rounded-2xl border border-border bg-card p-8 min-h-[600px]">
-                <div className="w-full h-full flex flex-col items-center justify-center text-center">
-                  {/* Calendar Placeholder */}
-                  <div className="w-full aspect-[4/3] rounded-xl bg-gradient-editorial flex items-center justify-center mb-8">
-                    <div className="text-center">
-                      <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                        <Clock className="h-8 w-8 text-primary" />
-                      </div>
-                      <p className="font-editorial text-heading-lg text-muted-foreground/50">
-                        {t('booking.embedPlaceholder')}
-                      </p>
-                      <p className="text-body-sm text-muted-foreground mt-2">
-                        {language === 'en' 
-                          ? 'Calendly or Cal.com embed will appear here'
-                          : 'L\'intégration Calendly ou Cal.com apparaîtra ici'
-                        }
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Alternative Contact */}
-                  <p className="text-body-md text-muted-foreground mb-4">
-                    {language === 'en'
-                      ? 'Prefer to email us directly?'
-                      : 'Préférez nous contacter directement?'
-                    }
-                  </p>
-                  <Button asChild variant="outline">
-                    <Link to="/contact">{t('nav.contact')}</Link>
-                  </Button>
-                </div>
+              <div className="rounded-2xl border border-border bg-card overflow-hidden min-h-[600px] shadow-editorial">
+                <iframe 
+                  src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1i5ERsbEPZLlNNViXbcDg4mkXQJzKMJ0qiDPAqJMra3QP_WZVpJLHWczlrpnlzYuanydfLCu6v?gv=true" 
+                  style={{ border: 0 }} 
+                  width="100%" 
+                  height="700" 
+                  frameBorder="0"
+                  title="Google Calendar Appointment Scheduling"
+                ></iframe>
+              </div>
+              
+              {/* Alternative Contact */}
+              <div className="mt-8 text-center">
+                <p className="text-body-md text-muted-foreground mb-4">
+                  {language === 'en'
+                    ? 'Alternatively, you can contact us directly:'
+                    : 'Alternativement, vous pouvez nous contacter directement:'
+                  }
+                </p>
+                <Button asChild variant="outline">
+                  <Link to="/contact">{t('nav.contact')}</Link>
+                </Button>
               </div>
             </div>
           </div>

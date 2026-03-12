@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { getServiceBySlug, getCaseStudiesByService, services } from '@/data/content';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
+import demoFitness from '@/assets/demo-fitness.jpg';
+import demoRestaurant from '@/assets/demo-restaurant.jpg';
 
 const iconMap: Record<string, React.ElementType> = {
   target: Target,
@@ -29,7 +31,7 @@ export default function ServiceDetail() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-hero grain-overlay relative">
+      <section className="pt-32 pb-12 bg-gradient-hero grain-overlay relative">
         <div className="container mx-auto px-6">
           <Link
             to="/services"
@@ -60,7 +62,7 @@ export default function ServiceDetail() {
       </section>
 
       {/* Outcomes */}
-      <section className="py-16 bg-background">
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-6">
           <h2 className="font-editorial text-display-sm mb-8">
             {language === 'en' ? 'Expected Outcomes' : 'Résultats attendus'}
@@ -84,43 +86,108 @@ export default function ServiceDetail() {
       {/* Deliverables */}
       <section className="py-16 bg-gradient-warm">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="font-editorial text-display-sm mb-4">
-                {language === 'en' ? 'What\'s Included' : 'Ce qui est inclus'}
-              </h2>
-              <p className="text-body-lg text-muted-foreground mb-8">
-                {language === 'en'
-                  ? 'Everything you need to succeed with our comprehensive deliverables.'
-                  : 'Tout ce dont vous avez besoin pour réussir avec nos livrables complets.'
-                }
-              </p>
-              <Button asChild className="group">
-                <Link to="/book-a-call">
-                  {t('nav.bookCall')}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-            </div>
-            <div className="space-y-4">
-              {service.deliverables[language].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                    <span className="text-body-sm font-medium text-primary">{i + 1}</span>
-                  </div>
-                  <p className="text-body-md pt-1">{item}</p>
+          <div className="max-w-4xl mb-12">
+            <h2 className="font-editorial text-display-sm mb-4">
+              {language === 'en' ? 'What\'s Included' : 'Ce qui est inclus'}
+            </h2>
+            <p className="text-body-lg text-muted-foreground">
+              {language === 'en'
+                ? 'Everything you need to succeed with our comprehensive deliverables.'
+                : 'Tout ce dont vous avez besoin pour réussir avec nos livrables complets.'
+              }
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {service.deliverables[language].map((item, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-4 p-5 rounded-xl bg-card border border-border shadow-sm hover:border-primary/30 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <span className="text-body-md font-bold text-primary">{i + 1}</span>
                 </div>
-              ))}
-            </div>
+                <p className="text-body-sm pt-1.5 leading-relaxed">{item}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Button asChild size="lg" className="group">
+              <Link to="/book-a-call">
+                {t('nav.bookCall')}
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
 
+
+
+      {/* Demo Projects (Only for Web Design) */}
+      {service.slug === 'high-performance-web-design' && (
+        <section className="py-12 bg-background">
+          <div className="container mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <span className="inline-block px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground text-caption uppercase tracking-wider mb-4">
+                  {language === 'en' ? 'Portfolio' : 'Portefeuille'}
+                </span>
+                <h2 className="font-editorial text-display-sm mb-4">
+                  {language === 'en' ? 'Demo Concepts' : 'Concepts de démo'}
+                </h2>
+                <p className="text-body-lg text-muted-foreground">
+                  {language === 'en'
+                    ? 'Explore these demo concepts that showcase our design aesthetics. Your next project could look this amazing.'
+                    : 'Explorez ces concepts démo qui mettent en valeur notre esthétique de conception. Votre prochain projet pourrait être aussi incroyable.'}
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Demo 1 */}
+                <div className="bg-card border border-border rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors">
+                  <div className="aspect-[4/3] bg-muted relative flex items-center justify-center p-4">
+                    <img
+                      src={demoFitness}
+                      alt="Demo Concept - Fitness"
+                      className="w-full h-full object-contain rounded-xl shadow-md group-hover:scale-[1.02] transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4 px-3 py-1.5 text-xs font-semibold bg-primary/90 text-primary-foreground rounded-md uppercase tracking-wider shadow-sm backdrop-blur-sm">
+                      Demo Concept
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">Fitness Industry</span>
+                    <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">Physical Therapy</h3>
+                    <p className="text-muted-foreground mb-4">Energetic, modern therapy website designed for trust and booking conversions.</p>
+                  </div>
+                </div>
+                
+                {/* Demo 2 */}
+                <div className="bg-card border border-border rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors">
+                  <div className="aspect-[4/3] bg-muted relative flex items-center justify-center p-4">
+                    <img
+                      src={demoRestaurant}
+                      alt="Demo Concept - Restaurant"
+                      className="w-full h-full object-contain rounded-xl shadow-md group-hover:scale-[1.02] transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4 px-3 py-1.5 text-xs font-semibold bg-primary/90 text-primary-foreground rounded-md uppercase tracking-wider shadow-sm backdrop-blur-sm">
+                      Demo Concept
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">Restaurant Industry</span>
+                    <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">Pizzeria</h3>
+                    <p className="text-muted-foreground mb-4">Appetizing, image-forward restaurant design optimized for online reservations.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Ideal For / Not For */}
-      <section className="py-16 bg-background">
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="p-8 rounded-2xl bg-primary/5 border border-primary/20">
@@ -147,7 +214,7 @@ export default function ServiceDetail() {
 
       {/* FAQs */}
       {service.faqs.length > 0 && (
-        <section className="py-16 bg-gradient-warm">
+        <section className="py-12 bg-gradient-warm">
           <div className="container mx-auto px-6">
             <h2 className="font-editorial text-display-sm mb-8 text-center">
               {language === 'en' ? 'Frequently Asked Questions' : 'Questions fréquentes'}

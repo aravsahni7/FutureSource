@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NorthPeak Websites Design System
+   Premium local growth aesthetic: navy + teal + warm off-white
+   Warm, homier, professional feel for small business clients
+*/
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 40 33% 98%;
+    --foreground: 218 44% 14%;
+    
+    /* Cards & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 218 44% 14%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 44% 14%;
+    
+    /* Primary - Deep Navy (Trust & Professionalism) */
+    --primary: 218 44% 18%;
+    --primary-foreground: 40 33% 98%;
+    
+    /* Secondary - Warm Gray Surface */
+    --secondary: 40 20% 94%;
+    --secondary-foreground: 218 44% 18%;
+    
+    /* Muted - Subtle backgrounds */
+    --muted: 40 15% 92%;
+    --muted-foreground: 218 20% 46%;
+    
+    /* Accent - Electric Teal (Growth & Action) */
+    --accent: 173 80% 40%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Accent Glow for effects */
+    --accent-glow: 173 80% 50%;
+    
+    /* Warm Accent - Amber/Gold for warmth */
+    --warm: 38 92% 50%;
+    --warm-foreground: 218 44% 14%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 218 20% 88%;
+    --input: 218 20% 88%;
+    --ring: 173 80% 40%;
+    
+    --radius: 0.75rem;
+    
+    /* Sidebar */
+    --sidebar-background: 218 44% 14%;
+    --sidebar-foreground: 40 33% 98%;
+    --sidebar-primary: 173 80% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 218 44% 22%;
+    --sidebar-accent-foreground: 40 33% 98%;
+    --sidebar-border: 218 44% 24%;
+    --sidebar-ring: 173 80% 40%;
+    
+    /* Custom Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(218, 44%, 14%) 0%, hsl(218, 44%, 22%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(173, 80%, 40%) 0%, hsl(173, 80%, 50%) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(40, 33%, 98%) 0%, hsl(40, 20%, 94%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(40, 20%, 98%) 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(218, 44%, 14%, 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(218, 44%, 14%, 0.08), 0 2px 4px -2px hsl(218, 44%, 14%, 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(218, 44%, 14%, 0.1), 0 4px 6px -4px hsl(218, 44%, 14%, 0.08);
+    --shadow-xl: 0 20px 25px -5px hsl(218, 44%, 14%, 0.12), 0 8px 10px -6px hsl(218, 44%, 14%, 0.08);
+    --shadow-glow: 0 0 40px hsl(173, 80%, 40%, 0.25);
+    --shadow-accent: 0 4px 14px 0 hsl(173, 80%, 40%, 0.35);
+  }
+
+  .dark {
+    --background: 218 44% 8%;
+    --foreground: 40 33% 98%;
+    
+    --card: 218 44% 12%;
+    --card-foreground: 40 33% 98%;
+    
+    --popover: 218 44% 12%;
+    --popover-foreground: 40 33% 98%;
+    
+    --primary: 40 33% 98%;
+    --primary-foreground: 218 44% 14%;
+    
+    --secondary: 218 44% 16%;
+    --secondary-foreground: 40 33% 98%;
+    
+    --muted: 218 44% 18%;
+    --muted-foreground: 218 20% 65%;
+    
+    --accent: 173 80% 45%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 40 33% 98%;
+    
+    --border: 218 44% 20%;
+    --input: 218 44% 20%;
+    --ring: 173 80% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Glass Card Effect */
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-glow)) 100%);
+  }
+  
+  .gradient-text-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(218, 44%, 30%) 100%);
+  }
+  
+  /* Hero Section Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  /* Accent Button Glow */
+  .btn-glow {
+    box-shadow: var(--shadow-accent);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-glow:hover {
+    box-shadow: 0 6px 20px 0 hsl(173, 80%, 40%, 0.45);
+    transform: translateY(-2px);
+  }
+  
+  /* Card Hover Effect */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  /* Section Padding */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+  
+  .section-padding-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  /* Container Variants */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Animated Underline */
+  .animated-underline {
+    @apply relative;
+  }
+  
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300;
+  }
+  
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
+  
+  /* Focus Styles for Accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  /* Badge Variants */
+  .badge-accent {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent;
+  }
+  
+  .badge-primary {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary;
+  }
+  
+  .badge-warm {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-warm/10 text-warm;
+  }
+}
+
+@layer utilities {
+  /* Animation Utilities */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+  
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  /* Stagger delays for list animations */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(173, 80%, 40%, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(173, 80%, 40%, 0.5);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
+
+/* Selection */
+::selection {
+  @apply bg-accent/20 text-foreground;
+}

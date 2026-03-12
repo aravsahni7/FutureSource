@@ -95,9 +95,6 @@ export default function Home() {
           </div>
           
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-border hidden md:block" />
-            
             <div className="space-y-12">
               {[
                 { icon: Target, key: 'strategic', color: 'bg-primary/10 text-primary' },

@@ -11,11 +11,28 @@ export function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-      setEmail('');
+    if (!email) return;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setSubscribed(true);
+        setEmail('');
+      } else {
+        const errorData = await response.json();
+        console.error('Footer Subscription failed:', errorData.error);
+      }
+    } catch (error) {
+      console.error('Error connecting footer to backend:', error);
     }
   };
 
@@ -53,11 +70,14 @@ export function Footer() {
           </p>
 
           {subscribed ? (
-            <div className="bg-primary/10 border border-primary/20 rounded-xl p-6 animate-fade-in">
-              <p className="text-body-md text-foreground">
-                {t('language') === 'fr'
-                  ? '✓ Merci de votre inscription!'
-                  : '✓ Thank you for subscribing!'}
+            <div className="bg-primary/5 border border-primary/20 rounded-2xl p-8 animate-fade-in max-w-md mx-auto">
+              <h4 className="font-editorial text-heading-md mb-2 text-primary">
+                {t('language') === 'fr' ? 'Bienvenue dans le cercle restreint !' : 'Welcome to the inner circle!'}
+              </h4>
+              <p className="text-body-sm text-muted-foreground">
+                {t('language') === 'fr' 
+                  ? 'Merci de vous être abonné. Votre premier insight arrive bientôt.'
+                  : 'Thanks for subscribing. Your first growth insight is heading to your inbox shortly.'}
               </p>
             </div>
           ) : (

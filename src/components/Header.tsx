@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Logo } from './Logo';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
+import { services } from '@/data/content';
 
 export function Header() {
   const { language, setLanguage, t } = useLanguage();
@@ -30,6 +39,7 @@ export function Header() {
     { href: '/work', label: t('nav.work') },
     { href: '/about', label: t('nav.about') },
     { href: '/process', label: t('nav.process') },
+    { href: '/pricing', label: language === 'en' ? 'Pricing' : 'Tarifs' },
     { href: '/insights', label: t('nav.insights') },
     { href: '/contact', label: t('nav.contact') },
   ];
@@ -61,20 +71,72 @@ export function Header() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
-              {visibleNavLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={cn(
-                    'text-body-sm font-medium transition-colors duration-300 link-underline',
-                    isActive(link.href)
-                      ? 'text-foreground'
-                      : 'text-muted-foreground hover:text-foreground'
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {visibleNavLinks.map((link) => {
+                if (link.href === '/services') {
+                  return (
+                    <NavigationMenu key={link.href} className="flex justify-center">
+                      <NavigationMenuList>
+                        <NavigationMenuItem>
+                          <NavigationMenuTrigger 
+                            className={cn(
+                              "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent h-auto p-0",
+                              "transition-colors duration-300 outline-none [&_svg]:hidden"
+                            )}
+                          >
+                            <Link
+                              to="/services"
+                              className={cn(
+                                'text-body-sm font-medium transition-colors duration-300 link-underline flex items-center pr-1',
+                                isActive(link.href)
+                                  ? 'text-foreground'
+                                  : 'text-muted-foreground hover:text-foreground'
+                              )}
+                            >
+                              {link.label}
+                            </Link>
+                          </NavigationMenuTrigger>
+                          <NavigationMenuContent className="md:w-auto mt-2">
+                            <ul className="w-64 p-3 bg-background/80 backdrop-blur-md border-border/50 shadow-editorial rounded-xl flex flex-col gap-1">
+                              {services.map((service) => (
+                                <li key={service.id}>
+                                  <NavigationMenuLink asChild>
+                                    <Link
+                                      to={`/services/${service.slug}`}
+                                      className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group"
+                                    >
+                                      <div className="font-medium text-sm group-hover:text-primary transition-colors">
+                                        {service.title[language]}
+                                      </div>
+                                      <p className="text-xs text-muted-foreground line-clamp-1 leading-snug">
+                                        {service.tagline[language]}
+                                      </p>
+                                    </Link>
+                                  </NavigationMenuLink>
+                                </li>
+                              ))}
+                            </ul>
+                          </NavigationMenuContent>
+                        </NavigationMenuItem>
+                      </NavigationMenuList>
+                    </NavigationMenu>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={cn(
+                      'text-body-sm font-medium transition-colors duration-300 link-underline',
+                      isActive(link.href)
+                        ? 'text-foreground'
+                        : 'text-muted-foreground hover:text-foreground'
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Right side actions */}
@@ -152,23 +214,56 @@ export function Header() {
         >
           <div className="flex flex-col h-full pt-24 pb-8 px-8">
             {/* Navigation Links */}
-            <nav className="flex-1 space-y-1">
-              {visibleNavLinks.map((link, index) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={cn(
-                    'block py-4 text-heading-lg font-editorial transition-all duration-300',
-                    'border-b border-border/50',
-                    isActive(link.href)
-                      ? 'text-foreground'
-                      : 'text-muted-foreground hover:text-foreground hover:pl-2'
-                  )}
-                  style={{ animationDelay: `${index * 50}ms` }}
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <nav className="flex-1 space-y-1 overflow-y-auto">
+              {visibleNavLinks.map((link, index) => {
+                if (link.href === '/services') {
+                  return (
+                    <div key={link.href} style={{ animationDelay: `${index * 50}ms` }}>
+                      <Link
+                        to={link.href}
+                        className={cn(
+                          'block py-4 text-heading-lg font-editorial transition-all duration-300',
+                          'border-b border-border/50',
+                          isActive(link.href)
+                            ? 'text-foreground'
+                            : 'text-muted-foreground hover:text-foreground hover:pl-2'
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                      <div className="pl-4 border-b border-border/50 pb-2">
+                        {services.map((service) => (
+                          <Link
+                            key={service.id}
+                            to={`/services/${service.slug}`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block py-3 text-body-md text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            {service.title[language]}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={cn(
+                      'block py-4 text-heading-lg font-editorial transition-all duration-300',
+                      'border-b border-border/50',
+                      isActive(link.href)
+                        ? 'text-foreground'
+                        : 'text-muted-foreground hover:text-foreground hover:pl-2'
+                    )}
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Bottom Actions */}

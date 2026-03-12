@@ -81,8 +81,8 @@ export const services: Service[] = [
       fr: 'Achat média payant stratégique sur toutes les plateformes. De la stratégie créative à l\'optimisation des campagnes, nous amplifions ce qui convertit et coupons ce qui ne fonctionne pas.',
     },
     idealFor: {
-      en: 'Brands ready to scale with $10K+ monthly ad budgets and clear product-market fit',
-      fr: 'Marques prêtes à croître avec des budgets pub mensuels de 10K$+ et une adéquation produit-marché claire',
+      en: 'Brands ready to scale with a set monthly ad budget and clear product-market fit',
+      fr: 'Marques prêtes à croître avec un budget pub mensuel fixe et une adéquation produit-marché claire',
     },
     notFor: {
       en: 'Pre-revenue startups or brands without validated offers',
@@ -270,8 +270,8 @@ export const services: Service[] = [
       fr: 'Convertissez plus de visiteurs en clients. De la conception de pages d\'atterrissage aux tests A/B et à l\'optimisation UX, nous maximisons la valeur de chaque clic.',
     },
     idealFor: {
-      en: 'Brands with existing traffic (10K+ monthly visitors) looking to maximize ROI',
-      fr: 'Marques avec du trafic existant (10K+ visiteurs mensuels) cherchant à maximiser le ROI',
+      en: 'Brands with existing traffic looking to maximize ROI',
+      fr: 'Marques avec du trafic existant cherchant à maximiser le ROI',
     },
     notFor: {
       en: 'Sites without meaningful traffic volume—focus on acquisition first',

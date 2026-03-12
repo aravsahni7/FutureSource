@@ -36,7 +36,19 @@ export default function Contact() {
       return;
     }
 
-    // Handle form submission here (API / Email service)
+    const subject = encodeURIComponent(
+      `New Inquiry from ${formData.name}${formData.company ? ` (${formData.company})` : ''}`
+    );
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      (formData.company ? `Company: ${formData.company}\n` : '') +
+      (formData.website ? `Website: ${formData.website}\n` : '') +
+      `Services: ${formData.services.join(', ')}\n\n` +
+      `Message:\n${formData.message}`
+    );
+
+    window.location.href = `mailto:hello@futuresource.ca?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 

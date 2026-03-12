@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import Layout from "@/components/Layout";
+import ScrollToTop from "@/components/ScrollToTop";
 import Home from "@/pages/Home";
 import Services from "@/pages/Services";
 import ServiceDetail from "@/pages/ServiceDetail";
@@ -12,6 +13,7 @@ import Work from "@/pages/Work";
 import CaseStudyDetail from "@/pages/CaseStudyDetail";
 import About from "@/pages/About";
 import Process from "@/pages/Process";
+import Pricing from "@/pages/Pricing";
 import Insights from "@/pages/Insights";
 import InsightDetail from "@/pages/InsightDetail";
 import Contact from "@/pages/Contact";
@@ -30,6 +32,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
@@ -39,6 +42,7 @@ const App = () => (
               <Route path="/work/:slug" element={<CaseStudyDetail />} />
               <Route path="/about" element={<About />} />
               <Route path="/process" element={<Process />} />
+              <Route path="/pricing" element={<Pricing />} />
               <Route path="/insights" element={<Insights />} />
               <Route path="/insights/:slug" element={<InsightDetail />} />
               <Route path="/contact" element={<Contact />} />
