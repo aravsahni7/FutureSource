@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Mail, MapPin, Clock, CheckCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+
+// EmailJS configuration
+const EMAILJS_PUBLIC_KEY = 'f8yRIopzVihwh4c7w';
+const EMAILJS_SERVICE_ID = 'service_o5x843p';
+const EMAILJS_TEMPLATE_ID = 'template_9aj5sqh';
 
 const serviceOptions = [
   'Digital Marketing Ads (PPC)',
@@ -18,6 +24,7 @@ const serviceOptions = [
 export default function Contact() {
   const { language, t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -28,7 +35,7 @@ export default function Contact() {
     services: [] as string[],
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (formData.services.length === 0) {
@@ -36,20 +43,42 @@ export default function Contact() {
       return;
     }
 
-    const subject = encodeURIComponent(
-      `New Inquiry from ${formData.name}${formData.company ? ` (${formData.company})` : ''}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      (formData.company ? `Company: ${formData.company}\n` : '') +
-      (formData.website ? `Website: ${formData.website}\n` : '') +
-      `Services: ${formData.services.join(', ')}\n\n` +
-      `Message:\n${formData.message}`
-    );
+    setIsSubmitting(true);
 
-    window.location.href = `mailto:hello@futuresource.ca?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    try {
+      const formattedMessage = `
+Full Name: ${formData.name}
+Email Address: ${formData.email}
+Company Name: ${formData.company || 'N/A'}
+Website URL: ${formData.website ? (formData.website.startsWith('http') ? formData.website : `https://${formData.website}`) : 'N/A'}
+
+Services Required:
+${formData.services.map(s => `- ${s}`).join('\n')}
+
+Project Details:
+${formData.message}
+      `.trim();
+
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          to_email: 'hello@futuresource.ca',
+          message: formattedMessage,
+          subject: `New Inquiry: ${formData.services.join(', ')}`,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('There was an error sending your message. Please try again or email us directly at hello@futuresource.ca');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -210,9 +239,15 @@ export default function Contact() {
                   />
                 </div>
 
-                <Button type="submit" size="lg" className="group">
-                  {t('contact.form.submit')}
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <Button type="submit" size="lg" className="group" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    language === 'en' ? 'Sending...' : 'Envoi en cours...'
+                  ) : (
+                    <>
+                      {t('contact.form.submit')}
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </>
+                  )}
                 </Button>
               </form>
             </div>
