@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { teamMembers } from '@/data/content';
 import { cn } from '@/lib/utils';
 import { Linkedin } from 'lucide-react';
-import familyPhoto from '@/data/AAA.jpg';
 import AmitPhoto from '@/data/Amit.png';
 import AnshPhoto from '@/data/Ansh.png';
 import AravPhoto from '@/data/Arav.png';
@@ -38,25 +37,15 @@ export default function About() {
 
       {/* Mission */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="font-editorial text-display-sm mb-6">
-                {t('about.mission.title')}
-              </h2>
-              <p className="text-body-lg text-muted-foreground leading-relaxed mb-8">
-                {t('about.mission.text')}
-              </p>
-              <div className="h-1 w-24 bg-gradient-gold rounded-full" />
-            </div>
-            <div className="relative">
-              <img
-                src={familyPhoto}
-                alt="FutureSource leadership team"
-                className="rounded-3xl object-cover w-full h-full border border-border shadow-lg"
-              />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-2xl bg-apricot/20 blur-2xl" />
-            </div>
+        <div className="container mx-auto px-6 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="font-editorial text-display-sm mb-6">
+              {t('about.mission.title')}
+            </h2>
+            <p className="text-body-lg text-muted-foreground leading-relaxed mb-8">
+              {t('about.mission.text')}
+            </p>
+            <div className="h-1 w-24 bg-gradient-gold rounded-full mx-auto" />
           </div>
         </div>
       </section>
