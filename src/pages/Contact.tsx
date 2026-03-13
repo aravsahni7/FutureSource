@@ -37,12 +37,14 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Contact form handleSubmit triggered');
 
     if (formData.services.length === 0) {
       alert('Please select at least one service.');
       return;
     }
 
+    console.log('Sending via EmailJS...', formData);
     setIsSubmitting(true);
 
     try {
