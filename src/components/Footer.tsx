@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 import { Logo } from './Logo';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowRight, Linkedin, Twitter, Instagram } from 'lucide-react';
+
+// EmailJS configuration
+const EMAILJS_PUBLIC_KEY = 'f8yRIopzVihwh4c7w';
+const EMAILJS_SERVICE_ID = 'service_o5x843p';
+const EMAILJS_TEMPLATE_ID = 'template_9aj5sqh';
 
 export function Footer() {
   const { t } = useLanguage();
@@ -16,23 +22,19 @@ export function Footer() {
     if (!email) return;
 
     try {
-      const response = await fetch('http://localhost:5000/api/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          subscriber_email: email,
+          to_email: 'hello@futuresource.ca',
         },
-        body: JSON.stringify({ email }),
-      });
-
-      if (response.ok) {
-        setSubscribed(true);
-        setEmail('');
-      } else {
-        const errorData = await response.json();
-        console.error('Footer Subscription failed:', errorData.error);
-      }
+        EMAILJS_PUBLIC_KEY
+      );
+      setSubscribed(true);
+      setEmail('');
     } catch (error) {
-      console.error('Error connecting footer to backend:', error);
+      console.error('Error sending newsletter subscription email:', error);
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Mail } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,6 +16,11 @@ import tiktokImg from '@/data/tiktok.png';
 import cro2Img from '@/data/cro2.png';
 import trendsImg from '@/data/what.png';
 import creativeImg from '@/data/even.png';
+
+// EmailJS configuration
+const EMAILJS_PUBLIC_KEY = 'f8yRIopzVihwh4c7w';
+const EMAILJS_SERVICE_ID = 'service_o5x843p';
+const EMAILJS_TEMPLATE_ID = 'template_9aj5sqh';
 
 const categories = ['all', 'strategy', 'abm', 'paidMedia', 'seo', 'salesPipeline', 'cro', 'trends'] as const;
 
@@ -44,24 +50,19 @@ export default function Insights() {
     e.preventDefault();
     
     try {
-      const response = await fetch('http://localhost:5000/api/subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          subscriber_email: email,
+          to_email: 'hello@futuresource.ca',
         },
-        body: JSON.stringify({ email }),
-      });
-
-      if (response.ok) {
-        setIsSubscribed(true);
-        setEmail('');
-      } else {
-        const errorData = await response.json();
-        console.error('Subscription failed:', errorData.error);
-        // You could add a toast here for error feedback
-      }
+        EMAILJS_PUBLIC_KEY
+      );
+      setIsSubscribed(true);
+      setEmail('');
     } catch (error) {
-      console.error('Error connecting to backend:', error);
+      console.error('Error sending newsletter subscription email:', error);
     }
   };
 
