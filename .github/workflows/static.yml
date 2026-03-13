@@ -26,11 +26,16 @@ jobs:
   deploy:
     environment:
       name: github-pages
+<<<<<<< HEAD
       url: ${{ steps:deployment.outputs.page_url }}
+=======
+      url: ${{ steps.deployment.outputs.page_url }}
+>>>>>>> 5249674cd49989f52882d1440bdf98514795234c
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+<<<<<<< HEAD
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
@@ -42,11 +47,19 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
+=======
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+>>>>>>> 5249674cd49989f52882d1440bdf98514795234c
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
+<<<<<<< HEAD
           path: './dist'
+=======
+          path: '.'
+>>>>>>> 5249674cd49989f52882d1440bdf98514795234c
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
