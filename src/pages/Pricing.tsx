@@ -33,13 +33,13 @@ const examplePlans: [PriceTier, PriceTier, PriceTier] = [
     ],
   },
   {
-    id: 'pro',
-    name: 'Pro',
+    id: 'growth',
+    name: 'Growth',
     description: 'The sweet spot for growing companies needing scale.',
     priceMonthly: 599,
     priceAnnually: 5990, // ~499.16/mo (2 months free)
     isPopular: true,
-    buttonLabel: 'Choose Pro',
+    buttonLabel: 'Choose Growth',
     features: [
 
       { name: 'Website Development', isIncluded: true },
@@ -64,13 +64,13 @@ const examplePlans: [PriceTier, PriceTier, PriceTier] = [
     ],
   },
   {
-    id: 'elite',
-    name: 'Elite',
+    id: 'scale',
+    name: 'Scale',
     description: 'Full-service digital partnership for market leaders.',
     priceMonthly: 899,
     priceAnnually: 8990, // ~749.16/mo (2 months free)
     isPopular: false,
-    buttonLabel: 'Go Elite',
+    buttonLabel: 'Go Scale',
     features: [
 
       { name: 'Website Development', isIncluded: true },
