@@ -6,8 +6,8 @@ const examplePlans: [PriceTier, PriceTier, PriceTier] = [
     id: 'starter',
     name: 'Starter',
     description: 'Perfect for local businesses starting their digital journey.',
-    priceMonthly: 399,
-    priceAnnually: 3990, // ~332.50/mo (2 months free)
+    priceMonthly: 499,
+    priceAnnually: 4990, // ~332.50/mo (2 months free)
     isPopular: false,
     buttonLabel: 'Get Started',
     features: [
@@ -36,8 +36,8 @@ const examplePlans: [PriceTier, PriceTier, PriceTier] = [
     id: 'growth',
     name: 'Growth',
     description: 'The sweet spot for growing companies needing scale.',
-    priceMonthly: 599,
-    priceAnnually: 5990, // ~499.16/mo (2 months free)
+    priceMonthly: 699,
+    priceAnnually: 6990, //9.16/mo (2 months free)
     isPopular: true,
     buttonLabel: 'Choose Growth',
     features: [
@@ -67,8 +67,8 @@ const examplePlans: [PriceTier, PriceTier, PriceTier] = [
     id: 'scale',
     name: 'Scale',
     description: 'Full-service digital partnership for market leaders.',
-    priceMonthly: 899,
-    priceAnnually: 8990, // ~749.16/mo (2 months free)
+    priceMonthly: 999,
+    priceAnnually: 9990,// ~749.16/mo (2 months free)
     isPopular: false,
     buttonLabel: 'Go Scale',
     features: [
