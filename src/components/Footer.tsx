@@ -5,7 +5,7 @@ import { Logo } from './Logo';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ArrowRight, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { ArrowRight, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 
 // EmailJS configuration
 const EMAILJS_PUBLIC_KEY = 'f8yRIopzVihwh4c7w';
@@ -13,7 +13,7 @@ const EMAILJS_SERVICE_ID = 'service_o5x843p';
 const EMAILJS_TEMPLATE_ID = 'template_9aj5sqh';
 
 export function Footer() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -28,6 +28,18 @@ export function Footer() {
         {
           subscriber_email: email,
           to_email: 'hello@futuresource.ca',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      // Send confirmation email to the user
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        'template_CONFIRMATION', // Placeholder for confirmation template
+        {
+          to_email: email,
+          from_name: 'FutureSource',
+          reply_to: 'asahni@futuresource.ca',
         },
         EMAILJS_PUBLIC_KEY
       );
@@ -74,10 +86,10 @@ export function Footer() {
           {subscribed ? (
             <div className="bg-primary/5 border border-primary/20 rounded-2xl p-8 animate-fade-in max-w-md mx-auto">
               <h4 className="font-editorial text-heading-md mb-2 text-primary">
-                {t('language') === 'fr' ? 'Bienvenue dans le cercle restreint !' : 'Welcome to the inner circle!'}
+                {language === 'fr' ? 'Bienvenue dans le cercle restreint !' : 'Welcome to the inner circle!'}
               </h4>
               <p className="text-body-sm text-muted-foreground">
-                {t('language') === 'fr' 
+                {language === 'fr' 
                   ? 'Merci de vous être abonné. Votre premier insight arrive bientôt.'
                   : 'Thanks for subscribing. Your first growth insight is heading to your inbox shortly.'}
               </p>
@@ -111,7 +123,7 @@ export function Footer() {
             {/* Social Links */}
             <div className="flex items-center gap-4">
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/company/futuresourceca"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all duration-300"
@@ -120,22 +132,31 @@ export function Footer() {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/futureSourceca"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all duration-300"
-                aria-label="Twitter"
+                aria-label="X (Twitter)"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/futuresourceca/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all duration-300"
                 aria-label="Instagram"
               >
                 <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61579487188608"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all duration-300"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -145,7 +166,7 @@ export function Footer() {
             <h4 className="font-body text-heading-sm font-semibold mb-6">
               {t('footer.quickLinks')}
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -164,7 +185,7 @@ export function Footer() {
             <h4 className="font-body text-heading-sm font-semibold mb-6">
               {t('footer.servicesTitle')}
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -183,15 +204,15 @@ export function Footer() {
             <h4 className="font-body text-heading-sm font-semibold mb-6">
               {t('footer.contact')}
             </h4>
-            <ul className="space-y-3 text-body-md text-muted-foreground">
+            <ul className="space-y-4 text-body-md text-muted-foreground">
               <li>hello@futuresource.ca</li>
               <li>+1 (438) 923-5809</li>
-              <li>
+              <li className="leading-relaxed">
                 Montréal, QC<br />
                 Canada
               </li>
             </ul>
-            <Button asChild variant="outline" size="sm" className="mt-6">
+            <Button asChild variant="outline" size="sm" className="mt-8">
               <Link to="/book-a-call">{t('nav.bookCall')}</Link>
             </Button>
           </div>

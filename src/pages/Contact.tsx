@@ -74,6 +74,19 @@ ${formData.message}
         EMAILJS_PUBLIC_KEY
       );
 
+      // Send confirmation email to the user
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        'template_CONFIRMATION', // Placeholder for confirmation template
+        {
+          to_name: formData.name,
+          to_email: formData.email,
+          from_name: 'FutureSource',
+          reply_to: 'asahni@futuresource.ca',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
       setSubmitted(true);
     } catch (error) {
       console.error('Error sending email:', error);
@@ -152,7 +165,7 @@ ${formData.message}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">{t('contact.form.name')}</Label>
+                    <Label htmlFor="name">{t('contact.form.name')} <span className="text-primary text-xs font-normal ml-1">{t('common.required')}</span></Label>
                     <Input
                       id="name"
                       name="name"
@@ -164,7 +177,7 @@ ${formData.message}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email">{t('contact.form.email')}</Label>
+                    <Label htmlFor="email">{t('contact.form.email')} <span className="text-primary text-xs font-normal ml-1">{t('common.required')}</span></Label>
                     <Input
                       id="email"
                       name="email"
@@ -179,24 +192,26 @@ ${formData.message}
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="company">{t('contact.form.company')}</Label>
+                    <Label htmlFor="company">{t('contact.form.company')} <span className="text-primary text-xs font-normal ml-1">{t('common.required')}</span></Label>
                     <Input
                       id="company"
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
+                      required
                       className="h-12"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="website">{t('contact.form.website')}</Label>
+                    <Label htmlFor="website">{t('contact.form.website')} <span className="text-primary text-xs font-normal ml-1">{t('common.required')}</span></Label>
                     <Input
                       id="website"
                       name="website"
                       type="url"
                       value={formData.website}
                       onChange={handleChange}
+                      required
                       placeholder="https://"
                       className="h-12"
                     />
@@ -205,7 +220,7 @@ ${formData.message}
 
                 {/* Services Required */}
                 <div className="space-y-3">
-                  <Label>Services Required</Label>
+                  <Label>Services Required <span className="text-primary text-xs font-normal ml-1">{t('common.required')}</span></Label>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {serviceOptions.map(service => (
                       <label
@@ -230,7 +245,7 @@ ${formData.message}
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">{t('contact.form.message')}</Label>
+                  <Label htmlFor="message">{t('contact.form.message')} <span className="text-primary text-xs font-normal ml-1">{t('common.required')}</span></Label>
                   <Textarea
                     id="message"
                     name="message"

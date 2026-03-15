@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, X } from "lucide-react";
+import { useLanguage } from '@/i18n/LanguageContext';
+import { Link } from 'react-router-dom';
 
 // --- Typescript Interfaces (API) ---
 
@@ -64,6 +66,8 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
   className,
   ...props
 }) => {
+  const { t } = useLanguage();
+
   // Ensure exactly 3 plans are passed for the intended layout
   if (plans.length !== 3) {
     console.error("PricingComponent requires exactly 3 pricing tiers.");
@@ -91,16 +95,16 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
           aria-label="Monthly Billing"
           className="px-6 py-1.5 text-sm font-medium data-[state=on]:bg-background data-[state=on]:shadow-sm data-[state=on]:border data-[state=on]:ring-1 data-[state=on]:ring-ring/20 rounded-md transition-colors"
         >
-          Monthly
+          {t('pricing.monthly')}
         </ToggleGroupItem>
         <ToggleGroupItem
           value="annually"
           aria-label="Annual Billing"
           className="px-6 py-1.5 text-sm font-medium data-[state=on]:bg-background data-[state=on]:shadow-sm data-[state=on]:border data-[state=on]:ring-1 data-[state=on]:ring-ring/20 rounded-md transition-colors relative"
         >
-          Annually
+          {t('pricing.annually')}
           <span className="absolute -top-3 right-0 text-xs font-semibold text-primary/80 dark:text-primary/70 bg-primary/10 dark:bg-primary/20 px-1.5 rounded-full whitespace-nowrap">
-            Save {annualDiscountPercent}%
+            {t('pricing.save').replace('{{percent}}', annualDiscountPercent.toString())}
           </span>
         </ToggleGroupItem>
       </ToggleGroup>
@@ -119,7 +123,7 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
         const isFeatured = plan.isPopular;
         const currentPrice = billingCycle === 'monthly' ? plan.priceMonthly : plan.priceAnnually;
         const originalMonthlyPrice = plan.priceMonthly;
-        const priceSuffix = billingCycle === 'monthly' ? '/mo' : '/yr';
+        const priceSuffix = billingCycle === 'monthly' ? t('pricing.mo') : t('pricing.yr');
 
         return (
           <Card
@@ -134,7 +138,7 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
                 <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
                 {isFeatured && (
                   <span className="text-xs font-semibold px-3 py-1 bg-primary text-primary-foreground rounded-full">
-                    Most Popular
+                    {t('pricing.mostPopular')}
                   </span>
                 )}
               </div>
@@ -146,32 +150,32 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
                 </p>
                 {billingCycle === 'annually' && (
                   <p className="text-xs text-muted-foreground mt-1">
-                    Billed annually (${plan.priceAnnually})
+                    {t('pricing.billedAnnually')} (${plan.priceAnnually})
                   </p>
                 )}
                 {billingCycle === 'annually' && (
                     <p className="text-xs text-muted-foreground line-through opacity-70 mt-1">
-                        ${originalMonthlyPrice}/mo
+                        ${originalMonthlyPrice}{t('pricing.mo')}
                     </p>
                 )}
               </div>
             </CardHeader>
             <CardContent className="flex-grow p-6 pt-0">
-              <h4 className="text-sm font-semibold mb-2 mt-4 text-foreground/80">Key Features:</h4>
+              <h4 className="text-sm font-semibold mb-2 mt-4 text-foreground/80">{t('pricing.keyFeatures')}</h4>
               <ul className="list-none space-y-0">
                 {plan.features.slice(0, 5).map((feature) => (
                   <FeatureItem key={feature.name} feature={feature} />
                 ))}
                 {plan.features.length > 5 && (
                     <li className="text-sm text-muted-foreground mt-2">
-                        + {plan.features.length - 5} more features
+                        {t('pricing.moreFeatures').replace('{{count}}', (plan.features.length - 5).toString())}
                     </li>
                 )}
               </ul>
             </CardContent>
             <CardFooter className="p-6 pt-0">
               <Button
-                onClick={() => onPlanSelect(plan.id, billingCycle)}
+                asChild
                 className={cn(
                   "w-full transition-all duration-200",
                   isFeatured
@@ -179,9 +183,9 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
                     : "bg-muted text-foreground hover:bg-muted/80 border border-input"
                 )}
                 size="lg"
-                aria-label={`Select ${plan.name} plan for ${currentPrice} ${priceSuffix}`}
+                aria-label={`Select ${plan.name} plan`}
               >
-                {plan.buttonLabel}
+                <Link to="/book-a-call">{plan.buttonLabel}</Link>
               </Button>
             </CardFooter>
           </Card>
@@ -197,7 +201,7 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
         <thead>
           <tr className="bg-muted/30 dark:bg-muted/20">
             <th scope="col" className="px-6 py-4 text-left text-sm font-semibold text-foreground/80 w-[200px] whitespace-nowrap">
-              Feature
+              {t('pricing.feature')}
             </th>
             {plans.map((plan) => (
               <th
@@ -224,6 +228,7 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
                 const isIncluded = feature?.isIncluded ?? false;
                 const Icon = isIncluded ? Check : X;
                 const iconColor = isIncluded ? "text-primary" : "text-muted-foreground/70";
+                const cellLabel = isIncluded ? "Included" : "Not included";
 
                 return (
                   <td
@@ -232,6 +237,7 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
                       "px-6 py-3 text-center transition-all duration-150",
                       plan.isPopular && "bg-primary/5 dark:bg-primary/10"
                     )}
+                    aria-label={`${plan.name} ${featureName}: ${cellLabel}`}
                   >
                     <Icon className={cn("h-5 w-5 mx-auto", iconColor)} aria-hidden="true" />
                   </td>
@@ -249,10 +255,10 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
     <div className={cn("w-full py-12 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8", className)} {...props}>
       <header className="text-center mb-10">
         <h2 className="font-editorial text-display-md mb-4 text-foreground">
-          Choose the right plan for your business.
+          {t('pricing.title')}
         </h2>
         <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-          Scale effortlessly with features designed for growth, from startups to enterprise.
+          {t('pricing.subtitle')}
         </p>
       </header>
       
@@ -262,11 +268,11 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
       <section aria-labelledby="pricing-plans">
         {PricingCards}
       </section>
-
+ 
       {/* Comparison Table (Desktop/Tablet visibility) */}
       <section aria-label="Feature Comparison Table" className="mt-16">
         <h3 className="font-editorial text-2xl font-bold mb-6 hidden md:block text-center text-foreground">
-          Detailed Feature Comparison
+          {t('pricing.detailedComparison')}
         </h3>
         {ComparisonTable}
       </section>

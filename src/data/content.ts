@@ -768,7 +768,7 @@ export const teamMembers: TeamMember[] = [
       en: 'Brings over 20 years of hands-on experience helping businesses build structure and clarity.',
       fr: 'Apporte plus de 20 ans d’expérience terrain pour structurer la croissance.',
     },
-    linkedin: 'https://www.linkedin.com/in/amitsahni015/',
+    linkedin: 'https://linkedin.com/company/futuresourceca',
   },
   {
     id: 'arav',
@@ -778,7 +778,7 @@ export const teamMembers: TeamMember[] = [
       en: 'Focused on modern website design and conversion-driven user experiences.',
       fr: 'Spécialisé en conception moderne et expériences orientées conversion.',
     },
-    linkedin: 'https://www.linkedin.com/in/aravsahni/',
+    linkedin: 'https://linkedin.com/company/futuresourceca',
   },
   {
     id: 'ansh',
@@ -788,7 +788,7 @@ export const teamMembers: TeamMember[] = [
       en: 'Builds and executes practical growth systems across digital channels.',
       fr: 'Met en place des systèmes de croissance concrets.',
     },
-    linkedin: 'https://www.linkedin.com/in/anshsahni/',
+    linkedin: 'https://linkedin.com/company/futuresourceca',
   },
 ];
 

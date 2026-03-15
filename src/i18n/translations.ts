@@ -447,6 +447,26 @@ export const translations = {
     },
   },
 
+  // Pricing Page UI
+  pricing: {
+    title: { en: 'Choose the right plan for your business', fr: 'Choisissez le bon plan pour votre entreprise' },
+    subtitle: { 
+      en: 'Scale effortlessly with features designed for growth, from startups to enterprise.',
+      fr: 'Évoluez sans effort avec des fonctionnalités conçues pour la croissance, des startups aux entreprises.'
+    },
+    monthly: { en: 'Monthly', fr: 'Mensuel' },
+    annually: { en: 'Annually', fr: 'Annuel' },
+    save: { en: 'Save {{percent}}%', fr: 'Économisez {{percent}}%' },
+    mostPopular: { en: 'Most Popular', fr: 'Le plus populaire' },
+    keyFeatures: { en: 'Key Features:', fr: 'Fonctionnalités clés :' },
+    billedAnnually: { en: 'Billed annually', fr: 'Facturé annuellement' },
+    mo: { en: '/mo', fr: '/mois' },
+    yr: { en: '/yr', fr: '/an' },
+    moreFeatures: { en: '+ {{count}} more features', fr: '+ {{count}} autres fonctionnalités' },
+    detailedComparison: { en: 'Detailed Feature Comparison', fr: 'Comparaison détaillée des fonctionnalités' },
+    feature: { en: 'Feature', fr: 'Fonctionnalité' },
+  },
+
   // Common
   common: {
     learnMore: { en: 'Learn More', fr: 'En savoir plus' },
@@ -458,6 +478,7 @@ export const translations = {
     readMore: { en: 'Read More', fr: 'Lire la suite' },
     close: { en: 'Close', fr: 'Fermer' },
     menu: { en: 'Menu', fr: 'Menu' },
+    required: { en: '*Required Field*', fr: '*Champ obligatoire*' },
   },
 } as const;
 
