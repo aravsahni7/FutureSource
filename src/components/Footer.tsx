@@ -31,18 +31,6 @@ export function Footer() {
         },
         EMAILJS_PUBLIC_KEY
       );
-
-      // Send confirmation email to the user
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        'template_CONFIRMATION', // Placeholder for confirmation template
-        {
-          to_email: email,
-          from_name: 'FutureSource',
-          reply_to: 'asahni@futuresource.ca',
-        },
-        EMAILJS_PUBLIC_KEY
-      );
       setSubscribed(true);
       setEmail('');
     } catch (error) {
@@ -207,12 +195,10 @@ export function Footer() {
             <ul className="space-y-4 text-body-md text-muted-foreground">
               <li>hello@futuresource.ca</li>
               <li>+1 (438) 923-5809</li>
-              <li className="leading-relaxed">
-                Montréal, QC<br />
-                Canada
-              </li>
+              <li>Montréal, QC</li>
+              <li>Canada</li>
             </ul>
-            <Button asChild variant="outline" size="sm" className="mt-8">
+            <Button asChild variant="outline" size="sm" className="mt-6">
               <Link to="/book-a-call">{t('nav.bookCall')}</Link>
             </Button>
           </div>

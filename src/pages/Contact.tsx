@@ -74,19 +74,6 @@ ${formData.message}
         EMAILJS_PUBLIC_KEY
       );
 
-      // Send confirmation email to the user
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        'template_CONFIRMATION', // Placeholder for confirmation template
-        {
-          to_name: formData.name,
-          to_email: formData.email,
-          from_name: 'FutureSource',
-          reply_to: 'asahni@futuresource.ca',
-        },
-        EMAILJS_PUBLIC_KEY
-      );
-
       setSubmitted(true);
     } catch (error) {
       console.error('Error sending email:', error);

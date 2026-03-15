@@ -59,18 +59,6 @@ export default function Insights() {
         },
         EMAILJS_PUBLIC_KEY
       );
-
-      // Send confirmation email to the user
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        'template_CONFIRMATION', // Placeholder for confirmation template
-        {
-          to_email: email,
-          from_name: 'FutureSource',
-          reply_to: 'asahni@futuresource.ca',
-        },
-        EMAILJS_PUBLIC_KEY
-      );
       setIsSubscribed(true);
       setEmail('');
     } catch (error) {
