@@ -22,6 +22,7 @@ const featureTranslations: Record<string, { en: string, fr: string }> = {
   'Advanced Reporting & Revenue Attribution': { en: 'Advanced Reporting & Revenue Attribution', fr: 'Rapports avancés et attribution des revenus' },
   'Dedicated Account Manager': { en: 'Dedicated Account Manager', fr: 'Gestionnaire de compte dédié' },
   'Quarterly Audits': { en: 'Quarterly Audits', fr: 'Audits trimestriels' },
+  'Social Media Management': { en: 'Social Media Management', fr: 'Gestion des réseaux sociaux' },
 };
 
 const planTranslations: Record<string, { name: { en: string, fr: string }, description: { en: string, fr: string } }> = {
@@ -68,6 +69,7 @@ const rawPlans: [PriceTier, PriceTier, PriceTier] = [
       { name: 'Advanced Reporting & Revenue Attribution', isIncluded: false },
       { name: 'Dedicated Account Manager', isIncluded: false },
       { name: 'Quarterly Audits', isIncluded: false },
+      { name: 'Social Media Management', isIncluded: false },
     ],
   },
   {
@@ -98,6 +100,7 @@ const rawPlans: [PriceTier, PriceTier, PriceTier] = [
       { name: 'Advanced Reporting & Revenue Attribution', isIncluded: false },
       { name: 'Dedicated Account Manager', isIncluded: false },
       { name: 'Quarterly Audits', isIncluded: false },
+      { name: 'Social Media Management', isIncluded: false },
     ],
   },
   {
@@ -128,6 +131,7 @@ const rawPlans: [PriceTier, PriceTier, PriceTier] = [
       { name: 'Advanced Reporting & Revenue Attribution', isIncluded: true },
       { name: 'Dedicated Account Manager', isIncluded: true },
       { name: 'Quarterly Audits', isIncluded: true },
+      { name: 'Social Media Management', isIncluded: true },
     ],
   },
 ];
