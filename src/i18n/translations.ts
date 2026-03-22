@@ -72,15 +72,40 @@ export const translations = {
 
   // Advantage Section (formerly Results)
   results: {
-    title: { en: 'The FutureSource Advantage', fr: 'L\'Avantage FutureSource' },
+    title: { en: 'Live Results Snapshot', fr: 'Aperçu des résultats en direct' },
     subtitle: {
-      en: 'Built for predictable, scalable, and transparent growth',
-      fr: 'Conçu pour une croissance prévisible, évolutive et transparente',
+      en: 'Aggregate performance across our client portfolio',
+      fr: 'Performance globale sur l\'ensemble de notre portefeuille clients',
     },
-    attribution: { en: '100% Attribution Accuracy', fr: 'Précision d\'attribution à 100%' },
-    roi: { en: 'ROI-Focused Roadmaps', fr: 'Feuilles de route axées sur le ROI' },
-    crm: { en: 'Full CRM Integration', fr: 'Intégration CRM complète' },
-    strategy: { en: 'Bespoke Multi-Channel Strategy', fr: 'Stratégie multicanal sur mesure' },
+    stats: {
+      spend: { value: { en: '$12M+', fr: '$12M+' }, label: { en: 'Ad Spend Managed', fr: 'Dépenses publicitaires gérées' } },
+      roas: { value: { en: '4.2x', fr: '4.2x' }, label: { en: 'Average ROAS', fr: 'ROAS moyen' } },
+      revenue: { value: { en: '$48M+', fr: '$48M+' }, label: { en: 'Revenue Generated', fr: 'Revenus générés' } },
+      brands: { value: { en: '40+', fr: '40+' }, label: { en: 'Brands Scaled', fr: 'Marques développées' } },
+    }
+  },
+
+  // Demo Concepts
+  demos: {
+    badge: { en: 'Demo Concept', fr: 'Concept Démo' },
+    fitness: {
+      industry: { en: 'Fitness Industry', fr: 'Industrie du Fitness' },
+      title: { en: 'Physical Therapy', fr: 'Physiothérapie' },
+      desc: { en: 'Energetic, modern therapy website designed for trust and booking conversions.', fr: 'Site web de thérapie moderne et dynamique conçu pour instaurer la confiance et générer des conversions.' }
+    },
+    restaurant: {
+      industry: { en: 'Restaurant Industry', fr: 'Restauration' },
+      title: { en: 'Pizzeria', fr: 'Pizzeria' },
+      desc: { en: 'Appetizing, image-forward restaurant design optimized for online reservations.', fr: 'Design de restaurant appétissant et visuel optimisé pour les réservations en ligne.' }
+    },
+    product: {
+      industry: { en: 'Product Based', fr: 'Basé sur les produits' },
+      title: { en: 'Paper Products', fr: 'Produits en papier' },
+      desc: { 
+        en: 'Calm, handcrafted e-commerce design focused on organic creativity and product storytelling.', 
+        fr: 'Design e-commerce calme et artisanal axé sur la créativité organique et le storytelling des produits.' 
+      }
+    }
   },
 
   // Selected Work
@@ -194,7 +219,7 @@ export const translations = {
   // About Page
   about: {
     title: { en: 'About FutureSource', fr: 'À propos de FutureSource' },
-  
+
     mission: {
       title: { en: 'Our Mission', fr: 'Notre mission' },
       text: {
@@ -202,7 +227,7 @@ export const translations = {
         fr: 'Nous aidons les PME et entreprises de services qui ont besoin de structure, de clarté et d’une croissance prévisible — livrées par des personnes qui font réellement le travail.',
       },
     },
-  
+
     story: {
       title: { en: 'Our Story', fr: 'Notre histoire' },
       text: {
@@ -210,7 +235,7 @@ export const translations = {
         fr: 'FutureSource est une firme de conseil familiale dirigée par ses fondateurs, aidant les entreprises locales et régionales à croître grâce à des solutions pratiques en marketing, CRM et croissance numérique. Bien que récemment lancée, FutureSource s’appuie sur plus de 20 ans d’expérience terrain. Nous combinons des cadres éprouvés à une exécution moderne pour offrir des résultats mesurables — sans la complexité ni les coûts des grandes agences. Fondée par Amit Sahni avec ses fils Ansh et Arav, l’équipe apporte une expertise spécialisée en stratégie, marketing de croissance et conception web.',
       },
     },
-  
+
     values: {
       title: { en: 'How We Think', fr: 'Notre façon de penser' },
       results: {
@@ -235,17 +260,17 @@ export const translations = {
         },
       },
     },
-  
+
     team: {
       title: { en: 'Meet the Team', fr: 'Rencontrez l’équipe' },
     },
-  
+
     tagline: {
       en: 'New startup. Deep experience. Proven execution.',
       fr: 'Nouvelle entreprise. Expérience approfondie. Exécution éprouvée.',
     },
   },
-  
+
 
   // Process Page
   process: {
@@ -450,7 +475,7 @@ export const translations = {
   // Pricing Page UI
   pricing: {
     title: { en: 'Choose the right plan for your business', fr: 'Choisissez le bon plan pour votre entreprise' },
-    subtitle: { 
+    subtitle: {
       en: 'Scale effortlessly with features designed for growth, from startups to enterprise.',
       fr: 'Évoluez sans effort avec des fonctionnalités conçues pour la croissance, des startups aux entreprises.'
     },
@@ -490,7 +515,7 @@ export function t(
 ): string {
   const keys = key.split('.');
   let value: any = translations;
-  
+
   for (const k of keys) {
     if (value && typeof value === 'object' && k in value) {
       value = value[k];
@@ -498,10 +523,10 @@ export function t(
       return key;
     }
   }
-  
+
   if (value && typeof value === 'object' && lang in value) {
     return value[lang];
   }
-  
+
   return key;
 }

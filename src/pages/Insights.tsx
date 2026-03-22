@@ -256,49 +256,7 @@ export default function Insights() {
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="py-24 bg-gradient-warm">
-        <div className="container mx-auto px-6">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-              <Mail className="h-8 w-8 text-primary" />
-            </div>
-            <h2 className="font-editorial text-display-sm mb-4">
-              {t('insights.newsletter.title')}
-            </h2>
-            <p className="text-body-lg text-muted-foreground mb-8">
-              {t('insights.newsletter.description')}
-            </p>
-            {isSubscribed ? (
-              <div className="bg-primary/5 border border-primary/20 rounded-2xl p-8 animate-fade-in">
-                <h3 className="font-editorial text-heading-lg mb-2 text-primary">
-                  {language === 'en' ? 'Welcome to the inner circle!' : 'Bienvenue dans le cercle restreint !'}
-                </h3>
-                <p className="text-body-md text-muted-foreground">
-                  {language === 'en' 
-                    ? 'Thanks for subscribing. Your first growth insight is heading to your inbox shortly.'
-                    : 'Merci de vous être abonné. Votre premier insight de croissance arrive bientôt dans votre boîte de réception.'}
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <Input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={t('insights.newsletter.placeholder')}
-                  className="flex-1"
-                  required
-                />
-                <Button type="submit">
-                  {t('insights.newsletter.cta')}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </form>
-            )}
-          </div>
-        </div>
-      </section>
+
     </>
   );
 }

@@ -154,13 +154,13 @@ export default function ServiceDetail() {
                       className="w-full h-full object-contain rounded-xl shadow-md group-hover:scale-[1.02] transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 px-3 py-1.5 text-xs font-semibold bg-primary/90 text-primary-foreground rounded-md uppercase tracking-wider shadow-sm backdrop-blur-sm">
-                      Demo Concept
+                      {t('demos.badge')}
                     </div>
                   </div>
                   <div className="p-6">
-                    <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">Fitness Industry</span>
-                    <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">Physical Therapy</h3>
-                    <p className="text-muted-foreground mb-4">Energetic, modern therapy website designed for trust and booking conversions.</p>
+                    <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">{t('demos.fitness.industry')}</span>
+                    <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">{t('demos.fitness.title')}</h3>
+                    <p className="text-muted-foreground mb-4">{t('demos.fitness.desc')}</p>
                   </div>
                 </div>
                 
@@ -173,13 +173,13 @@ export default function ServiceDetail() {
                       className="w-full h-full object-contain rounded-xl shadow-md group-hover:scale-[1.02] transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 px-3 py-1.5 text-xs font-semibold bg-primary/90 text-primary-foreground rounded-md uppercase tracking-wider shadow-sm backdrop-blur-sm">
-                      Demo Concept
+                      {t('demos.badge')}
                     </div>
                   </div>
                   <div className="p-6">
-                    <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">Restaurant Industry</span>
-                    <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">Pizzeria</h3>
-                    <p className="text-muted-foreground mb-4">Appetizing, image-forward restaurant design optimized for online reservations.</p>
+                    <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">{t('demos.restaurant.industry')}</span>
+                    <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">{t('demos.restaurant.title')}</h3>
+                    <p className="text-muted-foreground mb-4">{t('demos.restaurant.desc')}</p>
                   </div>
                 </div>
                 
@@ -192,13 +192,13 @@ export default function ServiceDetail() {
                       className="w-full h-full object-contain rounded-xl shadow-md group-hover:scale-[1.02] transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4 px-3 py-1.5 text-xs font-semibold bg-primary/90 text-primary-foreground rounded-md uppercase tracking-wider shadow-sm backdrop-blur-sm">
-                      Demo Concept
+                      {t('demos.badge')}
                     </div>
                   </div>
                   <div className="p-6">
-                    <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">Product Based</span>
-                    <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">Paper Products</h3>
-                    <p className="text-muted-foreground mb-4">Calm handcrafted creativity</p>
+                    <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">{t('demos.product.industry')}</span>
+                    <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">{t('demos.product.title')}</h3>
+                    <p className="text-muted-foreground mb-4">{t('demos.product.desc')}</p>
                   </div>
                 </div>
               </div>
