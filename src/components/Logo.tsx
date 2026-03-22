@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '@/data/logo.png';
+import logoImg from '@/data/loogo.png';
 
 interface LogoProps {
   variant?: 'full' | 'mark' | 'wordmark';
@@ -22,7 +22,7 @@ export function Logo({ variant = 'full', className = '', color = 'default' }: Lo
       <img
         src={logoImg}
         alt="FutureSource"
-        className={`h-10 w-10 object-contain ${className}`}
+        className={`h-[52px] w-[52px] object-contain ${className}`}
       />
     );
   }
@@ -32,7 +32,7 @@ export function Logo({ variant = 'full', className = '', color = 'default' }: Lo
       <img
         src={logoImg}
         alt="FutureSource"
-        className={`h-10 object-contain ${className}`}
+        className={`h-[52px] object-contain ${className}`}
       />
     );
   }
@@ -42,7 +42,7 @@ export function Logo({ variant = 'full', className = '', color = 'default' }: Lo
     <img
       src={logoImg}
       alt="FutureSource"
-      className={`h-10 object-contain ${className}`}
+      className={`h-[52px] object-contain ${className}`}
     />
   );
 }
@@ -50,13 +50,13 @@ export function Logo({ variant = 'full', className = '', color = 'default' }: Lo
 // Alternative logo variants for the codebase
 export function LogoVariant2({ className = '' }: { className?: string }) {
   return (
-    <img src={logoImg} alt="FutureSource" className={`h-10 object-contain ${className}`} />
+    <img src={logoImg} alt="FutureSource" className={`h-[52px] object-contain ${className}`} />
   );
 }
 
 export function LogoVariant3({ className = '' }: { className?: string }) {
   return (
-    <img src={logoImg} alt="FutureSource" className={`h-10 object-contain ${className}`} />
+    <img src={logoImg} alt="FutureSource" className={`h-[52px] object-contain ${className}`} />
   );
 }
 

@@ -8,6 +8,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { cn } from '@/lib/utils';
 import demoFitness from '@/assets/demo-fitness.jpg';
 import demoRestaurant from '@/assets/demo-restaurant.jpg';
+import myPapermake from '@/data/My papermake.PNG';
+
 
 const iconMap: Record<string, React.ElementType> = {
   target: Target,
@@ -142,7 +144,7 @@ export default function ServiceDetail() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Demo 1 */}
                 <div className="bg-card border border-border rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors">
                   <div className="aspect-[4/3] bg-muted relative flex items-center justify-center p-4">
@@ -178,6 +180,25 @@ export default function ServiceDetail() {
                     <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">Restaurant Industry</span>
                     <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">Pizzeria</h3>
                     <p className="text-muted-foreground mb-4">Appetizing, image-forward restaurant design optimized for online reservations.</p>
+                  </div>
+                </div>
+                
+                {/* Demo 3 */}
+                <div className="bg-card border border-border rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors">
+                  <div className="aspect-[4/3] bg-muted relative flex items-center justify-center p-4">
+                    <img
+                      src={myPapermake}
+                      alt="Demo Concept - Product Based"
+                      className="w-full h-full object-contain rounded-xl shadow-md group-hover:scale-[1.02] transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4 px-3 py-1.5 text-xs font-semibold bg-primary/90 text-primary-foreground rounded-md uppercase tracking-wider shadow-sm backdrop-blur-sm">
+                      Demo Concept
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <span className="text-sm uppercase tracking-wider text-muted-foreground mb-2 block font-medium">Product Based</span>
+                    <h3 className="font-editorial text-2xl mb-2 group-hover:text-primary transition-colors">Paper Products</h3>
+                    <p className="text-muted-foreground mb-4">Calm handcrafted creativity</p>
                   </div>
                 </div>
               </div>

@@ -7,6 +7,7 @@ import { services } from '@/data/content';
 import { cn } from '@/lib/utils';
 import demoFitness from '@/assets/demo-fitness.jpg';
 import demoRestaurant from '@/assets/demo-restaurant.jpg';
+import myPapermake from '@/data/My papermake.PNG';
 
 const iconMap: Record<string, React.ElementType> = {
   target: Target,
@@ -177,7 +178,7 @@ export default function Services() {
                               ? 'Browse our demo website concepts. Your project could look this good.'
                               : 'Parcourez nos concepts de sites démo. Votre projet pourrait être aussi beau.'}
                           </p>
-                          <div className="grid sm:grid-cols-2 gap-6">
+                          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             {/* Demo 1 */}
                             <div className="bg-card border border-border rounded-xl overflow-hidden group">
                               <div className="aspect-[4/3] bg-muted relative flex items-center justify-center p-2">
@@ -213,6 +214,25 @@ export default function Services() {
                                 <span className="text-xs uppercase tracking-wider text-muted-foreground mb-1 block">Restaurant</span>
                                 <h4 className="font-editorial text-lg mb-1">Pizzeria</h4>
                                 <p className="text-sm text-muted-foreground pb-2">Appetizing restaurant design</p>
+                              </div>
+                            </div>
+                            
+                            {/* Demo 3 */}
+                            <div className="bg-card border border-border rounded-xl overflow-hidden group">
+                              <div className="aspect-[4/3] bg-muted relative flex items-center justify-center p-2">
+                                <img
+                                  src={myPapermake}
+                                  alt="Demo Concept - Product Based"
+                                  className="w-full h-full object-contain rounded-lg shadow-sm"
+                                />
+                                <div className="absolute top-3 left-3 px-2 py-1 text-xs font-semibold bg-primary/90 text-primary-foreground rounded-md uppercase tracking-wider">
+                                  Demo
+                                </div>
+                              </div>
+                              <div className="p-4">
+                                <span className="text-xs uppercase tracking-wider text-muted-foreground mb-1 block">Product Based</span>
+                                <h4 className="font-editorial text-lg mb-1">Paper Products</h4>
+                                <p className="text-sm text-muted-foreground pb-2">Calm handcrafted creativity</p>
                               </div>
                             </div>
                           </div>
