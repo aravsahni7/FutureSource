@@ -83,17 +83,17 @@ export function Header() {
                               "transition-colors duration-300 outline-none [&_svg]:hidden"
                             )}
                           >
-                            <Link
-                              to="/services"
+                            <span
                               className={cn(
-                                'text-body-sm font-medium transition-colors duration-300 link-underline flex items-center pr-1',
+                                'text-[15px] font-medium transition-colors duration-300 link-underline flex items-center',
                                 isActive(link.href)
                                   ? 'text-foreground'
                                   : 'text-muted-foreground hover:text-foreground'
                               )}
+                              onClick={() => window.location.href = link.href}
                             >
                               {link.label}
-                            </Link>
+                            </span>
                           </NavigationMenuTrigger>
                           <NavigationMenuContent className="md:w-auto mt-2">
                             <ul className="w-64 p-3 bg-background/80 backdrop-blur-md border-border/50 shadow-editorial rounded-xl flex flex-col gap-1">
@@ -104,7 +104,7 @@ export function Header() {
                                       to={`/services/${service.slug}`}
                                       className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground group"
                                     >
-                                      <div className="font-medium text-sm group-hover:text-primary transition-colors">
+                                      <div className="font-medium text-[15px] group-hover:text-primary transition-colors">
                                         {service.title[language]}
                                       </div>
                                       <p className="text-xs text-muted-foreground line-clamp-1 leading-snug">
@@ -127,7 +127,7 @@ export function Header() {
                     key={link.href}
                     to={link.href}
                     className={cn(
-                      'text-body-sm font-medium transition-colors duration-300 link-underline',
+                      'text-[15px] font-medium transition-colors duration-300 link-underline',
                       isActive(link.href)
                         ? 'text-foreground'
                         : 'text-muted-foreground hover:text-foreground'
