@@ -39,11 +39,6 @@ export default function Contact() {
     e.preventDefault();
     console.log('Contact form handleSubmit triggered');
 
-    if (formData.services.length === 0) {
-      alert('Please select at least one service.');
-      return;
-    }
-
     console.log('Sending via EmailJS...', formData);
     setIsSubmitting(true);
 
@@ -191,14 +186,13 @@ ${formData.message}
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="website">{t('contact.form.website')} <span className="text-primary text-xs font-normal ml-1">{t('common.required')}</span></Label>
+                    <Label htmlFor="website">{t('contact.form.website')}</Label>
                     <Input
                       id="website"
                       name="website"
                       type="url"
                       value={formData.website}
                       onChange={handleChange}
-                      required
                       placeholder="https://"
                       className="h-12"
                     />
@@ -207,7 +201,7 @@ ${formData.message}
 
                 {/* Services Required */}
                 <div className="space-y-3">
-                  <Label>Services Required <span className="text-primary text-xs font-normal ml-1">{t('common.required')}</span></Label>
+                  <Label>Services Required</Label>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {serviceOptions.map(service => (
                       <label
@@ -232,14 +226,13 @@ ${formData.message}
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">{t('contact.form.message')} <span className="text-primary text-xs font-normal ml-1">{t('common.required')}</span></Label>
+                  <Label htmlFor="message">{t('contact.form.message')}</Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows={6}
-                    required
                   />
                 </div>
 

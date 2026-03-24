@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Logo } from './Logo';
 import { useLanguage } from '@/i18n/LanguageContext';
@@ -20,6 +20,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,6 +83,7 @@ export function Header() {
                               "bg-transparent hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[active]:bg-transparent h-auto p-0",
                               "transition-colors duration-300 outline-none [&_svg]:hidden"
                             )}
+                            onClick={() => navigate(link.href)}
                           >
                             <span
                               className={cn(
@@ -90,7 +92,6 @@ export function Header() {
                                   ? 'text-foreground'
                                   : 'text-muted-foreground hover:text-foreground'
                               )}
-                              onClick={() => window.location.href = link.href}
                             >
                               {link.label}
                             </span>
