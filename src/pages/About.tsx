@@ -69,7 +69,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="pt-32 pb-12 bg-gradient-hero grain-overlay relative">
         <div className="container mx-auto px-6">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             <span className="inline-block px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-overline uppercase tracking-widest mb-6">
               {language === 'en' ? 'Our Story' : 'Notre histoire'}
             </span>
