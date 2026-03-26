@@ -40,10 +40,22 @@ async function generateRoutes() {
   const blogPostSlugs = extractSlugs(content, 'blogPosts');
 
   const routes = [
-    { path: '/', title: 'FutureSource | Performance Marketing for Ambitious Brands' },
-    { path: '/services', title: 'Services | FutureSource' },
+    { 
+      path: '/', 
+      title: 'FutureSource | Web Design & Web Development Marketing Agency Montreal',
+      description: 'Experienced Web Development & Digital Marketing Agency in Montreal. Scaling brands using technical SEO, Paid Ads, CRO, and Account-Based Marketing (ABM).'
+    },
+    { 
+      path: '/services', 
+      title: 'FutureSource | Web Design & Web Development Marketing Agency Montreal',
+      description: 'Experienced Web Development & Digital Marketing Agency in Montreal. Scaling brands using technical SEO, Paid Ads, CRO, and Account-Based Marketing (ABM).'
+    },
     { path: '/work', title: 'Work | FutureSource' },
-    { path: '/about', title: 'About Us | FutureSource' },
+    { 
+      path: '/about', 
+      title: 'FutureSource | Web Design & Web Development Marketing Agency Montreal',
+      description: 'Experienced Web Development & Digital Marketing Agency in Montreal. Scaling brands using technical SEO, Paid Ads, CRO, and Account-Based Marketing (ABM).'
+    },
     { path: '/process', title: 'Our Process | FutureSource' },
     { path: '/pricing', title: 'Pricing | FutureSource' },
     { path: '/insights', title: 'Insights | FutureSource' },
@@ -55,7 +67,20 @@ async function generateRoutes() {
   ];
 
   servicesSlugs.forEach(slug => {
-    routes.push({ path: `/services/${slug}`, title: `${formatSlugToTitle(slug)} | Services | FutureSource` });
+    let title = `${formatSlugToTitle(slug)} | Services | FutureSource`;
+    let description = `FutureSource ${formatSlugToTitle(slug)} page. Performance marketing for ambitious brands.`;
+    
+    // Custom meta tags for web-design
+    if (slug === 'web-design') {
+      title = 'FutureSource | Custom Web Design & Expert Web Development Montreal';
+      description = 'Creative Montreal agency for Custom Web Design & Development. We build responsive, SEO-friendly websites that scale your brand and drive digital performance.';
+    }
+    
+    routes.push({ 
+      path: `/services/${slug}`, 
+      title: title,
+      description: description
+    });
   });
 
   caseStudySlugs.forEach(slug => {
@@ -91,9 +116,11 @@ async function generateRoutes() {
       `<title>${route.title}</title>`
     );
     
+    const metaDescription = route.description || `FutureSource ${route.title.replace(/\|/g, '-')} page. Performance marketing for ambitious brands.`;
+    
     customHtml = customHtml.replace(
       /<meta name="description" content="[^"]*"/i,
-      `<meta name="description" content="FutureSource ${route.title.replace(/\|/g, '-')} page. Performance marketing for ambitious brands."`
+      `<meta name="description" content="${metaDescription}"`
     );
 
     // Save the customized HTML into the new path (e.g., dist/about/index.html)
