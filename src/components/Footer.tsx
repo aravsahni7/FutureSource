@@ -46,7 +46,7 @@ export function Footer() {
   ];
 
   const serviceLinks = [
-    { href: '/services/high-performance-web-design', label: t('High-Performance Web Design') },
+    { href: '/services/web-design', label: t('High-Performance Web Design') },
     { href: '/services/paid-ads', label: t('services.paidAds.title') },
     { href: '/services/seo-content', label: t('services.seo.title') },
     { href: '/services/cro-landing-pages', label: t('services.cro.title') },

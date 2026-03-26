@@ -126,7 +126,7 @@ export default function ServiceDetail() {
 
 
       {/* Demo Projects (Only for Web Design) */}
-      {service.slug === 'high-performance-web-design' && (
+      {service.slug === 'web-design' && (
         <section className="py-12 bg-background">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto">

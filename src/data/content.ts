@@ -22,7 +22,7 @@ export interface Service {
 export const services: Service[] = [
   {
     id: 'web-design',
-    slug: 'high-performance-web-design',
+    slug: 'web-design',
     icon: 'sparkles',
     title: { en: 'High-Performance Web Design', fr: 'Conception Web Haute Performance' },
     tagline: { en: 'Business Websites • E-commerce • Landing Pages', fr: 'Sites d\'entreprise • E-commerce • Pages d\'atterrissage' },
