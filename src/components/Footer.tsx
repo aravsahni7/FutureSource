@@ -77,7 +77,7 @@ export function Footer() {
                 {language === 'fr' ? 'Bienvenue dans le cercle restreint !' : 'Welcome to the inner circle!'}
               </h4>
               <p className="text-body-sm text-muted-foreground">
-                {language === 'fr' 
+                {language === 'fr'
                   ? 'Merci de vous être abonné. Votre premier insight arrive bientôt.'
                   : 'Thanks for subscribing. Your first growth insight is heading to your inbox shortly.'}
               </p>
@@ -118,33 +118,6 @@ export function Footer() {
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="https://x.com/futureSourceca"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all duration-300"
-                aria-label="X (Twitter)"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://www.instagram.com/futuresourceca/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all duration-300"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61579487188608"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all duration-300"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
               </a>
             </div>
           </div>
