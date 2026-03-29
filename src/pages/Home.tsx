@@ -8,187 +8,6 @@ import { cn } from '@/lib/utils';
 import demoFitness from '@/assets/demo-fitness.jpg';
 import demoRestaurant from '@/assets/demo-restaurant.jpg';
 import myPapermake from '@/data/My papermake.PNG';
-import demoAi from '@/assets/demo-ai.png';
-import demoMyweb from '@/assets/demo-myweb.png';
-import ReactDOM from 'react-dom';
-
-import { useEffect, useRef, useState } from 'react';
-
-function ArcCarousel({ images }) {
-  const currentRotation = useRef(0);
-  const [rotation, setRotation] = useState(0);
-  const isDragging = useRef(false);
-  const startY = useRef(0);
-  const rafRef = useRef(null);
-  const autoRotate = useRef(true);
-  const anchorRef = useRef(null);
-  const [anchorPos, setAnchorPos] = useState({ top: 0, left: 0, width: 0, height: 0 });
-
-  useEffect(() => {
-    const update = () => {
-      if (anchorRef.current) {
-        const rect = anchorRef.current.getBoundingClientRect();
-        setAnchorPos({
-          top: rect.top + window.scrollY,
-          left: rect.left + window.scrollX,
-          width: rect.width,
-          height: rect.height,
-        });
-      }
-    };
-    update();
-    window.addEventListener('resize', update);
-    window.addEventListener('scroll', update);
-    return () => {
-      window.removeEventListener('resize', update);
-      window.removeEventListener('scroll', update);
-    };
-  }, []);
-
-  useEffect(() => {
-    let last = null;
-    const step = (ts) => {
-      if (autoRotate.current) {
-        if (last !== null) {
-          currentRotation.current -= (ts - last) * 0.008;
-          setRotation(currentRotation.current);
-        }
-        last = ts;
-      } else {
-        last = null;
-      }
-      rafRef.current = requestAnimationFrame(step);
-    };
-    rafRef.current = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, []);
-
-  const onMouseDown = (e) => {
-    isDragging.current = true;
-    autoRotate.current = false;
-    startY.current = e.clientY;
-    e.preventDefault();
-  };
-  const onMouseMove = (e) => {
-    if (!isDragging.current) return;
-    setRotation(currentRotation.current + (e.clientY - startY.current) * 0.4);
-  };
-  const onMouseUp = (e) => {
-    if (!isDragging.current) return;
-    currentRotation.current += (e.clientY - startY.current) * 0.4;
-    isDragging.current = false;
-    autoRotate.current = true;
-  };
-  const onTouchStart = (e) => {
-    autoRotate.current = false;
-    startY.current = e.touches[0].clientY;
-  };
-  const onTouchMove = (e) => {
-    setRotation(currentRotation.current + (e.touches[0].clientY - startY.current) * 0.4);
-  };
-  const onTouchEnd = (e) => {
-    currentRotation.current += (e.changedTouches[0].clientY - startY.current) * 0.4;
-    autoRotate.current = true;
-  };
-
-  const count = images.length;
-  const radius = 280;
-  const relCx = 520;
-  const relCy = anchorPos.height / 2;
-  const absCx = anchorPos.left + relCx;
-  const absCy = anchorPos.top + relCy;
-
-  const imgW = 280;
-  const imgH = 175;
-
-  const imageCards = images.map((src, i) => {
-    const baseAngleDeg = (360 / count) * i;
-    const totalAngleDeg = baseAngleDeg + rotation;
-    const rad = (totalAngleDeg * Math.PI) / 180;
-
-    const x = absCx + radius * Math.cos(rad);
-    const y = absCy + radius * Math.sin(rad);
-
-    // Hard clip on the right — never render past anchor right edge (prevents horizontal scroll)
-    const anchorRight = anchorPos.left + anchorPos.width;
-    if (x - imgW / 2 > anchorRight) return null;
-
-    // Extend top/bottom render zone by full image height so images creep in/out smoothly
-    const topEdge = anchorPos.top - imgH;
-    const bottomEdge = anchorPos.top + anchorPos.height + imgH;
-    if (y < topEdge || y > bottomEdge) return null;
-
-    return (
-      <div
-        key={i}
-        style={{
-          position: 'absolute',
-          left: x,
-          top: y,
-          transform: 'translate(-50%, -50%)',
-          zIndex: 45,
-          pointerEvents: 'none',
-        }}
-      >
-        <div
-          style={{
-            width: `${imgW}px`,
-            height: `${imgH}px`,
-            borderRadius: '16px',
-            border: '3px solid hsl(270 77% 39%)',
-            boxShadow: '0 4px 32px hsl(270 77% 39% / 0.4)',
-            overflow: 'hidden',
-            background: '#fff',
-          }}
-        >
-          <img
-            src={src}
-            alt={`Demo ${i + 1}`}
-            draggable={false}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-            }}
-          />
-        </div>
-      </div>
-    );
-  });
-
-  return (
-    <>
-      <div
-        ref={anchorRef}
-        style={{ width: '100%', height: '520px', position: 'relative', cursor: 'grab' }}
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={onMouseUp}
-        onMouseLeave={onMouseUp}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      />
-
-      {typeof document !== 'undefined' &&
-        ReactDOM.createPortal(
-          <div
-            style={{ position: 'absolute', top: 0, left: 0, width: 0, height: 0, zIndex: 45, pointerEvents: 'none' }}
-            onMouseDown={onMouseDown}
-            onMouseMove={onMouseMove}
-            onMouseUp={onMouseUp}
-          >
-            {imageCards}
-          </div>,
-          document.body
-        )}
-    </>
-  );
-}
-
-
-
 
 export default function Home() {
   const { language, t } = useLanguage();
@@ -197,7 +16,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Editorial asymmetric layout */}
-      <section className="relative min-h-screen flex items-center pt-24 pb-16">
+      <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero grain-overlay" />
 
         {/* Decorative elements */}
@@ -232,12 +51,36 @@ export default function Home() {
               </div>
             </div>
 
-           
-            {/* Visual Element - Rotating arc with demo images */}
+            {/* Visual Element */}
             <div className="lg:col-span-5 relative animate-fade-in-right delay-400">
-              <ArcCarousel
-                images={[demoFitness, demoRestaurant, myPapermake, demoAi, demoMyweb]}
-              />
+              <div className="relative aspect-square max-w-md mx-auto">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-card border border-border shadow-editorial rotate-3" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-card border border-border shadow-lg -rotate-3" />
+                <div className="relative rounded-3xl bg-card border border-border p-8 shadow-md">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                        <TrendingUp className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <p className="text-caption text-muted-foreground">ROAS</p>
+                        <p className="text-heading-lg font-editorial">4.8x</p>
+                      </div>
+                    </div>
+                    <div className="h-24 bg-gradient-to-r from-primary/20 via-apricot/30 to-primary/10 rounded-xl" />
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="p-4 rounded-xl bg-secondary/50">
+                        <p className="text-caption text-muted-foreground">CAC</p>
+                        <p className="text-heading-md font-editorial text-gradient-gold">-42%</p>
+                      </div>
+                      <div className="p-4 rounded-xl bg-secondary/50">
+                        <p className="text-caption text-muted-foreground">Revenue</p>
+                        <p className="text-heading-md font-editorial text-gradient-accent">+180%</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
