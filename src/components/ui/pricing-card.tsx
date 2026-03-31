@@ -155,7 +155,7 @@ export const PricingComponent: React.FC<PricingComponentProps> = ({
                 )}
                 {billingCycle === 'annually' && (
                     <p className="text-xs text-muted-foreground line-through opacity-70 mt-1">
-                        ${originalMonthlyPrice}{t('pricing.mo')}
+                        ${plan.priceMonthly * 12}
                     </p>
                 )}
               </div>
