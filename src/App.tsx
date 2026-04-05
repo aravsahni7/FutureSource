@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -28,10 +28,40 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  // Only show intro once per browser session
-  const [showIntro, setShowIntro] = useState(
-    () => !sessionStorage.getItem('intro_shown')
-  );
+  // Only show intro once per browser session and prevent on page reloads
+  const [showIntro, setShowIntro] = useState(() => {
+    // Fallback for SSR or missing performance API
+    if (typeof window === 'undefined' || !window.performance) {
+      return !sessionStorage.getItem('intro_shown');
+    }
+
+    try {
+      const navEntries = window.performance.getEntriesByType('navigation');
+      if (navEntries && navEntries.length > 0) {
+        const navEntry = navEntries[0] as any;
+        if (navEntry.type === 'reload') {
+          sessionStorage.setItem('intro_shown', '1');
+          return false;
+        }
+      } else if (window.performance.navigation && window.performance.navigation.type === 1) {
+        // Fallback for older browsers
+        sessionStorage.setItem('intro_shown', '1');
+        return false;
+      }
+    } catch (e) {
+      console.warn('Could not determine navigation type', e);
+    }
+
+    return !sessionStorage.getItem('intro_shown');
+  });
+
+  useEffect(() => {
+    // Set intro_shown immediately when intro is active, 
+    // so if they refresh midway it won't play again.
+    if (showIntro) {
+      sessionStorage.setItem('intro_shown', '1');
+    }
+  }, [showIntro]);
 
   const handleIntroComplete = () => {
     sessionStorage.setItem('intro_shown', '1');
