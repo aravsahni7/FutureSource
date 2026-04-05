@@ -783,7 +783,7 @@ export const teamMembers: TeamMember[] = [
   {
     id: 'ansh',
     name: 'Ansh Sahni',
-    role: { en: 'Growth Marketing Consultant', fr: 'Consultant en marketing de croissance' },
+    role: { en: 'Digital Marketing Executive & CFO', fr: 'Directeur du marketing numérique et directeur financier' },
     bio: {
       en: 'Builds and executes practical growth systems across digital channels.',
       fr: 'Met en place des systèmes de croissance concrets.',
