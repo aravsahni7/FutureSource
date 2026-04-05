@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,6 +8,7 @@ import { LanguageProvider } from "@/i18n/LanguageContext";
 import Layout from "@/components/Layout";
 import ScrollToTop from "@/components/ScrollToTop";
 import Home from "@/pages/Home";
+import IntroScreen from "@/components/IntroScreen";
 import Services from "@/pages/Services";
 import ServiceDetail from "@/pages/ServiceDetail";
 import Work from "@/pages/Work";
@@ -25,38 +27,51 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter basename="/">
-          <ScrollToTop />
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/:slug" element={<ServiceDetail />} />
-              <Route path="/work" element={<Work />} />
-              <Route path="/work/:slug" element={<CaseStudyDetail />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/process" element={<Process />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/insights" element={<Insights />} />
-              <Route path="/insights/:slug" element={<InsightDetail />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/book-a-call" element={<BookCall />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/cookies" element={<Cookies />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </LanguageProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  // Only show intro once per browser session
+  const [showIntro, setShowIntro] = useState(
+    () => !sessionStorage.getItem('intro_shown')
+  );
+
+  const handleIntroComplete = () => {
+    sessionStorage.setItem('intro_shown', '1');
+    setShowIntro(false);
+  };
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <LanguageProvider>
+        <TooltipProvider>
+          {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
+          <Toaster />
+          <Sonner />
+          <BrowserRouter basename="/">
+            <ScrollToTop />
+            <Routes>
+              <Route element={<Layout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/services/:slug" element={<ServiceDetail />} />
+                <Route path="/work" element={<Work />} />
+                <Route path="/work/:slug" element={<CaseStudyDetail />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/process" element={<Process />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/insights" element={<Insights />} />
+                <Route path="/insights/:slug" element={<InsightDetail />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/book-a-call" element={<BookCall />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/cookies" element={<Cookies />} />
+              </Route>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
