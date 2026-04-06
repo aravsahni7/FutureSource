@@ -29,7 +29,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             {/* Text Content */}
             <div className="lg:col-span-8 space-y-8">
-              <h1 className="font-bold text-display-lg md:text-display-xl animate-fade-in delay-100 whitespace-pre-line">
+              <h1 className="font-bold text-5xl md:text-display-lg lg:text-display-xl animate-fade-in delay-100 whitespace-pre-line leading-tight">
                 {t('hero.headline').split('*').map((part, i) => {
                   if (i % 2 === 1) {
                     return (
@@ -448,11 +448,11 @@ export default function Home() {
                 { key: 'creative' },
                 { key: 'transparency' },
               ].map((pillar, index) => (
-                <div key={pillar.key} className="flex gap-8 md:gap-12 items-start group">
+                <div key={pillar.key} className="flex gap-6 md:gap-12 items-start group">
                   {/* Stylized Number */}
                   <div className="relative shrink-0">
                     <span
-                      className="font-editorial text-7xl md:text-[7rem] italic font-bold tracking-tighter"
+                      className="font-editorial text-6xl md:text-[7rem] italic font-bold tracking-tighter"
                       style={{
                         color: '#FC8264',
                         textShadow: '5px 5px 0px hsl(24, 94%, 85%)',
