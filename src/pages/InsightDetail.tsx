@@ -5,6 +5,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { getBlogPostBySlug, blogPosts } from '@/data/content';
 import { cn } from '@/lib/utils';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import fbArticleImg from '@/data/facebook-article.png';
 import seoArticleImg from '@/data/seo.png';
 import croArticleImg from '@/data/cro.png';
@@ -90,7 +91,7 @@ export default function InsightDetail() {
 
       {/* Article Content */}
       <section className="py-16 bg-background">
-        <div className="container mx-auto px-6">
+        <ScrollTransition className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             {/* Placeholder article content */}
               <div className="prose prose-lg max-w-none">
@@ -588,7 +589,7 @@ export default function InsightDetail() {
               </Button>
             </div>
           </div>
-        </div>
+        </ScrollTransition>
       </section>
 
       {/* Related Articles */}
@@ -598,7 +599,7 @@ export default function InsightDetail() {
             <h2 className="font-editorial text-display-sm mb-8">
               {language === 'en' ? 'Related Articles' : 'Articles connexes'}
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
+            <ScrollTransition stagger={true} className="grid md:grid-cols-3 gap-8">
               {relatedPosts.map((relatedPost) => (
                 <Link
                   key={relatedPost.id}
@@ -646,7 +647,7 @@ export default function InsightDetail() {
                   </article>
                 </Link>
               ))}
-            </div>
+            </ScrollTransition>
           </div>
         </section>
       )}

@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
 
 // EmailJS configuration
 const EMAILJS_PUBLIC_KEY = 'f8yRIopzVihwh4c7w';
@@ -143,7 +144,7 @@ ${formData.message}
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-12 gap-16">
             {/* Form */}
-            <div className="lg:col-span-7">
+            <ScrollTransition direction="left" className="lg:col-span-7">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -247,10 +248,10 @@ ${formData.message}
                   )}
                 </Button>
               </form>
-            </div>
+            </ScrollTransition>
 
             {/* Info */}
-            <div className="lg:col-span-5">
+            <ScrollTransition direction="right" delay={0.2} className="lg:col-span-5">
               <div className="sticky top-32 space-y-8">
                 <div className="p-8 rounded-2xl bg-gradient-card border border-border">
                   <h3 className="font-editorial text-heading-xl mb-6">
@@ -281,7 +282,7 @@ ${formData.message}
                   />
                 </div>
               </div>
-            </div>
+            </ScrollTransition>
           </div>
         </div>
       </section>

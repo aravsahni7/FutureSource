@@ -20,8 +20,8 @@ export const translations = {
       fr: 'Marketing de performance pour marques ambitieuses',
     },
     headline: {
-      en: 'We Turn Marketing Spend Into Predictable Revenue',
-      fr: 'Nous transformons vos investissements marketing en revenus prévisibles',
+      en: 'We Turn Marketing\nSpend\u00A0Into\u00A0*Predictable*\n*Revenue*',
+      fr: 'Nous transformons vos investissements marketing en\n*revenus* *prévisibles*',
     },
     subheadline: {
       en: 'FutureSource is a boutique growth agency helping premium brands scale profitably through strategic paid media, SEO, and conversion optimization.',
@@ -101,9 +101,9 @@ export const translations = {
     product: {
       industry: { en: 'Product Based', fr: 'Basé sur les produits' },
       title: { en: 'Paper Products', fr: 'Produits en papier' },
-      desc: { 
-        en: 'Calm, handcrafted e-commerce design focused on organic creativity and product storytelling.', 
-        fr: 'Design e-commerce calme et artisanal axé sur la créativité organique et le storytelling des produits.' 
+      desc: {
+        en: 'Calm, handcrafted e-commerce design focused on organic creativity and product storytelling.',
+        fr: 'Design e-commerce calme et artisanal axé sur la créativité organique et le storytelling des produits.'
       }
     }
   },

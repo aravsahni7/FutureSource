@@ -5,6 +5,8 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { caseStudies } from '@/data/content';
 import { cn } from '@/lib/utils';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
+import { TextReveal } from '@/components/animations/TextReveal';
 
 const filters = ['all', 'paid-ads', 'seo-content', 'cro-landing-pages', 'branding'] as const;
 
@@ -73,7 +75,7 @@ export default function Work() {
       {/* Case Studies Grid - Magazine Layout */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-8">
+          <ScrollTransition stagger={true} className="grid md:grid-cols-2 gap-8">
             {filteredCases.map((caseStudy, index) => (
               <Link
                 key={caseStudy.id}
@@ -129,14 +131,14 @@ export default function Work() {
                 </article>
               </Link>
             ))}
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-24 bg-gradient-gold text-primary-foreground relative overflow-hidden">
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="font-editorial text-display-md mb-6">{t('cta.primary.title')}</h2>
+        <ScrollTransition yOffset={40} className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="font-editorial text-display-md mb-6"><TextReveal text={t('cta.primary.title')} /></h2>
           <p className="text-body-lg opacity-90 max-w-xl mx-auto mb-8">{t('cta.primary.text')}</p>
           <Button asChild size="lg" variant="secondary" className="group">
             <Link to="/book-a-call">
@@ -144,7 +146,7 @@ export default function Work() {
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
-        </div>
+        </ScrollTransition>
       </section>
     </>
   );

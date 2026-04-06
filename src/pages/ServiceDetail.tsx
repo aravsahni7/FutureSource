@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { getServiceBySlug, getCaseStudiesByService, services } from '@/data/content';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
+import { TextReveal } from '@/components/animations/TextReveal';
 import demoFitness from '@/assets/demo-fitness.jpg';
 import demoRestaurant from '@/assets/demo-restaurant.jpg';
 import myPapermake from '@/data/My papermake.PNG';
@@ -66,10 +68,12 @@ export default function ServiceDetail() {
       {/* Outcomes */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-6">
-          <h2 className="font-editorial text-display-sm mb-8">
-            {language === 'en' ? 'Expected Outcomes' : 'Résultats attendus'}
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <ScrollTransition className="mb-8">
+            <h2 className="font-editorial text-display-sm">
+              <TextReveal text={language === 'en' ? 'Expected Outcomes' : 'Résultats attendus'} />
+            </h2>
+          </ScrollTransition>
+          <ScrollTransition stagger={true} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {service.outcomes[language].map((outcome, i) => (
               <div
                 key={i}
@@ -81,7 +85,7 @@ export default function ServiceDetail() {
                 <p className="text-body-lg font-medium">{outcome}</p>
               </div>
             ))}
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 
@@ -99,7 +103,7 @@ export default function ServiceDetail() {
               }
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ScrollTransition stagger={true} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {service.deliverables[language].map((item, i) => (
               <div
                 key={i}
@@ -111,7 +115,7 @@ export default function ServiceDetail() {
                 <p className="text-body-sm pt-1.5 leading-relaxed">{item}</p>
               </div>
             ))}
-          </div>
+          </ScrollTransition>
           <div className="mt-12 text-center">
             <Button asChild size="lg" className="group">
               <Link to="/book-a-call">
@@ -210,7 +214,7 @@ export default function ServiceDetail() {
       {/* Ideal For / Not For */}
       <section className="py-12 bg-background">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <ScrollTransition stagger={true} className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="p-8 rounded-2xl bg-primary/5 border border-primary/20">
               <h3 className="font-editorial text-heading-xl mb-4 flex items-center gap-3">
                 <Check className="h-6 w-6 text-primary" />
@@ -229,7 +233,7 @@ export default function ServiceDetail() {
                 {service.notFor[language]}
               </p>
             </div>
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 
@@ -300,8 +304,8 @@ export default function ServiceDetail() {
 
       {/* CTA */}
       <section className="py-24 bg-gradient-gold text-primary-foreground relative overflow-hidden">
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="font-editorial text-display-md mb-6">{t('cta.primary.title')}</h2>
+        <ScrollTransition yOffset={40} className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="font-editorial text-display-md mb-6"><TextReveal text={t('cta.primary.title')} /></h2>
           <p className="text-body-lg opacity-90 max-w-xl mx-auto mb-8">{t('cta.primary.text')}</p>
           <Button asChild size="lg" variant="secondary" className="group">
             <Link to="/book-a-call">
@@ -309,7 +313,7 @@ export default function ServiceDetail() {
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
-        </div>
+        </ScrollTransition>
       </section>
     </>
   );

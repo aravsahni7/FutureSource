@@ -4,6 +4,8 @@ import { ArrowRight, Search, Lightbulb, Rocket, TrendingUp, FileText, Phone, Cal
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
+import { TextReveal } from '@/components/animations/TextReveal';
 
 export default function Process() {
   const { language, t } = useLanguage();
@@ -46,7 +48,7 @@ export default function Process() {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-12 gap-12">
             {/* Step Navigation */}
-            <div className="lg:col-span-4">
+            <ScrollTransition direction="left" className="lg:col-span-4">
               <div className="sticky top-32 space-y-2">
                 {steps.map((step, index) => {
                   const Icon = step.icon;
@@ -82,10 +84,10 @@ export default function Process() {
                   );
                 })}
               </div>
-            </div>
+            </ScrollTransition>
 
             {/* Step Content */}
-            <div className="lg:col-span-8">
+            <ScrollTransition direction="right" className="lg:col-span-8">
               <div className="min-h-[400px]">
                 {steps.map((step, index) => {
                   const Icon = step.icon;
@@ -138,7 +140,7 @@ export default function Process() {
                   />
                 ))}
               </div>
-            </div>
+            </ScrollTransition>
           </div>
         </div>
       </section>
@@ -146,10 +148,12 @@ export default function Process() {
       {/* Reporting Cadence */}
       <section className="py-24 bg-gradient-warm">
         <div className="container mx-auto px-6">
-          <h2 className="font-editorial text-display-sm mb-16 text-center">
-            {t('process.reporting.title')}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <ScrollTransition className="text-center mb-16">
+            <h2 className="font-editorial text-display-sm">
+              <TextReveal text={t('process.reporting.title')} />
+            </h2>
+          </ScrollTransition>
+          <ScrollTransition stagger={true} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {reporting.map((item, index) => {
               const Icon = item.icon;
               return (
@@ -169,7 +173,7 @@ export default function Process() {
                 </div>
               );
             })}
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 
@@ -177,15 +181,17 @@ export default function Process() {
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-editorial text-display-sm mb-8 text-center">
-              {language === 'en' ? 'What to Expect' : 'À quoi s\'attendre'}
-            </h2>
-            <p className="text-body-lg text-muted-foreground text-center mb-12">
-              {language === 'en'
-                ? 'A typical engagement timeline from kickoff to optimization'
-                : 'Un calendrier d\'engagement typique du lancement à l\'optimisation'
-              }
-            </p>
+            <ScrollTransition className="text-center mb-12">
+              <h2 className="font-editorial text-display-sm mb-8">
+                <TextReveal text={language === 'en' ? 'What to Expect' : 'À quoi s\'attendre'} />
+              </h2>
+              <p className="text-body-lg text-muted-foreground mb-12">
+                {language === 'en'
+                  ? 'A typical engagement timeline from kickoff to optimization'
+                  : 'Un calendrier d\'engagement typique du lancement à l\'optimisation'
+                }
+              </p>
+            </ScrollTransition>
 
             <div className="relative">
               {/* Timeline line */}
@@ -198,6 +204,7 @@ export default function Process() {
                   { week: '3-4', title: { en: 'Build & Launch', fr: 'Construction et lancement' } },
                   { week: '5+', title: { en: 'Optimize & Scale', fr: 'Optimiser et développer' } },
                 ].map((item, index) => (
+                  <ScrollTransition key={index} direction={index % 2 === 0 ? 'left' : 'right'} delay={index * 0.1}>
                   <div
                     key={index}
                     className={cn(
@@ -218,6 +225,7 @@ export default function Process() {
                       <h3 className="font-editorial text-heading-lg">{item.title[language]}</h3>
                     </div>
                   </div>
+                  </ScrollTransition>
                 ))}
               </div>
             </div>
@@ -227,8 +235,8 @@ export default function Process() {
 
       {/* CTA */}
       <section className="py-24 bg-gradient-gold text-primary-foreground relative overflow-hidden">
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="font-editorial text-display-md mb-6">{t('cta.primary.title')}</h2>
+        <ScrollTransition yOffset={40} className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="font-editorial text-display-md mb-6"><TextReveal text={t('cta.primary.title')} /></h2>
           <p className="text-body-lg opacity-90 max-w-xl mx-auto mb-8">{t('cta.primary.text')}</p>
           <Button asChild size="lg" variant="secondary" className="group">
             <Link to="/book-a-call">
@@ -236,7 +244,7 @@ export default function Process() {
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
-        </div>
+        </ScrollTransition>
       </section>
     </>
   );

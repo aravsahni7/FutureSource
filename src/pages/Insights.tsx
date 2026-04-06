@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { blogPosts, getFeaturedBlogPosts } from '@/data/content';
 import { cn } from '@/lib/utils';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
+import { TextReveal } from '@/components/animations/TextReveal';
 import fbArticleImg from '@/data/facebook-article.png';
 import seoArticleImg from '@/data/seo.png';
 import croArticleImg from '@/data/cro.png';
@@ -88,10 +90,12 @@ export default function Insights() {
       {/* Featured Posts */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-6">
-          <h2 className="font-editorial text-heading-xl mb-8">
-            {language === 'en' ? 'Featured Articles' : 'Articles vedettes'}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <ScrollTransition className="mb-8">
+            <h2 className="font-editorial text-heading-xl">
+              <TextReveal text={language === 'en' ? 'Featured Articles' : 'Articles vedettes'} />
+            </h2>
+          </ScrollTransition>
+          <ScrollTransition stagger={true} className="grid md:grid-cols-3 gap-8">
             {featuredPosts.slice(0, 3).map((post, index) => (
               <Link
                 key={post.id}
@@ -164,7 +168,7 @@ export default function Insights() {
                 </article>
               </Link>
             ))}
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 
@@ -193,7 +197,7 @@ export default function Insights() {
       {/* All Posts */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ScrollTransition stagger={true} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredPosts.map((post) => (
               <Link
                 key={post.id}
@@ -252,7 +256,7 @@ export default function Insights() {
                 </article>
               </Link>
             ))}
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 

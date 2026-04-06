@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '@/i18n/LanguageContext';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
 
 export default function Privacy() {
   const { language, t } = useLanguage();
@@ -7,7 +8,7 @@ export default function Privacy() {
   return (
     <section className="pt-32 pb-24 bg-background">
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
+        <ScrollTransition className="max-w-3xl mx-auto">
           <h1 className="font-editorial text-display-lg mb-8">
             {t('legal.privacy.title')}
           </h1>
@@ -58,7 +59,7 @@ export default function Privacy() {
               </p>
             </section>
           </div>
-        </div>
+        </ScrollTransition>
       </div>
     </section>
   );

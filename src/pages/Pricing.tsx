@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PricingComponent, PriceTier, BillingCycle, Feature } from '@/components/ui/pricing-card';
 import { useLanguage } from '@/i18n/LanguageContext';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
 
 const featureTranslations: Record<string, { en: string, fr: string }> = {
   'Website Development': { en: 'Website Development', fr: 'Développement de site web' },
@@ -153,14 +154,14 @@ export default function Pricing() {
 
   return (
     <div className="pt-32 pb-16 min-h-screen bg-gradient-warm">
-      <div className="container mx-auto px-6">
+      <ScrollTransition className="container mx-auto px-6">
         <PricingComponent
           plans={translatedPlans}
           billingCycle={billingCycle}
           onCycleChange={setBillingCycle}
           onPlanSelect={(planId, cycle) => console.log('Selected:', planId, cycle)}
         />
-      </div>
+      </ScrollTransition>
     </div>
   );
 }

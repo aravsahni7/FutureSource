@@ -4,6 +4,7 @@ import { Clock, CheckCircle, Users, Target, Lightbulb, Handshake } from 'lucide-
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
 
 export default function BookCall() {
   const { language, t } = useLanguage();
@@ -39,7 +40,7 @@ export default function BookCall() {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-12 gap-16">
             {/* Left Column - Info */}
-            <div className="lg:col-span-5">
+            <ScrollTransition direction="left" className="lg:col-span-5">
               <div className="sticky top-32 space-y-8">
                 {/* Duration Badge */}
                 <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 text-primary">
@@ -91,10 +92,10 @@ export default function BookCall() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </ScrollTransition>
 
             {/* Right Column - Calendar Embed */}
-            <div className="lg:col-span-7">
+            <ScrollTransition direction="right" delay={0.2} className="lg:col-span-7">
               <div className="rounded-2xl border border-border bg-card overflow-hidden min-h-[600px] shadow-editorial">
                 <iframe 
                   src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1i5ERsbEPZLlNNViXbcDg4mkXQJzKMJ0qiDPAqJMra3QP_WZVpJLHWczlrpnlzYuanydfLCu6v?gv=true" 
@@ -118,7 +119,7 @@ export default function BookCall() {
                   <Link to="/contact">{t('nav.contact')}</Link>
                 </Button>
               </div>
-            </div>
+            </ScrollTransition>
           </div>
         </div>
       </section>

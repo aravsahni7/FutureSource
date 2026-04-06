@@ -6,6 +6,8 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { teamMembers } from '@/data/content';
 import { cn } from '@/lib/utils';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
+import { TextReveal } from '@/components/animations/TextReveal';
 
 // Asset imports
 import AmitPhoto from '@/data/Amit.png';
@@ -84,17 +86,17 @@ export default function About() {
       <section className="py-16 bg-background relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-20">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-            <div className="max-w-xl text-left order-2 lg:order-1">
+            <ScrollTransition direction="left" className="max-w-xl text-left order-2 lg:order-1">
               <h2 className="font-editorial text-display-sm mb-6">
-                {t('about.mission.title')}
+                <TextReveal text={t('about.mission.title')} />
               </h2>
               <p className="text-body-lg text-muted-foreground leading-relaxed mb-8">
                 {t('about.mission.text')}
               </p>
               <div className="h-1 w-24 bg-gradient-gold rounded-full" />
-            </div>
+            </ScrollTransition>
 
-            <div className="flex-shrink-0 relative p-12 order-1 lg:order-2 graffiti-glow">
+            <ScrollTransition direction="right" delay={0.2} className="flex-shrink-0 relative p-12 order-1 lg:order-2 graffiti-glow">
               <svg
                 viewBox="0 0 488 454"
                 className="w-64 h-64 md:w-[450px] md:h-[450px] text-purple-400 overflow-visible"
@@ -116,19 +118,19 @@ export default function About() {
                        result reads as a single, weighted, painterly mark
                   */}
                   <filter id="graffiti" x="-40%" y="-40%" width="180%" height="180%">
-                    <feTurbulence type="turbulence" baseFrequency="0.018 0.022" numOctaves="4" seed="12" result="noise"/>
-                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G" result="warped"/>
-                    <feMorphology operator="erode" radius="1.5" in="warped" result="eroded"/>
-                    <feMorphology operator="dilate" radius="3" in="eroded" result="fat"/>
-                    <feGaussianBlur in="fat" stdDeviation="5" result="bigBleed"/>
-                    <feGaussianBlur in="fat" stdDeviation="1" result="core"/>
+                    <feTurbulence type="turbulence" baseFrequency="0.018 0.022" numOctaves="4" seed="12" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G" result="warped" />
+                    <feMorphology operator="erode" radius="1.5" in="warped" result="eroded" />
+                    <feMorphology operator="dilate" radius="3" in="eroded" result="fat" />
+                    <feGaussianBlur in="fat" stdDeviation="5" result="bigBleed" />
+                    <feGaussianBlur in="fat" stdDeviation="1" result="core" />
                     <feComponentTransfer in="bigBleed" result="fadedBleed">
-                      <feFuncA type="linear" slope="0.35"/>
+                      <feFuncA type="linear" slope="0.35" />
                     </feComponentTransfer>
                     <feMerge>
-                      <feMergeNode in="fadedBleed"/>
-                      <feMergeNode in="core"/>
-                      <feMergeNode in="fat"/>
+                      <feMergeNode in="fadedBleed" />
+                      <feMergeNode in="core" />
+                      <feMergeNode in="fat" />
                     </feMerge>
                   </filter>
                 </defs>
@@ -145,15 +147,15 @@ export default function About() {
 
                 {/* Paint drip particles — fall and fade after each shape sprays in */}
                 <g fill="currentColor" opacity="0.6">
-                  <rect className="drip drip1" x="236" y="388" width="4" height="22" rx="2"/>
-                  <rect className="drip drip1" x="255" y="390" width="3" height="16" rx="1.5" style={{animationDelay:'1.05s'}}/>
-                  <rect className="drip drip2" x="310" y="385" width="4" height="28" rx="2"/>
-                  <rect className="drip drip2" x="328" y="388" width="3" height="18" rx="1.5" style={{animationDelay:'1.38s'}}/>
-                  <rect className="drip drip3" x="338" y="310" width="3" height="20" rx="1.5"/>
-                  <rect className="drip drip3" x="350" y="312" width="2" height="14" rx="1" style={{animationDelay:'1.62s'}}/>
+                  <rect className="drip drip1" x="236" y="388" width="4" height="22" rx="2" />
+                  <rect className="drip drip1" x="255" y="390" width="3" height="16" rx="1.5" style={{ animationDelay: '1.05s' }} />
+                  <rect className="drip drip2" x="310" y="385" width="4" height="28" rx="2" />
+                  <rect className="drip drip2" x="328" y="388" width="3" height="18" rx="1.5" style={{ animationDelay: '1.38s' }} />
+                  <rect className="drip drip3" x="338" y="310" width="3" height="20" rx="1.5" />
+                  <rect className="drip drip3" x="350" y="312" width="2" height="14" rx="1" style={{ animationDelay: '1.62s' }} />
                 </g>
               </svg>
-            </div>
+            </ScrollTransition>
           </div>
         </div>
       </section>
@@ -162,15 +164,15 @@ export default function About() {
       <section className="py-20 bg-gradient-warm overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-16">
-            <div className="max-w-xl">
+            <ScrollTransition direction="right" className="max-w-xl">
               <h2 className="font-editorial text-display-sm mb-8">
-                {t('about.story.title')}
+                <TextReveal text={t('about.story.title')} />
               </h2>
               <p className="text-body-lg text-muted-foreground leading-relaxed mb-8">
                 {t('about.story.text')}
               </p>
               <div className="h-1 w-24 bg-gradient-gold rounded-full" />
-            </div>
+            </ScrollTransition>
 
             <div
               className="relative w-full max-w-[500px] h-[400px] flex items-center justify-center cursor-pointer group lg:ml-12"
@@ -204,10 +206,12 @@ export default function About() {
       {/* Values Section */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
-          <h2 className="font-editorial text-display-sm mb-12 text-center">
-            {t('about.values.title')}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <ScrollTransition className="text-center mb-12">
+            <h2 className="font-editorial text-display-sm">
+              <TextReveal text={t('about.values.title')} />
+            </h2>
+          </ScrollTransition>
+          <ScrollTransition stagger={true} className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {values.map((value, index) => {
               const Icon = value.icon;
               return (
@@ -223,17 +227,19 @@ export default function About() {
                 </div>
               );
             })}
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 
       {/* Team Section */}
       <section className="py-20 bg-gradient-warm">
         <div className="container mx-auto px-6">
-          <h2 className="font-editorial text-display-sm mb-12 text-center">
-            {t('about.team.title')}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-12 max-w-full mx-auto">
+          <ScrollTransition className="text-center mb-12">
+            <h2 className="font-editorial text-display-sm">
+              <TextReveal text={t('about.team.title')} />
+            </h2>
+          </ScrollTransition>
+          <ScrollTransition stagger={true} className="grid md:grid-cols-3 gap-12 max-w-full mx-auto">
             {teamMembers.map((member) => {
               const photos = { 'Amit Sahni': AmitPhoto, 'Ansh Sahni': AnshPhoto, 'Arav Sahni': AravPhoto };
               return (
@@ -256,14 +262,14 @@ export default function About() {
                 </div>
               );
             })}
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-gold text-primary-foreground relative overflow-hidden">
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="font-editorial text-display-md mb-6">{t('cta.primary.title')}</h2>
+        <ScrollTransition yOffset={40} className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="font-editorial text-display-md mb-6"><TextReveal text={t('cta.primary.title')} /></h2>
           <p className="text-body-lg opacity-90 max-w-xl mx-auto mb-8">{t('cta.primary.text')}</p>
           <Button asChild size="lg" variant="secondary" className="group px-8">
             <Link to="/book-a-call">
@@ -271,7 +277,7 @@ export default function About() {
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
-        </div>
+        </ScrollTransition>
       </section>
     </>
   );

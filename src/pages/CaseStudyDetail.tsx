@@ -5,6 +5,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { getCaseStudyBySlug } from '@/data/content';
 import { cn } from '@/lib/utils';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
 
 export default function CaseStudyDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -54,7 +55,7 @@ export default function CaseStudyDetail() {
       {/* Results Banner */}
       <section className="py-12 bg-gradient-gold text-primary-foreground">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <ScrollTransition stagger={true} className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {caseStudy.results.map((result, i) => (
               <div key={i} className="text-center">
                 <p className="font-editorial text-display-sm mb-1">{result.value}</p>
@@ -64,14 +65,14 @@ export default function CaseStudyDetail() {
                 )}
               </div>
             ))}
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 
       {/* Content Sections */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto space-y-16">
+          <ScrollTransition className="space-y-16">
             {/* Context */}
             <div>
               <h2 className="font-editorial text-display-sm mb-6">
@@ -136,7 +137,7 @@ export default function CaseStudyDetail() {
                 ))}
               </div>
             </div>
-          </div>
+          </ScrollTransition>
         </div>
       </section>
 
@@ -169,7 +170,7 @@ export default function CaseStudyDetail() {
 
       {/* CTA */}
       <section className="py-24 bg-background">
-        <div className="container mx-auto px-6 text-center">
+        <ScrollTransition yOffset={40} className="container mx-auto px-6 text-center">
           <h2 className="font-editorial text-display-md mb-6">
             {language === 'en' ? 'Want Similar Results?' : 'Vous voulez des résultats similaires?'}
           </h2>
@@ -187,7 +188,7 @@ export default function CaseStudyDetail() {
               <Link to="/work">{t('selectedWork.viewAll')}</Link>
             </Button>
           </div>
-        </div>
+        </ScrollTransition>
       </section>
     </>
   );
