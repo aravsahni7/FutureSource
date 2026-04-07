@@ -171,12 +171,12 @@ export default function About() {
               <span className="relative z-10">{language === 'en' ? 'OUR STORY' : 'NOTRE HISTOIRE'}</span>
             </span>
             <h1 
-              className="text-black text-center max-w-5xl"
+              className="text-black text-center max-w-5xl px-6 md:px-0"
               style={{
                 textShadow: '0 10px 40px rgba(0,0,0,0.05)',
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontWeight: 800,
-                fontSize: 'clamp(3.5rem, 8vw, 6rem)',
+                fontSize: 'clamp(2rem, 8vw, 6rem)',
                 lineHeight: 0.92,
                 letterSpacing: '-0.04em',
               }}

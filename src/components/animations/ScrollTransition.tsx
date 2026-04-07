@@ -19,7 +19,7 @@ export function ScrollTransition({
   stagger = false
 }: ScrollTransitionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
+  const isInView = useInView(ref, { once: true, margin: "400px" });
 
   const getInitial = () => {
     switch (direction) {
