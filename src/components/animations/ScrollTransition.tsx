@@ -18,8 +18,20 @@ export function ScrollTransition({
   yOffset = 40,
   stagger = false
 }: ScrollTransitionProps) {
-  const ref = useRef(null);
+  const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: "400px" });
+  
+  // Disable scroll transitions on mobile to prevent blank loading buffers
+  const [isMobile, setIsMobile] = React.useState(
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    // Passive listener for performance
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const getInitial = () => {
     switch (direction) {
@@ -61,19 +73,20 @@ export function ScrollTransition({
       }
     };
 
-    // Note: To use stagger, children must be motion components relying on variants.
-    // This is useful for lists.
+    // On mobile, force visible state immediately
+    const animateState = isMobile ? "visible" : (isInView ? "visible" : "hidden");
+    const initialState = isMobile ? "visible" : "hidden";
+
     return (
       <motion.div
         ref={ref}
         className={className}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        initial={initialState}
+        animate={animateState}
         variants={containerVariants}
       >
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child)) {
-            // We just wrap them in motion.div so stagger applies seamlessly
             return (
               <motion.div variants={childVariants}>
                 {child}
@@ -86,12 +99,16 @@ export function ScrollTransition({
     );
   }
 
+  // On mobile, skip the initial hidden state and set variants to final animate state
+  const initialProps = isMobile ? getAnimate() : getInitial();
+  const animateProps = isMobile ? getAnimate() : (isInView ? getAnimate() : getInitial());
+
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial={getInitial()}
-      animate={isInView ? getAnimate() : getInitial()}
+      initial={initialProps}
+      animate={animateProps}
       transition={{
         duration: 0.8,
         delay,

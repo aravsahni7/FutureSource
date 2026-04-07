@@ -176,7 +176,7 @@ export default function About() {
                 textShadow: '0 10px 40px rgba(0,0,0,0.05)',
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontWeight: 800,
-                fontSize: 'clamp(2rem, 8vw, 6rem)',
+                fontSize: 'clamp(2.25rem, 10vw, 6rem)',
                 lineHeight: 0.92,
                 letterSpacing: '-0.04em',
               }}
