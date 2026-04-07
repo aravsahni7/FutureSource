@@ -673,7 +673,8 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  z-index: 1;
+  position: relative;
+  z-index: 10;
 }
 
 .service-card-big-title {

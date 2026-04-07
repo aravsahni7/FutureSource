@@ -29,11 +29,11 @@ export default function Home() {
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             {/* Text Content */}
             <div className="lg:col-span-8 space-y-8">
-              <h1 className="font-bold text-5xl md:text-display-lg lg:text-display-xl animate-fade-in delay-100 whitespace-pre-line leading-tight">
+              <h1 className="font-bold text-[clamp(2.1rem,8vw,3.5rem)] md:text-display-lg lg:text-display-xl animate-fade-in delay-100 whitespace-pre-line leading-tight">
                 {t('hero.headline').split('*').map((part, i) => {
                   if (i % 2 === 1) {
                     return (
-                      <span key={i} className="relative whitespace-nowrap z-10 w-fit">
+                      <span key={i} className="relative whitespace-nowrap inline-block z-10">
                         {part}
                         <svg className="absolute -bottom-1 left-0 w-full h-[0.4em] transform -rotate-1 -z-10" viewBox="0 0 100 20" preserveAspectRatio="none">
                           <path d="M2,18 C 30,5 65,4 98,16" fill="none" stroke="#FC8264" strokeWidth="5" strokeLinecap="round" />
