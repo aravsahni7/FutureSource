@@ -302,12 +302,15 @@ export default function ServiceDetail() {
         </section>
       )}
 
-      {/* CTA */}
+      {/* CTA Section */}
       <section className="py-24 bg-gradient-gold text-primary-foreground relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-background blur-3xl" />
+        </div>
         <ScrollTransition yOffset={40} className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="font-editorial text-display-md mb-6"><TextReveal text={t('cta.primary.title')} /></h2>
+          <h2 className="font-bold text-display-md mb-6"><TextReveal text={t('cta.primary.title')} /></h2>
           <p className="text-body-lg opacity-90 max-w-xl mx-auto mb-8">{t('cta.primary.text')}</p>
-          <Button asChild size="lg" variant="secondary" className="group">
+          <Button asChild size="lg" className="group bg-[#FC8264] hover:bg-[#eb7355] text-white border-none transition-colors">
             <Link to="/book-a-call">
               {t('cta.primary.button')}
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />

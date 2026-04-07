@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, FileText, Phone, Calendar } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
+import { ScrollTransition } from '@/components/animations/ScrollTransition';
+import { TextReveal } from '@/components/animations/TextReveal';
 import ProcessCarousel from '@/components/ProcessCarousel';
 
 export default function Process() {
@@ -135,22 +137,34 @@ export default function Process() {
 
             {/* Title — split styling */}
             <h1
-              className="animate-fade-in delay-100"
+              className="animate-fade-in delay-100 flex flex-col"
               style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontWeight: 900,
-                fontStyle: 'italic',
-                fontSize: 'clamp(3rem, 6vw, 5rem)',
-                lineHeight: 1.05,
-                letterSpacing: '-0.02em',
+                lineHeight: 0.95,
                 marginBottom: '1.5rem',
               }}
             >
-              <span style={{ color: 'hsl(0 0% 8%)' }}>
-                {language === 'en' ? 'Our ' : 'Notre '}
+              <span style={{ 
+                display: 'block',
+                fontFamily: "'Inter', system-ui, sans-serif",
+                fontWeight: 800,
+                fontSize: 'clamp(3.5rem, 8vw, 6rem)',
+                letterSpacing: '-0.04em',
+                color: 'hsl(0 0% 8%)',
+                textTransform: 'uppercase',
+              }}>
+                {language === 'en' ? 'OUR' : 'NOTRE'}
               </span>
-              <span style={{ color: 'hsl(270 77% 39%)' }}>
-                {language === 'en' ? 'Process' : 'processus'}
+              <span style={{ 
+                display: 'block',
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 900,
+                fontStyle: 'italic',
+                fontSize: 'clamp(3.5rem, 8vw, 6rem)',
+                letterSpacing: '-0.02em',
+                color: 'hsl(270 77% 39%)',
+                textTransform: 'uppercase'
+              }}>
+                {language === 'en' ? 'PROCESS' : 'PROCESSUS'}
               </span>
             </h1>
 
@@ -181,7 +195,7 @@ export default function Process() {
         className="relative overflow-hidden"
         style={{
           padding: '5rem 0 6rem',
-          background: 'hsl(220 15% 12%)',
+          background: 'hsl(0 0% 100%)',
         }}
       >
         {/* Grid pattern background */}
@@ -189,23 +203,23 @@ export default function Process() {
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage: `
-              linear-gradient(hsl(220 15% 18%) 1px, transparent 1px),
-              linear-gradient(90deg, hsl(220 15% 18%) 1px, transparent 1px)
+              linear-gradient(hsla(220, 14%, 94%, 0.8) 1px, transparent 1px),
+              linear-gradient(90deg, hsla(220, 14%, 94%, 0.8) 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px',
-            opacity: 0.5,
+            opacity: 0.8,
           }}
         />
 
         {/* Flowing orange/coral wave SVG behind cards */}
         <svg
-          className="absolute inset-0 w-full h-full pointer-events-none"
-          viewBox="0 0 1200 500"
+          className="absolute w-full h-full pointer-events-none"
+          style={{ top: '50%', left: 0, transform: 'translateY(-50%)', zIndex: 1, minHeight: '600px' }}
+          viewBox="0 -50 1200 600"
           preserveAspectRatio="none"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
-          style={{ zIndex: 1 }}
         >
           <defs>
             <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -218,7 +232,7 @@ export default function Process() {
               <stop offset="50%" stopColor="hsl(10 80% 55%)" stopOpacity="0.3" />
               <stop offset="100%" stopColor="hsl(15 85% 62%)" stopOpacity="0.4" />
             </linearGradient>
-            <filter id="waveBlur">
+            <filter id="waveBlur" x="-20%" y="-20%" width="140%" height="140%">
               <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
             </filter>
           </defs>
@@ -250,8 +264,8 @@ export default function Process() {
             100% { transform: translateY(-12px) translateX(15px); }
           }
           @keyframes reportingCardGlow {
-            0%, 100% { box-shadow: 0 0 20px hsl(270 77% 50% / 0.15), inset 0 1px 0 hsl(0 0% 100% / 0.08); }
-            50% { box-shadow: 0 0 35px hsl(270 77% 50% / 0.25), inset 0 1px 0 hsl(0 0% 100% / 0.12); }
+            0%, 100% { box-shadow: 0 0 20px hsl(270 77% 50% / 0.1); }
+            50% { box-shadow: 0 0 35px hsl(270 77% 50% / 0.15); }
           }
         `}</style>
 
@@ -263,7 +277,7 @@ export default function Process() {
               fontWeight: 900,
               fontStyle: 'italic',
               fontSize: 'clamp(2rem, 4vw, 3rem)',
-              color: 'hsl(270 77% 55%)',
+              color: 'hsl(270 77% 39%)',
               marginBottom: '3.5rem',
             }}
           >
@@ -281,33 +295,31 @@ export default function Process() {
                   style={{
                     padding: '2.5rem 2rem',
                     borderRadius: '1.25rem',
-                    background: isFirst
-                      ? 'hsla(0 0% 100% / 0.08)'
-                      : 'hsla(0 0% 100% / 0.05)',
+                    background: 'hsla(0, 0%, 100%, 0.95)',
                     backdropFilter: 'blur(16px)',
                     WebkitBackdropFilter: 'blur(16px)',
                     border: isFirst
-                      ? '1.5px solid hsl(270 70% 60% / 0.6)'
-                      : '1px solid hsl(0 0% 100% / 0.1)',
+                      ? '1.5px solid hsl(270 70% 60% / 0.5)'
+                      : '1px solid hsl(220 14% 90%)',
                     boxShadow: isFirst
-                      ? '0 0 30px hsl(270 77% 50% / 0.2), inset 0 1px 0 hsl(0 0% 100% / 0.1)'
-                      : '0 4px 20px hsl(0 0% 0% / 0.2), inset 0 1px 0 hsl(0 0% 100% / 0.06)',
+                      ? '0 0 30px hsl(270 77% 50% / 0.1)'
+                      : '0 4px 20px hsl(0 0% 0% / 0.04)',
                     transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
                     animation: isFirst ? 'reportingCardGlow 4s ease-in-out infinite' : 'none',
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-6px)';
-                    e.currentTarget.style.boxShadow = '0 0 40px hsl(270 77% 50% / 0.3), inset 0 1px 0 hsl(0 0% 100% / 0.12)';
+                    e.currentTarget.style.boxShadow = '0 12px 35px hsl(270 77% 50% / 0.15)';
                     e.currentTarget.style.borderColor = 'hsl(270 70% 60% / 0.6)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateY(0)';
                     if (!isFirst) {
-                      e.currentTarget.style.boxShadow = '0 4px 20px hsl(0 0% 0% / 0.2), inset 0 1px 0 hsl(0 0% 100% / 0.06)';
-                      e.currentTarget.style.borderColor = 'hsl(0 0% 100% / 0.1)';
+                      e.currentTarget.style.boxShadow = '0 4px 20px hsl(0 0% 0% / 0.04)';
+                      e.currentTarget.style.borderColor = 'hsl(220 14% 90%)';
                     } else {
-                      e.currentTarget.style.boxShadow = '0 0 30px hsl(270 77% 50% / 0.2), inset 0 1px 0 hsl(0 0% 100% / 0.1)';
-                      e.currentTarget.style.borderColor = 'hsl(270 70% 60% / 0.6)';
+                      e.currentTarget.style.boxShadow = '0 0 30px hsl(270 77% 50% / 0.1)';
+                      e.currentTarget.style.borderColor = 'hsl(270 70% 60% / 0.5)';
                     }
                   }}
                 >
@@ -335,7 +347,7 @@ export default function Process() {
                       fontWeight: 800,
                       fontSize: '1.35rem',
                       lineHeight: 1.2,
-                      color: 'hsl(0 0% 100%)',
+                      color: 'hsl(0 0% 8%)',
                       marginBottom: '0.75rem',
                     }}
                   >
@@ -348,7 +360,7 @@ export default function Process() {
                       fontFamily: "'Inter', system-ui, sans-serif",
                       fontSize: '0.95rem',
                       lineHeight: 1.6,
-                      color: 'hsl(0 0% 60%)',
+                      color: 'hsl(0 0% 30%)',
                     }}
                   >
                     {t(`process.reporting.${item.key}.text`)}
@@ -801,18 +813,21 @@ export default function Process() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* CTA Section */}
       <section className="py-24 bg-gradient-gold text-primary-foreground relative overflow-hidden">
-        <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 className="font-editorial text-display-md mb-6">{t('cta.primary.title')}</h2>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-background blur-3xl" />
+        </div>
+        <ScrollTransition yOffset={40} className="container mx-auto px-6 text-center relative z-10">
+          <h2 className="font-bold text-display-md mb-6"><TextReveal text={t('cta.primary.title')} /></h2>
           <p className="text-body-lg opacity-90 max-w-xl mx-auto mb-8">{t('cta.primary.text')}</p>
-          <Button asChild size="lg" variant="secondary" className="group">
+          <Button asChild size="lg" className="group bg-[#FC8264] hover:bg-[#eb7355] text-white border-none transition-colors">
             <Link to="/book-a-call">
               {t('cta.primary.button')}
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
-        </div>
+        </ScrollTransition>
       </section>
     </>
   );

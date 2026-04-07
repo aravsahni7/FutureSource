@@ -1,0 +1,387 @@
+/* ============================================
+   Process Carousel — Full-page sliding carousel
+   ============================================ */
+
+.process-carousel {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  height: 70vh;
+  max-height: 750px;
+  overflow: hidden;
+  background: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 14% 96%) 50%, hsl(220 14% 94%) 100%);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Large background number */
+.process-carousel__bg-number {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(180px, 22vw, 340px);
+  line-height: 1;
+  color: hsl(220 14% 90%);
+  pointer-events: none;
+  z-index: 1;
+  animation: processNumFadeIn 0.5s ease-out forwards;
+}
+
+/* Network SVG */
+.process-carousel__network {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+/* Content layout */
+.process-carousel__content {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem 4rem;
+  margin: 0 auto;
+}
+
+/* Image area */
+.process-carousel__image-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: processSlideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.process-carousel__image {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px hsl(270 77% 39% / 0.12));
+  transition: transform 0.4s ease;
+}
+
+.process-carousel__image:hover {
+  transform: scale(1.03);
+}
+
+/* Fix for generated images with hard square edges (rocket/arrows):
+   Fade out the borders smoothly and scale up slightly so they stretch further */
+.process-carousel__image--execution,
+.process-carousel__image--optimization {
+  transform: scale(1.15) translateY(5%);
+  -webkit-mask-image: radial-gradient(ellipse 95% 95% at 50% 50%, black 75%, transparent 100%);
+  mask-image: radial-gradient(ellipse 95% 95% at 50% 50%, black 75%, transparent 100%);
+}
+
+.process-carousel__image--execution:hover,
+.process-carousel__image--optimization:hover {
+  transform: scale(1.18) translateY(5%);
+}
+
+/* Make discovery image specifically larger as well */
+.process-carousel__image--discovery {
+  transform: scale(1.15);
+}
+
+.process-carousel__image--discovery:hover {
+  transform: scale(1.18);
+}
+
+/* Text area */
+.process-carousel__text-area {
+  animation: processSlideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.process-carousel__title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  color: hsl(0 0% 5%);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.process-carousel__duration {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  background: hsl(270 90% 92%);
+  color: hsl(270 77% 35%);
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.01em;
+}
+
+.process-carousel__description {
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.7;
+  color: hsl(0 0% 35%);
+  max-width: 460px;
+  margin-bottom: 1.5rem;
+}
+
+/* CTA Button */
+.process-carousel__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  background: hsl(270 77% 39%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px hsl(270 77% 39% / 0.3);
+}
+
+.process-carousel__cta:hover {
+  background: hsl(270 77% 45%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px hsl(270 77% 39% / 0.4);
+}
+
+/* Navigation arrows */
+.process-carousel__nav {
+  position: absolute;
+  bottom: 5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.process-carousel__arrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: hsl(0 0% 40%);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  padding: 0.5rem;
+}
+
+.process-carousel__arrow:hover {
+  color: hsl(270 77% 39%);
+}
+
+.process-carousel__arrow-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.process-carousel__arrow--prev:hover .process-carousel__arrow-icon {
+  transform: translateX(-4px);
+}
+
+.process-carousel__arrow--next:hover .process-carousel__arrow-icon {
+  transform: translateX(4px);
+}
+
+.process-carousel__arrow--next {
+  margin-left: auto;
+}
+
+.process-carousel__arrow-label {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Dot indicators */
+.process-carousel__dots {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.process-carousel__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: hsl(220 14% 82%);
+  border: none;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+}
+
+.process-carousel__dot:hover {
+  background: hsl(270 77% 70%);
+}
+
+.process-carousel__dot--active {
+  width: 32px;
+  background: hsl(270 77% 39%);
+}
+
+/* Progress bar */
+.process-carousel__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: hsl(220 14% 90%);
+  z-index: 10;
+}
+
+.process-carousel__progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, hsl(270 77% 39%), hsl(270 90% 65%));
+  animation: processProgressFill linear forwards;
+  transform-origin: left;
+  width: 100%;
+  border-radius: 0 2px 2px 0;
+}
+
+.process-carousel__progress-bar--paused {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes processSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes processSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes processNumFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+@keyframes processProgressFill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 900px) {
+  .process-carousel {
+    min-height: auto;
+    height: auto;
+    max-height: none;
+    padding: 3rem 0;
+  }
+
+  .process-carousel__content {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .process-carousel__image-area {
+    justify-content: center;
+  }
+
+  .process-carousel__image {
+    max-width: 280px;
+  }
+
+  .process-carousel__text-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .process-carousel__description {
+    text-align: center;
+  }
+
+  .process-carousel__bg-number {
+    font-size: 120px;
+    right: 50%;
+    transform: translate(50%, -50%);
+    opacity: 0.5;
+  }
+
+  .process-carousel__nav {
+    padding: 0 1.5rem;
+    bottom: 4rem;
+  }
+
+  .process-carousel__arrow-label {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .process-carousel__title {
+    font-size: 1.8rem;
+  }
+
+  .process-carousel__image {
+    max-width: 200px;
+  }
+
+  .process-carousel__dots {
+    bottom: 1.5rem;
+  }
+
+  .process-carousel__nav {
+    bottom: 3rem;
+  }
+}

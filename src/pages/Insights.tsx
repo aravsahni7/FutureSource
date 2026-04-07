@@ -49,12 +49,13 @@ export default function Insights() {
             style={{
               fontFamily: "'Inter', system-ui, sans-serif",
               fontWeight: 800,
-              fontSize: 'clamp(3rem, 6vw, 4.5rem)',
+              fontSize: 'clamp(3.5rem, 8vw, 6rem)',
               color: 'hsl(0 0% 8%)',
-              letterSpacing: '-0.02em',
+              letterSpacing: '-0.04em',
+              textTransform: 'uppercase',
             }}
           >
-            {language === 'en' ? 'Insights' : 'Perspectives'}
+            {language === 'en' ? 'INSIGHTS' : 'PERSPECTIVES'}
           </h1>
 
           {/* Central 3D Graphic with Floating Pills */}
@@ -96,28 +97,41 @@ export default function Insights() {
             />
 
             {/* Floating Category Pills */}
-            {categories.map((category) => {
+            {categories.map((category, index) => {
               const isActive = activeCategory === category;
               return (
-                <button
+                <div
                   key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={cn(
-                    "absolute whitespace-nowrap px-6 py-3 rounded-2xl shadow-sm transition-all duration-300 z-20 hover:scale-105",
-                    isActive
-                      ? "text-white shadow-md shadow-purple-500/30"
-                      : "bg-white/70 backdrop-blur-md text-slate-700 hover:bg-white border border-white"
-                  )}
+                  className="absolute z-20 pointer-events-auto"
                   style={{
-                    backgroundColor: isActive ? '#6419AD' : undefined,
-                    fontFamily: "'Inter', system-ui, sans-serif",
-                    fontWeight: 600,
-                    fontSize: '1.05rem',
                     ...pillStyles[category],
                   }}
                 >
-                  {categoryLabels[category][language]}
-                </button>
+                  <div
+                    style={{
+                      animation: 'float 6s ease-in-out infinite',
+                      animationDelay: `${index * 0.45}s`,
+                    }}
+                  >
+                    <button
+                      onClick={() => setActiveCategory(category)}
+                      className={cn(
+                        "whitespace-nowrap px-6 py-3 rounded-2xl shadow-sm transition-all duration-300 hover:scale-105",
+                        isActive
+                          ? "text-white shadow-md shadow-purple-500/30"
+                          : "bg-white/70 backdrop-blur-md text-slate-700 hover:bg-white border border-white"
+                      )}
+                      style={{
+                        backgroundColor: isActive ? '#6419AD' : undefined,
+                        fontFamily: "'Inter', system-ui, sans-serif",
+                        fontWeight: 600,
+                        fontSize: '1.05rem',
+                      }}
+                    >
+                      {categoryLabels[category][language]}
+                    </button>
+                  </div>
+                </div>
               );
             })}
           </div>
