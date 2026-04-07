@@ -45,8 +45,8 @@ const slides: ProcessSlide[] = [
     number: '04',
     image: optimizationImg,
     prevLabel: { en: 'Prev: Execution', fr: 'Préc: Exécution' },
-    ctaButton: { en: 'Explore Results', fr: 'Explorer les résultats' },
-    ctaLink: '/work',
+    ctaButton: { en: 'Contact Now', fr: 'Contactez-nous' },
+    ctaLink: '/contact',
   },
 ];
 

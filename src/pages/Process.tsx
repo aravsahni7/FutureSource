@@ -129,12 +129,13 @@ export default function Process() {
               style={{
                 padding: '0.5rem 1.25rem',
                 borderRadius: '999px',
-                background: 'hsl(270 60% 95%)',
-                color: 'hsl(270 50% 45%)',
+                background: '#FC8264',
+                color: '#fff',
                 fontSize: '0.8rem',
-                fontWeight: 500,
+                fontWeight: 600,
                 letterSpacing: '0.05em',
-                border: '1px solid hsl(270 50% 88%)',
+                border: 'none',
+                boxShadow: '0 4px 15px rgba(252, 130, 100, 0.3)',
               }}
             >
               {language === 'en' ? 'How we work' : 'Comment nous travaillons'}

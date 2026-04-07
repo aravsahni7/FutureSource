@@ -132,7 +132,7 @@ export default function About() {
 
             {/* Thin Thread Line */}
             <path
-              d="M100,-50 C150,300 250,750 600,800 C900,850 1200,600 1500,450"
+              d="M100,-50 C150,300 250,600 500,500 C700,420 850,350 1050,200"
               fill="none"
               stroke="#6419AD"
               strokeWidth="3"
@@ -216,7 +216,7 @@ export default function About() {
           </div>
 
           {/* Bottom/Right Section - Mission */}
-          <div className="w-full flex justify-end mt-auto pt-32 md:pt-48 pb-12 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+          <div className="w-full flex justify-end mt-auto pt-40 md:pt-56 pb-12 animate-fade-in" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
             <div className="max-w-lg text-right">
               {/* Mission Heading with hand-drawn SVG underline */}
               <div className="inline-flex flex-col items-end mb-8">
