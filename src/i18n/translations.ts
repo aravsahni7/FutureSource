@@ -226,6 +226,7 @@ export const translations = {
         en: 'We work with SMBs and service-based businesses that need structure, clarity, and predictable growth—delivered by people who actually do the work.',
         fr: 'Nous aidons les PME et entreprises de services qui ont besoin de structure, de clarté et d’une croissance prévisible — livrées par des personnes qui font réellement le travail.',
       },
+      cta: { en: 'Join Us', fr: 'Rejoignez-nous' },
     },
 
     story: {
