@@ -17,7 +17,7 @@ import About from "@/pages/About";
 import Process from "@/pages/Process";
 import Pricing from "@/pages/Pricing";
 import Insights from "@/pages/Insights";
-import InsightDetail from "@/pages/InsightDetail";
+
 import Contact from "@/pages/Contact";
 import BookCall from "@/pages/BookCall";
 import Privacy from "@/pages/Privacy";
@@ -88,7 +88,7 @@ const App = () => {
                 <Route path="/process" element={<Process />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/insights" element={<Insights />} />
-                <Route path="/insights/:slug" element={<InsightDetail />} />
+
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/book-a-call" element={<BookCall />} />
                 <Route path="/privacy" element={<Privacy />} />

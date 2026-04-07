@@ -282,8 +282,8 @@ export const translations = {
     discovery: {
       title: { en: 'Discovery', fr: 'Découverte' },
       description: {
-        en: 'Deep dive into your business, goals, and current marketing performance.',
-        fr: 'Plongée profonde dans votre entreprise, vos objectifs et vos performances marketing actuelles.',
+        en: 'We dive deep into your business, goals, target audience, and market landscape. This phase involves stakeholder interviews, data analysis, and competitor research to build a solid foundation for growth.',
+        fr: 'Nous plongeons dans votre entreprise, vos objectifs, votre public cible et le paysage du marché. Cette phase comprend des entretiens avec les parties prenantes, l\'analyse de données et la recherche concurrentielle pour bâtir une base solide de croissance.',
       },
       duration: { en: 'Week 1', fr: 'Semaine 1' },
     },
@@ -298,16 +298,16 @@ export const translations = {
     execution: {
       title: { en: 'Execution', fr: 'Exécution' },
       description: {
-        en: 'Campaign build, creative development, and launch.',
-        fr: 'Construction de campagne, développement créatif et lancement.',
+        en: 'Campaign build, creative development, and launch. We bring the strategy to life with precision and impact.',
+        fr: 'Construction de campagne, développement créatif et lancement. Nous donnons vie à la stratégie avec précision et impact.',
       },
       duration: { en: 'Week 3-4', fr: 'Semaine 3-4' },
     },
     optimization: {
       title: { en: 'Optimization', fr: 'Optimisation' },
       description: {
-        en: 'Continuous testing, refinement, and scaling of winning strategies.',
-        fr: 'Tests continus, raffinement et mise à l\'échelle des stratégies gagnantes.',
+        en: 'Continuous testing, refinement, and scaling of winning strategies to maximize performance over time. We actively monitor key metrics, analyze data, and implement iterative improvements to ensure your marketing efforts deliver sustained growth and long-term success.',
+        fr: 'Tests continus, raffinement et mise à l\'échelle des stratégies gagnantes pour maximiser les performances au fil du temps. Nous surveillons activement les indicateurs clés, analysons les données et mettons en œuvre des améliorations itératives pour garantir que vos efforts marketing génèrent une croissance soutenue et un succès à long terme.',
       },
       duration: { en: 'Ongoing', fr: 'Continu' },
     },

@@ -1,28 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Mail } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 import { useLanguage } from '@/i18n/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { blogPosts, getFeaturedBlogPosts } from '@/data/content';
 import { cn } from '@/lib/utils';
-import { ScrollTransition } from '@/components/animations/ScrollTransition';
-import { TextReveal } from '@/components/animations/TextReveal';
-import fbArticleImg from '@/data/facebook-article.png';
-import seoArticleImg from '@/data/seo.png';
-import croArticleImg from '@/data/cro.png';
-import googleAdsImg from '@/data/google-ads.png';
-import cookieImg from '@/data/cookie.png';
-import tiktokImg from '@/data/tiktok.png';
-import cro2Img from '@/data/cro2.png';
-import trendsImg from '@/data/what.png';
-import creativeImg from '@/data/even.png';
-
-// EmailJS configuration
-const EMAILJS_PUBLIC_KEY = 'f8yRIopzVihwh4c7w';
-const EMAILJS_SERVICE_ID = 'service_o5x843p';
-const EMAILJS_TEMPLATE_ID = 'template_9aj5sqh';
+import bookImg from '@/data/3d-book-simple.png';
 
 const categories = ['all', 'strategy', 'abm', 'paidMedia', 'seo', 'salesPipeline', 'cro', 'trends'] as const;
 
@@ -37,230 +16,144 @@ const categoryLabels: Record<string, { en: string; fr: string }> = {
   trends: { en: 'Trends', fr: 'Tendances' },
 };
 
+// Organic floating positions around the center
+const pillStyles: Record<string, React.CSSProperties> = {
+  all: { bottom: '0%', left: '50%', transform: 'translate(-50%, 0)' },
+  strategy: { top: '15%', left: '20%', transform: 'translate(-50%, -50%) rotate(-6deg)' },
+  abm: { top: '40%', left: '5%', transform: 'translate(-50%, -50%) rotate(2deg)' },
+  paidMedia: { top: '70%', left: '18%', transform: 'translate(-50%, -50%) rotate(-4deg)' },
+  seo: { top: '35%', left: '28%', transform: 'translate(-50%, -50%) rotate(3deg)' },
+  salesPipeline: { top: '18%', right: '15%', transform: 'translate(50%, -50%) rotate(5deg)' },
+  cro: { top: '40%', right: '5%', transform: 'translate(50%, -50%) rotate(-2deg)' },
+  trends: { top: '70%', right: '18%', transform: 'translate(50%, -50%) rotate(4deg)' },
+};
+
 export default function Insights() {
-  const { language, t } = useLanguage();
+  const { language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [email, setEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
-
-  const featuredPosts = getFeaturedBlogPosts();
-  const filteredPosts = activeCategory === 'all'
-    ? blogPosts
-    : blogPosts.filter(p => p.category === activeCategory);
-
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          subscriber_email: email,
-          to_email: 'hello@futuresource.ca',
-        },
-        EMAILJS_PUBLIC_KEY
-      );
-      setIsSubscribed(true);
-      setEmail('');
-    } catch (error) {
-      console.error('Error sending newsletter subscription email:', error);
-    }
-  };
 
   return (
     <>
-      {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-hero grain-overlay relative">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl">
-            <span className="inline-block px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-overline uppercase tracking-widest mb-6 animate-fade-in">
-              {language === 'en' ? 'Growth Knowledge' : 'Connaissances croissance'}
-            </span>
-            <h1 className="font-editorial text-display-lg mb-6 animate-fade-in delay-100">
-              {t('insights.title')}
-            </h1>
-            <p className="text-body-lg text-muted-foreground animate-fade-in delay-200">
-              {t('insights.subtitle')}
+      {/* Hero Section */}
+      <section
+        className="pt-24 pb-16 relative overflow-hidden flex flex-col items-center"
+        style={{
+          background: 'linear-gradient(180deg, hsl(220 14% 96%) 0%, hsl(0 0% 100%) 100%)',
+          minHeight: '100vh',
+        }}
+      >
+        <div className="container mx-auto px-6 flex flex-col items-center justify-center relative z-10 w-full flex-grow">
+          
+          <h1
+            className="text-center mb-12 animate-fade-in"
+            style={{
+              fontFamily: "'Inter', system-ui, sans-serif",
+              fontWeight: 800,
+              fontSize: 'clamp(3rem, 6vw, 4.5rem)',
+              color: 'hsl(0 0% 8%)',
+              letterSpacing: '-0.02em',
+            }}
+          >
+            {language === 'en' ? 'Insights' : 'Perspectives'}
+          </h1>
+
+          {/* Central 3D Graphic with Floating Pills */}
+          <div
+            className="relative flex items-center justify-center animate-fade-in delay-100"
+            style={{
+              width: '100%',
+              maxWidth: '800px',
+              height: '400px',
+              marginBottom: '4rem',
+            }}
+          >
+            {/* Glowing background behind image */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
+              style={{
+                width: '350px',
+                height: '350px',
+                background: 'radial-gradient(circle, rgba(162, 59, 255, 0.4) 0%, rgba(162, 59, 255, 0) 70%)',
+                filter: 'blur(30px)',
+                zIndex: 0,
+              }}
+            />
+
+            {/* Central Book Image */}
+            <img
+              src={bookImg}
+              alt="Knowledge and Insights"
+              className="relative z-10"
+              style={{
+                width: '100%',
+                maxWidth: '400px',
+                height: 'auto',
+                objectFit: 'contain',
+                mixBlendMode: 'darken',
+                maskImage: 'radial-gradient(circle at center, black 50%, transparent 80%)',
+                WebkitMaskImage: 'radial-gradient(circle at center, black 50%, transparent 80%)',
+              }}
+            />
+
+            {/* Floating Category Pills */}
+            {categories.map((category) => {
+              const isActive = activeCategory === category;
+              return (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={cn(
+                    "absolute whitespace-nowrap px-6 py-3 rounded-2xl shadow-sm transition-all duration-300 z-20 hover:scale-105",
+                    isActive
+                      ? "text-white shadow-md shadow-purple-500/30"
+                      : "bg-white/70 backdrop-blur-md text-slate-700 hover:bg-white border border-white"
+                  )}
+                  style={{
+                    backgroundColor: isActive ? '#6419AD' : undefined,
+                    fontFamily: "'Inter', system-ui, sans-serif",
+                    fontWeight: 600,
+                    fontSize: '1.05rem',
+                    ...pillStyles[category],
+                  }}
+                >
+                  {categoryLabels[category][language]}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Empty State message */}
+          <div className="flex flex-col items-center justify-center text-center animate-fade-in delay-200 mt-8">
+            <h2
+              style={{
+                fontFamily: "'Inter', system-ui, sans-serif",
+                fontWeight: 800,
+                fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+                color: 'hsl(0 0% 8%)',
+                letterSpacing: '-0.02em',
+                marginBottom: '1rem',
+              }}
+            >
+              {language === 'en' ? 'Stay Tuned!' : 'Restez à l\'écoute!'}
+            </h2>
+
+            <p
+              style={{
+                fontFamily: "'Inter', system-ui, sans-serif",
+                fontSize: '1.15rem',
+                color: 'hsl(0 0% 45%)',
+                maxWidth: '500px',
+                lineHeight: 1.6,
+              }}
+            >
+              {language === 'en'
+                ? 'We\'re crafting insightful articles to help you grow. Our first set of growth guides will be dropping soon.'
+                : 'Nous préparons des articles perspicaces pour vous aider à croître. Nos premiers guides seront bientôt disponibles.'}
             </p>
           </div>
+
         </div>
       </section>
-
-      {/* Featured Posts */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-6">
-          <ScrollTransition className="mb-8">
-            <h2 className="font-editorial text-heading-xl">
-              <TextReveal text={language === 'en' ? 'Featured Articles' : 'Articles vedettes'} />
-            </h2>
-          </ScrollTransition>
-          <ScrollTransition stagger={true} className="grid md:grid-cols-3 gap-8">
-            {featuredPosts.slice(0, 3).map((post, index) => (
-              <Link
-                key={post.id}
-                to={`/insights/${post.slug}`}
-                className={cn(
-                  "group block",
-                  index === 0 && "md:col-span-2 md:row-span-2"
-                )}
-              >
-                <article className={cn(
-                  "h-full rounded-2xl border border-border bg-card overflow-hidden card-editorial flex flex-col"
-                )}>
-                  <div className={cn(
-                    "bg-gradient-editorial relative overflow-hidden",
-                    index === 0 ? "aspect-[16/9]" : "aspect-video"
-                  )}>
-                    {post.slug === 'meta-ads-2025-playbook' && (
-                      <img src={fbArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'seo-content-strategy-guide' && (
-                      <img src={seoArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'conversion-rate-psychology' && (
-                      <img src={croArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'google-ads-performance-max' && (
-                      <img src={googleAdsImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'attribution-modeling-guide' && (
-                      <img src={cookieImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'tiktok-ads-for-ecommerce' && (
-                      <img src={tiktokImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'ab-testing-mistakes' && (
-                      <img src={cro2Img} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'marketing-trends-2025' && (
-                      <img src={trendsImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'creative-testing-framework' && (
-                      <img src={creativeImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-editorial text-heading-lg text-muted-foreground/20">
-                        {categoryLabels[post.category][language]}
-                      </span>
-                    </div>
-                  </div>
-                  <div className={cn(
-                    "p-6 flex-1 flex flex-col",
-                    index === 0 && "md:p-8"
-                  )}>
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-caption">
-                        {categoryLabels[post.category][language]}
-                      </span>
-                      <span className="text-caption text-muted-foreground">{post.readTime[language]}</span>
-                    </div>
-                    <h3 className={cn(
-                      "font-editorial mb-3 group-hover:text-primary transition-colors flex-1",
-                      index === 0 ? "text-heading-xl md:text-display-sm" : "text-heading-lg"
-                    )}>
-                      {post.title[language]}
-                    </h3>
-                    <p className="text-body-md text-muted-foreground">
-                      {post.excerpt[language]}
-                    </p>
-                  </div>
-                </article>
-              </Link>
-            ))}
-          </ScrollTransition>
-        </div>
-      </section>
-
-      {/* Category Filters */}
-      <section className="py-8 border-y border-border bg-background sticky top-20 z-30">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={cn(
-                  "px-5 py-2.5 rounded-full text-body-sm font-medium transition-all duration-300",
-                  activeCategory === category
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                )}
-              >
-                {categoryLabels[category][language]}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* All Posts */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-6">
-          <ScrollTransition stagger={true} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post) => (
-              <Link
-                key={post.id}
-                to={`/insights/${post.slug}`}
-                className="group block"
-              >
-                <article className="h-full rounded-2xl border border-border bg-card overflow-hidden card-editorial flex flex-col">
-                  <div className="aspect-video bg-gradient-editorial relative overflow-hidden">
-                    {post.slug === 'meta-ads-2025-playbook' && (
-                      <img src={fbArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'seo-content-strategy-guide' && (
-                      <img src={seoArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'conversion-rate-psychology' && (
-                      <img src={croArticleImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'google-ads-performance-max' && (
-                      <img src={googleAdsImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'attribution-modeling-guide' && (
-                      <img src={cookieImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'tiktok-ads-for-ecommerce' && (
-                      <img src={tiktokImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'ab-testing-mistakes' && (
-                      <img src={cro2Img} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'marketing-trends-2025' && (
-                      <img src={trendsImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    {post.slug === 'creative-testing-framework' && (
-                      <img src={creativeImg} alt={post.title[language]} className="w-full h-full object-cover" />
-                    )}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-editorial text-heading-md text-muted-foreground/20">
-                        {categoryLabels[post.category][language]}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-caption">
-                        {categoryLabels[post.category][language]}
-                      </span>
-                      <span className="text-caption text-muted-foreground">{post.readTime[language]}</span>
-                    </div>
-                    <h3 className="font-editorial text-heading-lg mb-3 group-hover:text-primary transition-colors flex-1">
-                      {post.title[language]}
-                    </h3>
-                    <p className="text-body-sm text-muted-foreground line-clamp-2">
-                      {post.excerpt[language]}
-                    </p>
-                  </div>
-                </article>
-              </Link>
-            ))}
-          </ScrollTransition>
-        </div>
-      </section>
-
-
     </>
   );
 }
