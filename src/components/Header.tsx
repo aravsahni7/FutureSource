@@ -208,7 +208,7 @@ export function Header() {
         {/* Menu Panel */}
         <div
           className={cn(
-            'absolute right-0 top-0 bottom-0 w-full max-w-sm bg-background shadow-editorial',
+            'absolute inset-0 w-full h-full bg-background',
             'transform transition-transform duration-500 ease-out',
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           )}
