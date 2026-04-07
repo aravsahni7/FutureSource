@@ -66,12 +66,30 @@ export default function About() {
             drop-shadow(0 0 55px rgba(192, 132, 252, 0.35))
             drop-shadow(0 0 90px rgba(192, 132, 252, 0.18));
         }
+
+        /* Mobile: disable heavy animations to prevent white screen lag */
+        @media (max-width: 768px) {
+          .about-hero-svg-bg {
+            display: none !important;
+          }
+          .p1, .p2, .p3 {
+            animation: none !important;
+            opacity: 1 !important;
+          }
+          .drip, .drip1, .drip2, .drip3 {
+            animation: none !important;
+            opacity: 0 !important;
+          }
+          .graffiti-glow {
+            filter: none !important;
+          }
+        }
       `}</style>
       {/* Unified Hero & Mission Section */}
       <section className="relative w-full min-h-[90vh] bg-[#fcfcfd] overflow-hidden flex flex-col pt-32 pb-24">
         
         {/* Background SVG Flow Lines */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-90">
+        <div className="about-hero-svg-bg absolute inset-0 z-0 pointer-events-none opacity-90">
           <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" className="w-full h-full text-primary">
             <defs>
               <filter id="shadowFilter" x="-20%" y="-20%" width="140%" height="140%">

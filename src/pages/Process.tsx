@@ -73,7 +73,7 @@ export default function Process() {
       }}>
         {/* Geometric wave / mesh background */}
         <svg
-          className="absolute bottom-0 right-0 pointer-events-none"
+          className="process-hero-waves absolute bottom-0 right-0 pointer-events-none"
           style={{ width: '55%', height: 'auto', opacity: 0.10 }}
           viewBox="0 0 600 400"
           fill="none"
@@ -113,6 +113,11 @@ export default function Process() {
           @keyframes processWaveDrift {
             0% { transform: translateY(0px); }
             100% { transform: translateY(-8px); }
+          }
+          @media (max-width: 768px) {
+            .process-hero-waves {
+              display: none !important;
+            }
           }
         `}</style>
 
@@ -213,7 +218,7 @@ export default function Process() {
 
         {/* Flowing orange/coral wave SVG behind cards */}
         <svg
-          className="absolute w-full h-full pointer-events-none"
+          className="process-reporting-waves absolute w-full h-full pointer-events-none"
           style={{ top: '50%', left: 0, transform: 'translateY(-50%)', zIndex: 1, minHeight: '600px' }}
           viewBox="0 -50 1200 600"
           preserveAspectRatio="none"
@@ -266,6 +271,11 @@ export default function Process() {
           @keyframes reportingCardGlow {
             0%, 100% { box-shadow: 0 0 20px hsl(270 77% 50% / 0.1); }
             50% { box-shadow: 0 0 35px hsl(270 77% 50% / 0.15); }
+          }
+          @media (max-width: 768px) {
+            .process-reporting-waves {
+              display: none !important;
+            }
           }
         `}</style>
 

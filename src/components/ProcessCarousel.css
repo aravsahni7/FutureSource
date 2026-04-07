@@ -385,3 +385,41 @@
     bottom: 3rem;
   }
 }
+
+/* Mobile: disable slide-in animations to prevent white flash / blank loading */
+@media (max-width: 900px) {
+  .process-carousel__image-area {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .process-carousel__text-area {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
+  .process-carousel__bg-number {
+    animation: none !important;
+    opacity: 0.5 !important;
+  }
+
+  .process-carousel__network {
+    display: none;
+  }
+
+  .process-carousel {
+    will-change: auto;
+    contain: layout style;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .process-carousel__image-area,
+  .process-carousel__text-area,
+  .process-carousel__bg-number,
+  .process-carousel__progress-bar {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}

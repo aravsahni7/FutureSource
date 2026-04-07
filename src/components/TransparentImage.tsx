@@ -27,8 +27,14 @@ export default function TransparentImage({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [loaded, setLoaded] = useState(false);
+  const [isMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
 
   useEffect(() => {
+    // On mobile, skip expensive canvas pixel processing
+    if (isMobile) return;
+
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.src = src;
@@ -72,7 +78,23 @@ export default function TransparentImage({
       ctx.putImageData(imageData, 0, 0);
       setLoaded(true);
     };
-  }, [src, threshold]);
+  }, [src, threshold, isMobile]);
+
+  // On mobile, render a simple img tag — skip canvas processing entirely
+  if (isMobile) {
+    return (
+      <img
+        src={src}
+        alt={alt}
+        className={className}
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
+        draggable={draggable}
+      />
+    );
+  }
 
   return (
     <canvas

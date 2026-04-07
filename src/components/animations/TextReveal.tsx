@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, } from 'framer-motion';
 
 interface TextRevealProps {
@@ -9,7 +9,18 @@ interface TextRevealProps {
 
 export function TextReveal({ text, className = "", delay = 0 }: TextRevealProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
+  const isInView = useInView(ref, { once: true, margin: "200px" });
+
+  // Disable scroll-triggered animations on mobile to prevent blank loading buffers
+  const [isMobile, setIsMobile] = useState(
+    typeof window !== 'undefined' ? window.innerWidth < 768 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize, { passive: true });
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   const words = text.split(" ");
 
   const container = {
@@ -44,8 +55,8 @@ export function TextReveal({ text, className = "", delay = 0 }: TextRevealProps)
       ref={ref}
       className={`inline-flex flex-wrap ${className}`}
       variants={container}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      initial={isMobile ? "visible" : "hidden"}
+      animate={isMobile ? "visible" : (isInView ? "visible" : "hidden")}
     >
       {words.map((word, index) => (
         <span key={index} className="inline-flex mr-[0.25em] overflow-hidden leading-tight py-1">

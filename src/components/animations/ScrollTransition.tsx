@@ -19,7 +19,7 @@ export function ScrollTransition({
   stagger = false
 }: ScrollTransitionProps) {
   const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "400px" });
+  const isInView = useInView(ref, { once: true, margin: "800px" });
   
   // Disable scroll transitions on mobile to prevent blank loading buffers
   const [isMobile, setIsMobile] = React.useState(
