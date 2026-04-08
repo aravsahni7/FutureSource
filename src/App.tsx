@@ -3,10 +3,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import Layout from "@/components/Layout";
 import ScrollToTop from "@/components/ScrollToTop";
+import { MetaHead } from "@/components/MetaHead";
 import Home from "@/pages/Home";
 import IntroScreen from "@/components/IntroScreen";
 import Services from "@/pages/Services";
@@ -26,6 +28,18 @@ import Cookies from "@/pages/Cookies";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+// Component to track route changes and update meta tags
+const LocationTracker = ({ children }: { children: React.ReactNode }) => {
+  const location = useLocation();
+
+  return (
+    <>
+      <MetaHead pathname={location.pathname} />
+      {children}
+    </>
+  );
+};
 
 const App = () => {
   // Only show intro once per browser session and prevent on page reloads
@@ -69,38 +83,42 @@ const App = () => {
   };
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <LanguageProvider>
-        <TooltipProvider>
-          {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
-          <Toaster />
-          <Sonner />
-          <BrowserRouter basename="/">
-            <ScrollToTop />
-            <Routes>
-              <Route element={<Layout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/services/:slug" element={<ServiceDetail />} />
-                <Route path="/work" element={<Work />} />
-                <Route path="/work/:slug" element={<CaseStudyDetail />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/process" element={<Process />} />
-                <Route path="/pricing" element={<Pricing />} />
-                <Route path="/insights" element={<Insights />} />
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <LanguageProvider>
+          <TooltipProvider>
+            {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
+            <Toaster />
+            <Sonner />
+            <BrowserRouter basename="/">
+              <LocationTracker>
+                <ScrollToTop />
+                <Routes>
+                  <Route element={<Layout />}>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/services" element={<Services />} />
+                    <Route path="/services/:slug" element={<ServiceDetail />} />
+                    <Route path="/work" element={<Work />} />
+                    <Route path="/work/:slug" element={<CaseStudyDetail />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/process" element={<Process />} />
+                    <Route path="/pricing" element={<Pricing />} />
+                    <Route path="/insights" element={<Insights />} />
 
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/book-a-call" element={<BookCall />} />
-                <Route path="/privacy" element={<Privacy />} />
-                <Route path="/terms" element={<Terms />} />
-                <Route path="/cookies" element={<Cookies />} />
-              </Route>
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </LanguageProvider>
-    </QueryClientProvider>
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/book-a-call" element={<BookCall />} />
+                    <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/terms" element={<Terms />} />
+                    <Route path="/cookies" element={<Cookies />} />
+                  </Route>
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </LocationTracker>
+            </BrowserRouter>
+          </TooltipProvider>
+        </LanguageProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 };
 
