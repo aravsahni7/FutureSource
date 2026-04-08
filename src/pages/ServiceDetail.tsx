@@ -22,9 +22,9 @@ const iconMap: Record<string, React.ElementType> = {
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug: string }>();
   const { language, t } = useLanguage();
-  
+
   const service = slug ? getServiceBySlug(slug) : undefined;
-  
+
   if (!service) {
     return <Navigate to="/services" replace />;
   }
@@ -45,21 +45,21 @@ export default function ServiceDetail() {
             {t('common.back')} {t('nav.services')}
           </Link>
 
-          <div className="flex items-start gap-6 mb-8">
-            <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
-              <Icon className="h-10 w-10 text-primary" />
+          <div className="flex flex-col md:flex-row items-start gap-5 md:gap-6 mb-8">
+            <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+              <Icon className="h-8 w-8 md:h-10 md:w-10 text-primary" />
             </div>
-            <div>
+            <div className="min-w-0">
               <p className="text-caption text-muted-foreground uppercase tracking-wider mb-2">
                 {service.tagline[language]}
               </p>
-              <h1 className="font-editorial text-display-lg animate-fade-in">
+              <h1 className="font-editorial text-4xl sm:text-5xl md:text-display-lg animate-fade-in break-words md:break-normal">
                 {service.title[language]}
               </h1>
             </div>
           </div>
 
-          <p className="text-body-lg text-muted-foreground max-w-3xl animate-fade-in delay-100">
+          <p className="text-body-lg text-muted-foreground w-full max-w-3xl animate-fade-in delay-100">
             {service.description[language]}
           </p>
         </div>
@@ -167,7 +167,7 @@ export default function ServiceDetail() {
                     <p className="text-muted-foreground mb-4">{t('demos.fitness.desc')}</p>
                   </div>
                 </div>
-                
+
                 {/* Demo 2 */}
                 <div className="bg-card border border-border rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors">
                   <div className="aspect-[4/3] bg-muted relative flex items-center justify-center p-4">
@@ -186,7 +186,7 @@ export default function ServiceDetail() {
                     <p className="text-muted-foreground mb-4">{t('demos.restaurant.desc')}</p>
                   </div>
                 </div>
-                
+
                 {/* Demo 3 */}
                 <div className="bg-card border border-border rounded-2xl overflow-hidden group hover:border-primary/50 transition-colors">
                   <div className="aspect-[4/3] bg-muted relative flex items-center justify-center p-4">
