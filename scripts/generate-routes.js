@@ -92,7 +92,8 @@ async function generateRoutes() {
   });
 
   // Filter out /work routes since the Work page is hidden
-  const filteredRoutes = routes.filter(route => !route.path.startsWith('/work'));
+  // Filter out /insights detail routes since only main insights page exists
+  const filteredRoutes = routes.filter(route => !route.path.startsWith('/work') && !route.path.startsWith('/insights/'));
 
   const distDir = path.resolve(__dirname, '../dist');
   const templatePath = path.join(distDir, 'index.html');

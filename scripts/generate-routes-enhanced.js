@@ -62,51 +62,6 @@ const seoData = {
     description: "Read our latest insights on digital marketing trends, strategies, and best practices. Expert articles on SEO, paid ads, and CRO.",
     ogType: "website",
   },
-  "/insights/meta-ads-2025-playbook": {
-    title: "Meta Ads 2025 Playbook | Strategy Guide for Facebook & Instagram",
-    description: "Complete guide to Meta advertising in 2025. Strategies for Advantage+ campaigns, budget allocation, and ROI optimization.",
-    ogType: "article",
-  },
-  "/insights/seo-content-strategy-guide": {
-    title: "SEO Content Strategy Guide | Technical SEO Best Practices",
-    description: "Comprehensive guide to developing an effective SEO content strategy. Expert recommendations for ranking and organic growth.",
-    ogType: "article",
-  },
-  "/insights/conversion-rate-psychology": {
-    title: "Conversion Rate Psychology | Improve User Behavior & CRO",
-    description: "Understanding psychological principles to improve conversion rates. Behavioral science insights for web design and marketing.",
-    ogType: "article",
-  },
-  "/insights/google-ads-performance-max": {
-    title: "Google Ads Performance Max Guide | Campaign Optimization",
-    description: "Master Google Performance Max campaigns. AI-driven advertising strategy for scaling on Google Search, Shopping, and Display.",
-    ogType: "article",
-  },
-  "/insights/attribution-modeling-guide": {
-    title: "Attribution Modeling Guide | Multi-Touch Attribution Strategy",
-    description: "Complete guide to attribution modeling in digital marketing. Understanding customer journey and touchpoint value.",
-    ogType: "article",
-  },
-  "/insights/tiktok-ads-for-ecommerce": {
-    title: "TikTok Ads for eCommerce | Strategy & Best Practices",
-    description: "Expert guide to running profitable TikTok ad campaigns for eCommerce stores. Creative strategies and platform best practices.",
-    ogType: "article",
-  },
-  "/insights/ab-testing-mistakes": {
-    title: "A/B Testing Mistakes to Avoid | CRO Best Practices",
-    description: "Learn the most common A/B testing mistakes and how to run valid experiments. Proper statistical analysis and test design.",
-    ogType: "article",
-  },
-  "/insights/marketing-trends-2025": {
-    title: "Digital Marketing Trends 2025 | Industry Predictions",
-    description: "Top digital marketing trends and predictions for 2025. Expert insights on AI, automation, and marketing strategy shifts.",
-    ogType: "article",
-  },
-  "/insights/creative-testing-framework": {
-    title: "Creative Testing Framework | Optimize Ad Creative Performance",
-    description: "Systematic approach to testing and optimizing ad creative. Framework for improving creative performance and ROI.",
-    ogType: "article",
-  },
   "/contact": {
     title: "Contact FutureSource | Get in Touch with Our Team",
     description: "Contact our digital marketing agency. Get in touch to discuss your project and how we can help scale your business.",
