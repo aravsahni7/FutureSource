@@ -5,6 +5,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { getServiceBySlug, getCaseStudiesByService, services } from '@/data/content';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { CMSCRMLogos } from '@/components/CMSCRMLogo';
 import { cn } from '@/lib/utils';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import { TextReveal } from '@/components/animations/TextReveal';
@@ -207,6 +208,38 @@ export default function ServiceDetail() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* CMS Platforms Section - Web Design Only */}
+      {service.slug === 'web-design' && (
+        <section className="py-16 bg-background border-t border-border/40">
+          <div className="container mx-auto px-6">
+            <ScrollTransition yOffset={30} className="text-center mb-12">
+              <h2 className="font-editorial text-display-sm mb-4">
+                {language === 'en' ? 'CMS & E-commerce Platforms' : 'Plateformes CMS et e-commerce'}
+              </h2>
+              <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+                {language === 'en'
+                  ? 'We build beautiful, high-performing websites on the platforms that matter most to your business. From WordPress to Shopify, Webflow to Drupal, we\'ve got you covered.'
+                  : 'Nous construisons des sites Web magnifiques et performants sur les plateformes les plus importantes pour votre entreprise. De WordPress à Shopify, Webflow à Drupal, nous sommes là pour vous.'}
+              </p>
+            </ScrollTransition>
+            
+            <CMSCRMLogos
+              ids={['wordpress', 'shopify', 'webflow', 'drupal', 'wix', 'squarespace']}
+              showNames={true}
+              className="mt-8"
+            />
+
+            <ScrollTransition yOffset={30} className="mt-12 text-center">
+              <p className="text-sm text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                {language === 'en'
+                  ? 'Each platform has unique strengths. We help you choose the right one for your business model, then optimize it for maximum conversion and performance.'
+                  : 'Chaque plateforme a des points forts uniques. Nous vous aidons à choisir celle qui convient à votre modèle commercial, puis l\'optimisons pour une conversion et des performances maximales.'}
+              </p>
+            </ScrollTransition>
           </div>
         </section>
       )}

@@ -4,6 +4,7 @@ import { ArrowRight, Target, Search, TrendingUp, Sparkles, Check, X } from 'luci
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { services } from '@/data/content';
+import { CMSCRMLogos } from '@/components/CMSCRMLogo';
 import { cn } from '@/lib/utils';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import { TextReveal } from '@/components/animations/TextReveal';
@@ -343,6 +344,31 @@ export default function Services() {
               </div>
             ))}
           </ScrollTransition>
+        </div>
+      </section>
+
+      {/* Technologies & Integration Section */}
+      <section className="py-24 bg-background border-t border-border/40">
+        <div className="container mx-auto px-6">
+          <ScrollTransition yOffset={30} className="text-center mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-caption uppercase tracking-wider mb-4 font-medium">
+              {language === 'en' ? 'Tech Stack' : 'Pile technologique'}
+            </span>
+            <h2 className="font-editorial text-display-md mb-4">
+              {language === 'en' ? 'Platforms & Integrations' : 'Plateformes et intégrations'}
+            </h2>
+            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+              {language === 'en'
+                ? 'We work with industry-leading CMS, CRM, and e‑commerce platforms to build integrated solutions that power your business.'
+                : 'Nous travaillons avec les principales plateformes CMS, CRM et e‑commerce de l\'industrie pour construire des solutions intégrées qui alimentent votre entreprise.'}
+            </p>
+          </ScrollTransition>
+
+          <CMSCRMLogos
+            category="all"
+            showNames={true}
+            className="mt-12"
+          />
         </div>
       </section>
 

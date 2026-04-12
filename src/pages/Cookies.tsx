@@ -95,8 +95,8 @@ export default function Cookies() {
               </h2>
               <p className="text-body-md text-muted-foreground leading-relaxed">
                 {language === 'en'
-                  ? 'If you have any questions about our use of cookies, please contact us at privacy@futuresource.co.'
-                  : 'Si vous avez des questions concernant notre utilisation des cookies, veuillez nous contacter à privacy@futuresource.co.'
+                  ? 'If you have any questions about our use of cookies, please contact us at privacy@futuresource.ca.'
+                  : 'Si vous avez des questions concernant notre utilisation des cookies, veuillez nous contacter à privacy@futuresource.ca.'
                 }
               </p>
             </section>

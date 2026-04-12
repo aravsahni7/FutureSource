@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { getFeaturedCaseStudies, testimonials } from '@/data/content';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import { TextReveal } from '@/components/animations/TextReveal';
+import { CMSCRMLogos } from '@/components/CMSCRMLogo';
 
 import demoFitness from '@/assets/demo-fitness.jpg';
 import demoRestaurant from '@/assets/demo-restaurant.jpg';
@@ -479,7 +480,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Technologies & Platforms Section - SEO & Brand Value */}
+      <section className="py-24 bg-background border-y border-border/40">
+        <div className="container mx-auto px-6">
+          <ScrollTransition yOffset={30} className="text-center mb-16">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-caption uppercase tracking-wider mb-4 font-medium">
+              Popular Platforms
+            </span>
+            <h2 className="font-bold text-display-sm md:text-display-md mb-4">Platforms We Master</h2>
+            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
+              We integrate and optimize across the industry's leading CMS, CRM, and e‑commerce platforms to deliver seamless solutions.
+            </p>
+          </ScrollTransition>
 
+          <CMSCRMLogos
+            category="all"
+            showNames={true}
+            className="mt-12"
+          />
+
+          {/* Supporting text for SEO */}
+          <ScrollTransition yOffset={30} className="mt-16 text-center">
+            <p className="text-sm text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Whether you're running your business on WordPress, Shopify, HubSpot, Salesforce, Webflow, or any other leading platform, our expertise spans across all major CMS, CRM, and e-commerce solutions. We help you unlock the full potential of your tech stack.
+            </p>
+          </ScrollTransition>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-24 bg-gradient-gold text-primary-foreground relative overflow-hidden">
