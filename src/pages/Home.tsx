@@ -484,7 +484,7 @@ export default function Home() {
       <section className="py-24 bg-background border-y border-border/40">
         <div className="container mx-auto px-6">
           <ScrollTransition yOffset={30} className="text-center mb-16">
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-caption uppercase tracking-wider mb-4 font-medium">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#FC8264] text-white text-caption uppercase tracking-wider mb-4">
               Popular Platforms
             </span>
             <h2 className="font-bold text-display-sm md:text-display-md mb-4">Platforms We Master</h2>
