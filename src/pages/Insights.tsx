@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { cn } from '@/lib/utils';
 import bookImg from '@/data/3d-book-simple.png';
+import strategyImage from '@/data/Strategyimage.png';
+import { ArrowRight } from 'lucide-react';
 
 const categories = ['all', 'strategy', 'abm', 'paidMedia', 'seo', 'salesPipeline', 'cro', 'trends'] as const;
 
@@ -15,6 +18,23 @@ const categoryLabels: Record<string, { en: string; fr: string }> = {
   cro: { en: 'CRO', fr: 'CRO' },
   trends: { en: 'Trends', fr: 'Tendances' },
 };
+
+// Blog posts data
+const blogPosts = [
+  {
+    id: 'growth-architecture',
+    slug: 'growth-architecture',
+    title: 'Growth Architecture: Turning Your Website Into an Asset',
+    excerpt: 'Strategic leaders recognize that a digital presence represents far more than a static expense. Learn how to transform your website into a powerful financial asset.',
+    category: 'strategy',
+    categories: ['Strategy', 'Business'],
+    author: 'Amit Sahni',
+    readTime: '10 min',
+    publishDate: '2026-04-15',
+    featured: true,
+    featuredImage: strategyImage,
+  },
+];
 
 // Organic floating positions around the center
 const pillStyles: Record<string, React.CSSProperties> = {
@@ -36,10 +56,9 @@ export default function Insights() {
     <>
       {/* Hero Section */}
       <section
-        className="pt-24 pb-16 relative overflow-hidden flex flex-col items-center"
+        className="pt-20 pb-8 relative overflow-hidden flex flex-col items-center"
         style={{
           background: 'linear-gradient(180deg, hsl(220 14% 96%) 0%, hsl(0 0% 100%) 100%)',
-          minHeight: '100vh',
         }}
       >
         <div className="container mx-auto px-6 flex flex-col items-center justify-center relative z-10 w-full flex-grow">
@@ -136,38 +155,192 @@ export default function Insights() {
             })}
           </div>
 
-          {/* Empty State message */}
-          <div className="flex flex-col items-center justify-center text-center animate-fade-in delay-200 mt-8">
+          {/* Empty State message - Hidden for visual but kept for SEO */}
+          <div className="sr-only flex flex-col items-center justify-center text-center animate-fade-in delay-200 mt-8">
             <h2
               style={{
                 fontFamily: "'Inter', system-ui, sans-serif",
                 fontWeight: 800,
-                fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+                fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
                 color: 'hsl(0 0% 8%)',
                 letterSpacing: '-0.02em',
-                marginBottom: '1rem',
+                marginBottom: '0.5rem',
               }}
             >
-              {language === 'en' ? 'Stay Tuned!' : 'Restez à l\'écoute!'}
+              {language === 'en' ? 'Latest Insights' : 'Derniers Aperçus'}
             </h2>
 
             <p
               style={{
                 fontFamily: "'Inter', system-ui, sans-serif",
-                fontSize: '1.15rem',
+                fontSize: '0.95rem',
                 color: 'hsl(0 0% 45%)',
                 maxWidth: '500px',
                 lineHeight: 1.6,
+                marginBottom: '0.5rem',
               }}
             >
               {language === 'en'
-                ? 'We\'re crafting insightful articles to help you grow. Our first set of growth guides will be dropping soon.'
-                : 'Nous préparons des articles perspicaces pour vous aider à croître. Nos premiers guides seront bientôt disponibles.'}
+                ? 'Strategic growth guides and industry insights to help you build a thriving business.'
+                : 'Guides de croissance stratégique et perspectives du secteur pour vous aider à construire une entreprise prospère.'}
             </p>
           </div>
+        </div>
+      </section>
 
+      {/* Articles Grid Section */}
+      <section className="pt-0 pb-20 md:pb-28 bg-white relative">
+        <div className="container mx-auto px-6">
+          {/* Strategy Section */}
+          {(activeCategory === 'strategy' || activeCategory === 'all') && (
+            <div className="mb-20">
+              <h2
+                className="text-3xl md:text-4xl font-bold mb-12"
+                style={{
+                  color: 'hsl(0 0% 8%)',
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                {language === 'en' ? 'Strategies' : 'Stratégies'}
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {blogPosts
+                  .filter((post) => post.category === 'strategy' || activeCategory === 'all')
+                  .map((post) => (
+                    <ArticleCard key={post.id} post={post} language={language} />
+                  ))}
+              </div>
+            </div>
+          )}
+
+          {/* All Section */}
+          {activeCategory === 'all' && (
+            <div>
+              <h2
+                className="text-3xl md:text-4xl font-bold mb-12"
+                style={{
+                  color: 'hsl(0 0% 8%)',
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                {language === 'en' ? 'All Articles' : 'Tous les Articles'}
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {blogPosts.map((post) => (
+                  <ArticleCard key={post.id} post={post} language={language} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Other Categories Coming Soon */}
+          {activeCategory !== 'all' && activeCategory !== 'strategy' && (
+            <div className="text-center py-12">
+              <h3
+                className="text-2xl font-semibold mb-4"
+                style={{ color: 'hsl(0 0% 25%)' }}
+              >
+                {language === 'en' ? 'Coming Soon' : 'Prochainement'}
+              </h3>
+              <p style={{ color: 'hsl(0 0% 45%)' }}>
+                {language === 'en'
+                  ? `More insightful articles in the ${categoryLabels[activeCategory]?.en} category are being prepared.`
+                  : `Plus d'articles perspicaces dans la catégorie ${categoryLabels[activeCategory]?.fr} sont en préparation.`}
+              </p>
+            </div>
+          )}
         </div>
       </section>
     </>
+  );
+}
+
+// Article Card Component
+function ArticleCard({ post, language }: { post: any; language: string }) {
+  return (
+    <Link to={`/blog/${post.slug}`}>
+      <div
+        className="group relative overflow-hidden rounded-xl transition-all duration-300 hover:shadow-xl h-full flex flex-col hover:scale-105"
+        style={{
+          background: 'linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 14% 92%) 100%)',
+          border: '1px solid hsl(210 14% 85%)',
+          boxShadow: '0 4px 12px -4px hsl(0 0% 0% / 0.08)',
+        }}
+      >
+        {/* Featured Image Placeholder */}
+        {post.featuredImage ? (
+          <img
+            src={post.featuredImage}
+            alt={post.title}
+            className="w-full h-48 object-cover relative overflow-hidden group-hover:scale-110 transition-transform duration-300"
+          />
+        ) : (
+          <div
+            className="w-full h-48 relative overflow-hidden flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+            style={{
+              background: 'linear-gradient(135deg, hsl(270 77% 39%) 0%, hsl(270 90% 85%) 100%)',
+            }}
+          >
+            <div className="text-center text-white/60">
+              <svg
+                className="w-12 h-12 mx-auto mb-2 opacity-40"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              <p className="text-sm">Featured Image</p>
+            </div>
+          </div>
+        )}
+
+        {/* Card Content */}
+        <div className="p-6 flex flex-col flex-grow">
+          {/* Category Badge */}
+          <div className="mb-4 flex items-center gap-2">
+            <span
+              className="inline-block px-3 py-1 rounded-full text-xs font-semibold text-white"
+              style={{ backgroundColor: 'hsl(270 77% 39%)' }}
+            >
+              {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
+            </span>
+            <span className="text-xs text-slate-500">{post.readTime} read</span>
+          </div>
+
+          {/* Title */}
+          <h3
+            className="text-lg md:text-xl font-bold mb-3 text-slate-900 line-clamp-3 group-hover:text-purple-600 transition-colors flex-grow"
+            style={{
+              fontFamily: "'Inter', system-ui, sans-serif",
+              letterSpacing: '-0.01em',
+            }}
+          >
+            {post.title}
+          </h3>
+
+          {/* Excerpt */}
+          <p className="text-sm text-slate-600 mb-4 line-clamp-2 flex-grow">
+            {post.excerpt}
+          </p>
+
+          {/* Read More Link */}
+          <div className="flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-4 transition-all duration-300">
+            <span>{language === 'en' ? 'Read Article' : 'Lire l\'article'}</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </div>
+
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+      </div>
+    </Link>
   );
 }
