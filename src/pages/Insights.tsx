@@ -4,6 +4,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { cn } from '@/lib/utils';
 import bookImg from '@/data/3d-book-simple.png';
 import strategyImage from '@/data/Strategyimage.png';
+import paidAdsImage from '@/data/paid ads.png';
 import { ArrowRight } from 'lucide-react';
 
 const categories = ['all', 'strategy', 'abm', 'paidMedia', 'seo', 'salesPipeline', 'cro', 'trends'] as const;
@@ -33,6 +34,19 @@ const blogPosts = [
     publishDate: '2026-04-15',
     featured: true,
     featuredImage: strategyImage,
+  },
+  {
+    id: 'montreal-paid-ads',
+    slug: 'montreal-paid-ads',
+    title: 'Stop Burning Cash in Montreal Digital Marketing 2026',
+    excerpt: 'Strategies that scaled your ad campaign in 2024 are now costing you money. Learn how to build a Creative Engine that drives results in Montreal\'s unique bilingual market.',
+    category: 'paidMedia',
+    categories: ['Paid Ads', 'Marketing'],
+    author: 'Amit Sahni',
+    readTime: '12 min',
+    publishDate: '2026-04-15',
+    featured: true,
+    featuredImage: paidAdsImage,
   },
 ];
 
@@ -192,7 +206,7 @@ export default function Insights() {
       <section className="pt-0 pb-20 md:pb-28 bg-white relative">
         <div className="container mx-auto px-6">
           {/* Strategy Section */}
-          {(activeCategory === 'strategy' || activeCategory === 'all') && (
+          {activeCategory === 'strategy' && (
             <div className="mb-20">
               <h2
                 className="text-3xl md:text-4xl font-bold mb-12"
@@ -206,7 +220,30 @@ export default function Insights() {
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {blogPosts
-                  .filter((post) => post.category === 'strategy' || activeCategory === 'all')
+                  .filter((post) => post.category === 'strategy')
+                  .map((post) => (
+                    <ArticleCard key={post.id} post={post} language={language} />
+                  ))}
+              </div>
+            </div>
+          )}
+
+          {/* Paid Media Section */}
+          {activeCategory === 'paidMedia' && (
+            <div className="mb-20">
+              <h2
+                className="text-3xl md:text-4xl font-bold mb-12"
+                style={{
+                  color: 'hsl(0 0% 8%)',
+                  fontFamily: "'Inter', system-ui, sans-serif",
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                {language === 'en' ? 'Paid Media' : 'Médias Payants'}
+              </h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {blogPosts
+                  .filter((post) => post.category === 'paidMedia')
                   .map((post) => (
                     <ArticleCard key={post.id} post={post} language={language} />
                   ))}
@@ -236,7 +273,7 @@ export default function Insights() {
           )}
 
           {/* Other Categories Coming Soon */}
-          {activeCategory !== 'all' && activeCategory !== 'strategy' && (
+          {activeCategory !== 'all' && activeCategory !== 'strategy' && activeCategory !== 'paidMedia' && (
             <div className="text-center py-12">
               <h3
                 className="text-2xl font-semibold mb-4"

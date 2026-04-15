@@ -5,6 +5,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import strategyImage from '@/data/Strategyimage.png';
+import paidAdsImage from '@/data/paid ads.png';
 
 const blogPosts: Record<string, any> = {
   'growth-architecture': {
@@ -240,6 +241,192 @@ const blogPosts: Record<string, any> = {
       },
     ],
   },
+  'montreal-paid-ads': {
+    id: 'montreal-paid-ads',
+    slug: 'montreal-paid-ads',
+    title: 'Stop Burning Cash in Montreal Digital Marketing 2026',
+    categories: ['Paid Ads', 'Marketing'],
+    author: 'Amit Sahni',
+    publishDate: '2026-04-15',
+    featuredImage: paidAdsImage,
+    tableOfContents: [
+      'The Personal Experience: The Montreal "Winning Ad" Case Study',
+      '2026 Proof & Research: Data Shows Creative Wins Over Targeting',
+      'The Montreal Bilingual Challenge in 2026',
+      'Implementing the Montreal "Creative Engine"',
+      'Conversion-Optimized Landing Page Design: The 2026 Anchor',
+      'Conclusion: The Path to Montreal Ad Scaling in 2026',
+      'Strategic SEO Checklist for Montreal Paid Media',
+    ],
+    content: [
+      {
+        type: 'paragraph',
+        text: 'If you are a marketing director in Montreal, you have likely felt the shift. It\'s 2026. Strategies that scaled your ad campaign in 2024 are now costing you money. The unique, bilingual nature of our city makes this challenge even harder. Your Cost Per Acquisition (CPA) is climbing, your ads are fatiguing fast, and despite a larger budget, your leads have stagnated.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The reality of Montreal digital marketing in 2026 is that you can no longer rely on "hacking the algorithm." You are competing in a dense market where attention is expensive. Scaling your marketing efforts is no longer determined by finding a "hidden audience" on advertising platforms. Success now depends entirely on building a fast-paced "Creative Engine." You need to produce high-intent, localized content at a massive scale to engage your target audience.',
+      },
+      {
+        type: 'paragraph',
+        text: 'In 2026, businesses in Greater Montreal running high-volume marketing campaigns on visual platforms (TikTok, Meta) must refresh ad creative every 7 to 14 days. Local competition is fierce. The algorithm quickly identifies and penalizes stale, static content. This required frequency combats "ad fatigue" and ensures your message remains relevant to local consumers.',
+      },
+      {
+        type: 'heading',
+        text: 'The Personal Experience: The Montreal "Winning Ad" Case Study',
+      },
+      {
+        type: 'paragraph',
+        text: 'At our PPC agency based in Quebec, we recently reviewed a recognized Montreal B2C brand. They operate out of the Plateau and tried to scale a single "winning ad" for six consecutive months.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The marketing efforts started strong. But by month three, things broke down. The average Montreal user had seen the same ad eight times. The campaign performance plummeted.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Frequency was at 8.0, which means local user disengagement was guaranteed. The algorithm penalized the lack of fresh content. Costs per thousand impressions (CPMs) doubled. The client was spending more money, but the phone at their bilingual call center stopped ringing. They fell into the "winning ad" trap, ignoring the need for rapid creative iteration. Static campaigns do not scale in a modern return on investment model. You cannot "set-and-forget" any ad campaign.',
+      },
+      {
+        type: 'heading',
+        text: '2026 Proof & Research: Data Shows Creative Wins Over Targeting',
+      },
+      {
+        type: 'paragraph',
+        text: 'International data and our case studies confirm the shift: refined targeting is less important than volume.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Internal data from Meta in 2026 confirms that "Creative" is now the #1 driver of campaign performance. It outweighs targeting by a massive 4:1 ratio. This shift occurred because algorithm-driven audience modeling is now nearly perfect. Platforms like Meta and TikTok already know who your best client is in Brossard or Saint-Henri. They can identify users with high intent faster than we can.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Your job is not to find them. Your job is to provide content that connects with them. In a bilingual market like Montreal, this means using diverse localized creative variations. If you give the AI enough varied assets, it can successfully engage your desired action. If you don\'t, you will plateau.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Data from ProfitWell indicates that B2B CAC has risen by 60% over the last five years. In Montreal\'s tight, localized market, "Efficiency" is a requirement. To maintain margin, you must pair specialized localized creative with focused destinations. You cannot drive high-cost 2026 traffic to a generic homepage. Every click must count toward your desired action.',
+      },
+      {
+        type: 'heading',
+        text: 'The Montreal Bilingual Challenge in 2026',
+      },
+      {
+        type: 'paragraph',
+        text: 'Scaling in Montreal in 2026 requires a highly specialized local approach. This is not about just translating your Toronto ads. You cannot scale without a dedicated bilingual plan.',
+      },
+      {
+        type: 'paragraph',
+        text: 'AI-driven advertising platforms in 2026 are smart. They can detect the difference between a "native" localized speaker and a generic, dubbed translation. Cheap translations will get you flagged by the local algorithm for "Low Quality."',
+      },
+      {
+        type: 'list',
+        items: [
+          'Native French production (with Quebecois cultural references)',
+          'Native English production (speaking to the unique Anglo-Montreal experience)',
+          'Authentic localized connection is required for building trust',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'Real Montrealers can tell if you are speaking to them or at them. Authentic connection drives better campaign performance and higher return on investment (ROI).',
+      },
+      {
+        type: 'paragraph',
+        text: 'The fastest way to combat ad fatigue is to connect with the local audience immediately. Use specific Montreal hooks in your first three seconds:',
+      },
+      {
+        type: 'list',
+        items: [
+          '"Trying to find parking near Atwater Market..."',
+          '"That feel when the Metro is stuck at Berri-UQAM..."',
+          '"If you are tired of the construction on the Décarie..."',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'These references create instant localized relevance. They differentiate you from global competitors who are "blanket-targeting" the province.',
+      },
+      {
+        type: 'heading',
+        text: 'Implementing the Montreal "Creative Engine"',
+      },
+      {
+        type: 'paragraph',
+        text: 'To stop burning cash and start scaling in 2026, you need to transition your production. Stop thinking about "filming a commercial" once a quarter. Think about producing 10 to 15 high-intent "variations" every week.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A "variation" is not a completely new video. It\'s a change in the crucial variables:',
+      },
+      {
+        type: 'list',
+        items: [
+          'The Hook: The first 3 seconds are everything. Test local references vs. direct benefit statements.',
+          'The Script: Change the body copy and the tone of voice.',
+          'The Talent: A native French speaker vs. a native English speaker.',
+          'The Visuals: Test high-quality, authentic video vs. raw, user-generated content (UGC).',
+          'The CTA: The "Call to Action" must be clear. Test "Call our Montreal Office" vs. "Get Your Free Quote Online."',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'A local Montreal PPC agency must pair this creative volume with refined marketing strategies. You must fine-tune the content based on local key metrics. This holistic approach turns ads into powerful tools for growth.',
+      },
+      {
+        type: 'heading',
+        text: 'Conversion-Optimized Landing Page Design: The 2026 Anchor',
+      },
+      {
+        type: 'paragraph',
+        text: 'You must anchor your high-volume creative strategy to a specialized conversion engine. If you increase your creative volume but ignore your destination, you will still plateau. Specialized landing page design is the key to managing high B2B CAC.',
+      },
+      {
+        type: 'paragraph',
+        text: 'If your ad creative mentions a specific local pain point, your landing page must continue that story. A generic homepage will kill your conversion rate and your quality score on platforms like Google Ads Montreal.',
+      },
+      {
+        type: 'paragraph',
+        text: 'When a visitor clicks an ad focused on Saint-Laurent, the landing page should say: "Bilingual Service for Saint-Laurent Businesses." Mention the neighborhood (e.g., "Proudly serving Laval," "Brossard\'s leading supplier"). This small localized touch significantly boosts quality scores, reduces your PPC Montreal cost per click, and converts high-cost traffic at a much higher rate.',
+      },
+      {
+        type: 'heading',
+        text: 'Conclusion: The Path to Montreal Ad Scaling in 2026',
+      },
+      {
+        type: 'paragraph',
+        text: 'Stop burning cash by running last year\'s ad campaign. To scale paid media in 2026, you cannot rely on granular targeting or static content. You must build a fast-paced "Creative Engine" that produces high-intent video and copy variations every week.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Your marketing efforts must focus on three core Montreal local strategies:',
+      },
+      {
+        type: 'list',
+        items: [
+          'Native, high-volume bilingual creative that builds social proof',
+          'Deep cultural real-world references that combat ad fatigue',
+          'Geo-targeted landing pages that maximize your desired action',
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: 'If your campaigns have stagnated, it\'s time to fine-tune your strategy. It\'s time to move past static ad campaigns and embrace the Creative Engine. Start producing, start localizing, and you will start scaling.',
+      },
+      {
+        type: 'heading',
+        text: 'Strategic SEO Checklist for Montreal Paid Media',
+      },
+      {
+        type: 'list',
+        items: [
+          'Technical: Confirm all landing pages are fully optimized for search engine visibility and local authority.',
+          'Creative: Ensure every video or visual asset uses localized alt attributes.',
+          'ROI: Track all relevant key metrics (bilingual phone calls vs. form fills) to accurately measure return on investment.',
+        ],
+      },
+    ],
+  },
 };
 
 export default function Blog() {
@@ -325,8 +512,8 @@ export default function Blog() {
           <div className="container mx-auto px-6 max-w-6xl">
             {/* Placeholder for featured image - Full width */}
             <img
-              src={strategyImage}
-              alt="Growth Architecture: Turning Your Website Into an Asset"
+              src={post.featuredImage || strategyImage}
+              alt={post.title}
               className="w-full h-[550px] object-cover rounded-lg mb-4"
               style={{
                 boxShadow: '0 16px 48px -16px hsl(0 0% 0% / 0.15)',
