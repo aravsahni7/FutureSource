@@ -47,7 +47,7 @@ const rawPlans: [PriceTier, PriceTier, PriceTier] = [
     name: 'Starter',
     description: 'Perfect for local businesses starting their digital journey.',
     priceMonthly: 499,
-    priceAnnually: 4990,
+    priceAnnually: 4790,
     isPopular: false,
     buttonLabel: 'Get Started',
     features: [
@@ -77,8 +77,8 @@ const rawPlans: [PriceTier, PriceTier, PriceTier] = [
     id: 'growth',
     name: 'Growth',
     description: 'The sweet spot for growing companies needing scale.',
-    priceMonthly: 699,
-    priceAnnually: 6990,
+    priceMonthly: 999,
+    priceAnnually: 9590,
     isPopular: true,
     buttonLabel: 'Choose Growth',
     features: [
@@ -108,8 +108,8 @@ const rawPlans: [PriceTier, PriceTier, PriceTier] = [
     id: 'scale',
     name: 'Scale',
     description: 'Full-service digital partnership for market leaders.',
-    priceMonthly: 999,
-    priceAnnually: 9990,
+    priceMonthly: 1499,
+    priceAnnually: 14390,
     isPopular: false,
     buttonLabel: 'Go Scale',
     features: [
