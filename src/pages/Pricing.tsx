@@ -4,7 +4,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 
 const featureTranslations: Record<string, { en: string, fr: string }> = {
-  'Website Development': { en: 'Website Development', fr: 'Développement de site web' },
+  'Website Management': { en: 'Website Management', fr: 'Gestion de Site Web' },
   'Local SEO Foundation': { en: 'Local SEO Foundation', fr: 'Fondation SEO locale' },
   'Website Maintenance': { en: 'Website Maintenance', fr: 'Maintenance de site web' },
   'Monthly Progress Reports': { en: 'Monthly Progress Reports', fr: 'Rapports de progrès mensuels' },
@@ -51,7 +51,7 @@ const rawPlans: [PriceTier, PriceTier, PriceTier] = [
     isPopular: false,
     buttonLabel: 'Get Started',
     features: [
-      { name: 'Website Development', isIncluded: true },
+      { name: 'Website Management', isIncluded: true },
       { name: 'Local SEO Foundation', isIncluded: true },
       { name: 'Website Maintenance', isIncluded: true },
       { name: 'Monthly Progress Reports', isIncluded: true },
@@ -82,7 +82,7 @@ const rawPlans: [PriceTier, PriceTier, PriceTier] = [
     isPopular: true,
     buttonLabel: 'Choose Growth',
     features: [
-      { name: 'Website Development', isIncluded: true },
+      { name: 'Website Management', isIncluded: true },
       { name: 'Local SEO Foundation', isIncluded: true },
       { name: 'Website Maintenance', isIncluded: true },
       { name: 'Monthly Progress Reports', isIncluded: true },
@@ -113,7 +113,7 @@ const rawPlans: [PriceTier, PriceTier, PriceTier] = [
     isPopular: false,
     buttonLabel: 'Go Scale',
     features: [
-      { name: 'Website Development', isIncluded: true },
+      { name: 'Website Management', isIncluded: true },
       { name: 'Local SEO Foundation', isIncluded: true },
       { name: 'Website Maintenance', isIncluded: true },
       { name: 'Monthly Progress Reports', isIncluded: true },
