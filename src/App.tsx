@@ -91,7 +91,7 @@ const App = () => {
             {showIntro && <IntroScreen onComplete={handleIntroComplete} />}
             <Toaster />
             <Sonner />
-            <BrowserRouter basename="/">
+            <BrowserRouter basename={import.meta.env.BASE_URL}>
               <LocationTracker>
                 <ScrollToTop />
                 <Routes>
