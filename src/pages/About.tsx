@@ -8,6 +8,7 @@ import { teamMembers } from '@/data/content';
 import { cn } from '@/lib/utils';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import { TextReveal } from '@/components/animations/TextReveal';
+import SEO from '@/components/SEO';
 
 // Asset imports
 import AmitPhoto from '@/data/Amit.png';
@@ -31,6 +32,11 @@ export default function About() {
 
   return (
     <>
+      <SEO
+        title="About FutureSource | Montreal Digital Marketing Agency"
+        description="Meet the FutureSource team — a Montreal-based digital marketing agency with 20+ years of experience helping ambitious brands grow through web design, SEO, and paid advertising."
+        canonical="/about"
+      />
       <style>{`
         @keyframes sprayIn {
           0%   { opacity: 0; filter: blur(18px); transform: scale(1.04); }

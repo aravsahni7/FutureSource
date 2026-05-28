@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import { TextReveal } from '@/components/animations/TextReveal';
 import ProcessCarousel from '@/components/ProcessCarousel';
+import SEO from '@/components/SEO';
 
 export default function Process() {
   const { language, t } = useLanguage();
@@ -65,6 +66,11 @@ export default function Process() {
 
   return (
     <>
+      <SEO
+        title="Our Process | How FutureSource Delivers Results"
+        description="Learn how FutureSource's proven 4-step process — Discovery, Strategy, Execution, and Reporting — drives measurable growth for Montreal brands."
+        canonical="/process"
+      />
       {/* Hero — Modern Dynamic */}
       <section className="relative overflow-hidden" style={{
         paddingTop: '10rem',

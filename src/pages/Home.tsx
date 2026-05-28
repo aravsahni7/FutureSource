@@ -7,6 +7,7 @@ import { getFeaturedCaseStudies, testimonials } from '@/data/content';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import { TextReveal } from '@/components/animations/TextReveal';
 import { CMSCRMLogos } from '@/components/CMSCRMLogo';
+import SEO from '@/components/SEO';
 
 import demoFitness from '@/assets/demo-fitness.jpg';
 import demoRestaurant from '@/assets/demo-restaurant.jpg';
@@ -16,8 +17,33 @@ export default function Home() {
   const { language, t } = useLanguage();
   const featuredCases = getFeaturedCaseStudies().slice(0, 3);
 
+  const homeSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'FutureSource',
+    description: 'Web design and digital marketing agency in Montreal specializing in SEO, Paid Ads, CRO, and Account-Based Marketing.',
+    url: 'https://futuresource.ca',
+    telephone: '',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Montreal',
+      addressRegion: 'QC',
+      addressCountry: 'CA',
+    },
+    sameAs: [
+      'https://www.linkedin.com/company/futuresource',
+    ],
+    knowsAbout: ['Web Design', 'SEO', 'Paid Advertising', 'Conversion Rate Optimization', 'Account-Based Marketing'],
+  };
+
   return (
     <>
+      <SEO
+        title="FutureSource | Web Design & Digital Marketing Agency Montreal"
+        description="FutureSource is a Montreal digital marketing agency scaling ambitious brands with technical SEO, Paid Ads (Meta, Google, TikTok), CRO, and Account-Based Marketing."
+        canonical="/"
+        schema={homeSchema}
+      />
       {/* Hero Section - Editorial asymmetric layout */}
       <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-hero grain-overlay" />

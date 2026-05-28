@@ -4,6 +4,7 @@ import { ArrowRight, ArrowLeft, Quote } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { getCaseStudyBySlug } from '@/data/content';
+import SEO from '@/components/SEO';
 import { cn } from '@/lib/utils';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 
@@ -17,8 +18,17 @@ export default function CaseStudyDetail() {
     return <Navigate to="/work" replace />;
   }
 
+  const caseTitle = `${caseStudy.title.en} | ${caseStudy.client} Case Study`;
+  const caseDescription = `${caseStudy.subtitle.en} — ${caseStudy.context.en.slice(0, 120)}...`;
+
   return (
     <>
+      <SEO
+        title={caseTitle}
+        description={caseDescription}
+        canonical={`/work/${caseStudy.slug}`}
+        ogType="article"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-hero grain-overlay relative">
         <div className="container mx-auto px-6">

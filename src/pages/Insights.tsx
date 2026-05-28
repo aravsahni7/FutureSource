@@ -6,6 +6,7 @@ import bookImg from '@/data/3d-book-simple.png';
 import strategyImage from '@/data/Strategyimage.png';
 import paidAdsImage from '@/data/paid ads.png';
 import { ArrowRight } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 const categories = ['all', 'strategy', 'abm', 'paidMedia', 'seo', 'salesPipeline', 'cro', 'trends'] as const;
 
@@ -68,6 +69,11 @@ export default function Insights() {
 
   return (
     <>
+      <SEO
+        title="Marketing Insights & Blog | FutureSource Montreal"
+        description="Expert articles on paid media, SEO, CRO, ABM, and growth strategy from the FutureSource team. Practical insights for ambitious brands."
+        canonical="/insights"
+      />
       {/* Hero Section */}
       <section
         className="pt-20 pb-8 relative overflow-hidden flex flex-col items-center"

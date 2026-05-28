@@ -4,6 +4,7 @@ import { ArrowRight, ArrowLeft, Target, Search, TrendingUp, Check } from 'lucide
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { getServiceBySlug, getCaseStudiesByService, services } from '@/data/content';
+import SEO from '@/components/SEO';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { CMSCRMLogos } from '@/components/CMSCRMLogo';
 import { cn } from '@/lib/utils';
@@ -33,8 +34,38 @@ export default function ServiceDetail() {
   const relatedCases = getCaseStudiesByService(service.id).slice(0, 2);
   const Icon = iconMap[service.icon] || Target;
 
+  const serviceTitles: Record<string, string> = {
+    'web-design': 'High-Performance Web Design Services Montreal',
+    'paid-ads': 'Paid Advertising Agency Montreal | Meta, Google & TikTok Ads',
+    'seo-content': 'SEO & Content Marketing Services Montreal',
+    'account-based-marketing': 'Account-Based Marketing (ABM) Agency Montreal',
+    'cro-landing-pages': 'CRO & Landing Page Optimization Montreal',
+  };
+
+  const pageTitle = serviceTitles[service.slug] || service.title.en;
+  const pageDescription = `${service.description.en} FutureSource — Montreal digital marketing agency.`;
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.title.en,
+    description: service.description.en,
+    provider: {
+      '@type': 'Organization',
+      name: 'FutureSource',
+      url: 'https://futuresource.ca',
+    },
+    areaServed: { '@type': 'City', name: 'Montreal' },
+  };
+
   return (
     <>
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        canonical={`/services/${service.slug}`}
+        schema={serviceSchema}
+      />
       {/* Hero */}
       <section className="pt-32 pb-12 bg-gradient-hero grain-overlay relative">
         <div className="container mx-auto px-6">

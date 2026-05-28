@@ -8,6 +8,7 @@ import { CMSCRMLogos } from '@/components/CMSCRMLogo';
 import { cn } from '@/lib/utils';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import { TextReveal } from '@/components/animations/TextReveal';
+import SEO from '@/components/SEO';
 
 // 3D images for each service card
 import serviceWebDesign3d from '@/assets/service-web-design-3d.png';
@@ -205,6 +206,11 @@ export default function Services() {
 
   return (
     <>
+      <SEO
+        title="Digital Marketing Services Montreal | Web Design, SEO & Paid Ads"
+        description="Explore FutureSource's full range of services: high-performance web design, paid advertising (Meta, Google, TikTok), SEO & content, CRO, and Account-Based Marketing."
+        canonical="/services"
+      />
       {/* ====== EDITORIAL HORIZONTAL SERVICES HERO ====== */}
       <section className="services-editorial-section">
         <div className="services-editorial-header">

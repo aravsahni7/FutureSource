@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PricingComponent, PriceTier, BillingCycle, Feature } from '@/components/ui/pricing-card';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
+import SEO from '@/components/SEO';
 
 const featureTranslations: Record<string, { en: string, fr: string }> = {
   'Website Management': { en: 'Website Management', fr: 'Gestion de Site Web' },
@@ -154,6 +155,11 @@ export default function Pricing() {
 
   return (
     <div className="pt-32 pb-16 min-h-screen bg-gradient-warm">
+      <SEO
+        title="Pricing | Digital Marketing & Web Design Packages Montreal"
+        description="Transparent pricing for web design, SEO, paid advertising, and full-service digital marketing. Choose the plan that fits your growth stage."
+        canonical="/pricing"
+      />
       <ScrollTransition className="container mx-auto px-6">
         <PricingComponent
           plans={translatedPlans}

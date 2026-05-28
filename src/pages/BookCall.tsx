@@ -5,6 +5,7 @@ import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
+import SEO from '@/components/SEO';
 
 export default function BookCall() {
   const { language, t } = useLanguage();
@@ -18,6 +19,11 @@ export default function BookCall() {
 
   return (
     <>
+      <SEO
+        title="Book a Free Strategy Call | FutureSource Montreal"
+        description="Book a free 30-minute strategy call with FutureSource. We'll discuss your goals, current challenges, and whether we're the right fit for your growth."
+        canonical="/book-a-call"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-hero grain-overlay relative">
         <div className="container mx-auto px-6">

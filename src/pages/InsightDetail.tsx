@@ -4,6 +4,7 @@ import { ArrowRight, ArrowLeft, Calendar, Clock, User } from 'lucide-react';
 import { useLanguage } from '@/i18n/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { getBlogPostBySlug, blogPosts } from '@/data/content';
+import SEO from '@/components/SEO';
 import { cn } from '@/lib/utils';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 import fbArticleImg from '@/data/facebook-article.png';
@@ -38,8 +39,29 @@ export default function InsightDetail() {
     .filter(p => p.id !== post.id && p.category === post.category)
     .slice(0, 3);
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title.en,
+    description: post.excerpt.en,
+    author: { '@type': 'Person', name: post.author },
+    datePublished: post.publishedAt,
+    publisher: {
+      '@type': 'Organization',
+      name: 'FutureSource',
+      url: 'https://futuresource.ca',
+    },
+  };
+
   return (
     <>
+      <SEO
+        title={post.title.en}
+        description={post.excerpt.en}
+        canonical={`/insights/${post.slug}`}
+        ogType="article"
+        schema={articleSchema}
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-hero grain-overlay relative">
         <div className="container mx-auto px-6">

@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
+import SEO from '@/components/SEO';
 import { ScrollTransition } from '@/components/animations/ScrollTransition';
 
 // EmailJS configuration
@@ -122,6 +123,11 @@ ${formData.message}
 
   return (
     <>
+      <SEO
+        title="Contact FutureSource | Montreal Digital Marketing Agency"
+        description="Get in touch with FutureSource. We work with ambitious brands in Montreal and beyond — let's talk about how we can scale your growth."
+        canonical="/contact"
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 bg-gradient-hero grain-overlay relative">
         <div className="container mx-auto px-6">
